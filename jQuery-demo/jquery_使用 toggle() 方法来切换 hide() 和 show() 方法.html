@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>使用 toggle() 方法来切换 hide() 和 show() 方法</title>
+<script type="text/javascript" src="jquery/jquery-1.8.3.js"></script>
+<script>
+$(function(){
+	$(":button").click(function(){
+		$("p").toggle(5000,function(){
+			alert("操作成功！");
+			});
+	});
+	});
+</script>
+</head>
+
+<body>
+<h3>下面一个段落，点击按钮后将被隐藏</h3>
+<input type="button" value="隐藏/显示段落">
+<p>
+您需要具备的基础知识
+在您开始学习 jQuery 之前，您应该对以下知识有基本的了解：
+
+HTML 
+CSS 
+JavaScript 
+如果您需要首先学习这些科目，请在我们的 首页 查找这些教程
+
+</p>
+</body>
+</html>

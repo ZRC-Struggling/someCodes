@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script type="text/javascript" src="jquery/jquery-1.8.3.js"></script>
+<script type="text/javascript">
+$(function(){
+	$("input").toggle(
+		function(){
+			$("div").css("background","red");},
+		function(){
+			$("div").css("background","green");},
+		function(){
+			$("div").css("background","blue");});
+	});
+</script>
+</head>
+
+<body>
+
+<div style="width:200px;height:200px;border:1px solid red;"></div>
+<input type="button" value="单击我试试看，再单击我试试看...">
+</body>
+</html>
+<!--toggle调用多个函数的功能在jQuery1.9.0以上就不支持了，只支持toggle（）用于切换显示和隐藏元素-->

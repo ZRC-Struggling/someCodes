@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script type="text/javascript" src="jquery/jquery-1.12.3.js"></script>
+<script type="text/javascript">
+$(function(){
+$("#seltest").change(function(){
+	$("div").html("你选中的是：").append($(this).val());
+	});
+});
+</script>
+</head>
+
+<body>
+        <h3>下拉列表的change事件</h3>
+        <select id="seltest">
+            <option value="葡萄">葡萄</option>
+            <option value="苹果">苹果</option>
+            <option value="荔枝">荔枝</option>
+            <option value="香焦">香焦</option>
+        </select>
+        
+        
+        <div style="margin-top:20px;width:400px;height:20px;background:#ccc;">你选中的是：</div>
+</body>
+</html>
