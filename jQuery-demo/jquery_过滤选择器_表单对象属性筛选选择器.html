@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <title></title>
+    <style>
+    input {
+        display: block;
+        margin: 10px;
+        padding: 10px;
+    }
+    </style>
+    <script src="http://libs.baidu.com/jquery/1.9.1/jquery.js"></script>
+</head>
+
+<body>
+    
+    <h3>enabled、disabled</h3>
+    <form>
+        <input type="text" value="未设置disabled" />
+        <input type="text" value="设置disabled" disabled="disabled" />
+        <input type="text" value="未设置disabled" />
+    </form>
+
+
+
+    <h3>checked、selected</h3>
+    <form>
+        <input type="checkbox" checked="checked">
+        <input type="checkbox">
+        <input type="radio" checked>       
+        <input type="radio">
+        
+        <select name="garden" multiple="multiple">
+            <option>imooc</option>
+            <option selected="selected">慕课网</option>
+            <option>aaron</option>
+            <option selected="selected">博客园</option>
+          </select>
+
+    </form>
+
+
+选择一个选择器并观察,边框效果
+<select id="test">
+	<option>input:enabled</option>
+    <option>input:disabled</option>
+    <option>input:checked</option>
+    <option>option:selected</option>
+</select>
+<br><br>
+
+
+<script type="text/javascript" src="jquery/jquery-2.2.3.js"></script>
+<script type="text/javascript">
+$(function(){
+	$($("#test").val()).css("border","1px solid blue");
+	$("#test").change(function(){
+			if($("#test option:contains('checked')").is(":selected")){
+					alert("单选框选中"+$($(this).val()).filter(":radio").length+"个");
+					alert("复选框选中"+$($(this).val()).filter(":checkbox").length+"个");
+			}else{
+			$("*").css("border","");
+			$($(this).val()).css("border","1px solid blue");}
+		});
+	});
+
+</script>
+</body>
+
+</html>

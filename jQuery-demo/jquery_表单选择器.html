@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <title></title>
+    <link rel="stylesheet" href="imooc.css" type="text/css">
+    <style> 
+        input{
+            display: block;
+            margin: 10px;
+            padding:10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>子元素筛选选择器</h2>
+    <h3>input、text、password、radio、checkbox</h3>
+    <h3>submit、image、reset、button、file</h3>
+    <div class="left first-div">
+        <form>
+            <input type="text" value="text类型"/>
+            <input type="password" value="password"/>
+            <input type="radio"/> 
+            <input type="checkbox"/>
+            <input type="submit" />
+            <input type="image" />
+            <input type="reset" />
+            <input type="button" value="Button" />
+            <input type="file" />
+        </form>
+    </div>
+    
+   选择一个选择器并观察,边框效果
+<select id="test">
+	<option>:input</option>
+    <option>input:text</option>
+    <option>input:password</option>
+    <option>input:radio</option> 
+    <option>input:checkbox</option>
+    <option>input:submit</option>
+	<option>input:image</option>
+    <option>input:reset</option>
+    <option>input:button</option>
+    <option>input:file</option>
+</select>
+<br><br>
+<pre>
+								总结：
+            1.除了:input筛选选择器，几乎每个表单类别筛选器都对应一个input元素的type值。大部分表单类别筛选器可以使用属性筛选器替换。比如 $(':password') == $('[type=password]')
+			2.:input筛选器匹配所有 input, textarea, select 和 button 元素
+            3.注意区分input和:input
+</pre>
+
+<script type="text/javascript" src="jquery/jquery-2.2.3.js"></script>
+<script type="text/javascript">
+$(function(){
+	$($("#test").val()).css("border","1px solid blue");
+	$("#test").change(function(){
+			if($("#test option:contains('radio')").is(":selected")){
+					$($(this).val()).attr("checked","checked");
+			}
+			if($("#test option:contains('checkbox')").is(":selected")){
+					$($(this).val()).attr("checked","checked");
+			}
+			$("*").css("border","");
+			$($(this).val()).css("border","1px solid blue");
+		});
+	});
+</script>
+</body>
+
+</html>

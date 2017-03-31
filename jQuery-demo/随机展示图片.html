@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style type="text/css">
+div{
+	width:80%;
+	background:#e8e8e8;
+	margin:0 auto;}
+img{
+	display:block;
+	margin:0 auto;
+	width:600px;
+	height:600px;
+	}
+</style>
+</head>
+
+<body>
+<div>
+	<img src="images/1.jpg" alt="图片">
+</div>
+<script type="text/javascript" src="jquery/jquery-2.2.3.js"></script>
+<script type="text/javascript">
+$(function(){
+	function changeImg(){
+			var randomNum=Math.floor(Math.random()*3+1);//产生1到3随机整数。
+			$("img").attr("src","images/"+randomNum+".jpg")
+					.css({"border":"2px solid red","outline":"5px solid lightblue","outline-offset":"5px"});
+	}
+	setInterval(changeImg,3000);
+	
+	});
+</script>
+</body>
+</html>
