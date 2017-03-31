@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>01234</title>
+</head>
+
+<body onload="init()">
+通过此案例，我们能学到数组的两个方法：shift()、push()；
+也能够学到数组与字符串之间转换的方法：split()、join();
+<script type="text/javascript">
+function init(){
+	var title=document.title;
+	var arr=title.split("");
+	var first=arr.shift();
+	arr.push(first);
+	title=arr.join("");
+	document.title=title;
+	setTimeout(init, 2000);//先延迟2秒，再调用函数
+	//setTimeout("init()", 2000);
+
+
+	//setTimeout(init(), 2000);写成这样会报错
+	//FF:	too much recursion; 	Chrome:	Uncaught RangeError: Maximum call stack size exceeded
+}
+</script>
+</body>
+</html>
