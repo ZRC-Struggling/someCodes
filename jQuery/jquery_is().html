@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style type="text/css">
+.iframe{
+	border:1px solid #888;
+	font-size:13px;
+	width:260px;
+	margin:0 auto;}
+.title{
+	padding:6px;
+	background:#eee;}
+.content{
+	padding:8px;
+	font-size:12px;
+	}
+.tip{
+	background:#eee;
+	font-size:12px;
+	display:none;
+	padding:8px;}
+.txt{
+	border:1px solid #888;
+	}
+.btn{
+	border:1px solid #888;
+	width:60px;}
+</style>
+</head>
+
+<body>
+<div class="iframe">
+	<div class="title">请输入如下信息</div>
+    <div class="content">
+    	姓名：<input id="Text1" type="text" class="txt"><br>
+        性别：<input id="Radio1" type="radio" name="rdoSex" value="男">男
+        	<input id="Radio2" type="radio" name="rdoSex" value="女">女<br>
+        婚否：<input id="Checkbox1" type="checkbox"><br><br>
+        	<input id="btnSubmit" type="button" value="提交" class="btn"><br><br>
+    </div>
+    <div id="Tip" class="tip"></div>
+</div>
+<script src="jquery/jquery-2.2.3.js"></script>
+<script>
+$(function(){
+	$("#btnSubmit").click(function(){
+		/*获取文本框的值*/
+		var oTxtValue=$("#Text1").val();
+		//获取单选框按钮值
+		var oRdoValue=$("#Radio1").is(":checked")?"男":"女";
+		//获取复选框的值
+		var oChkValue=$("#Checkbox1").is(":checked")?"已婚":"未婚";
+		//显示提示文本元素和内容
+		$("#Tip").css("display","block").html(oTxtValue+"<br>"+oRdoValue+"<br>"+oChkValue);
+	});
+	});
+</script>
+</body>
+</html>

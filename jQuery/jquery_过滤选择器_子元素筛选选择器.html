@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <title></title>
+	<style type="text/css">
+	.left {
+        width: auto;
+        height: 120px;
+    }
+    
+    .left div {
+        width: 150px;
+        height: 100px;
+        padding: 5px;
+        margin: 5px;
+        float: left;
+        background: #bbffaa;
+        border: 1px solid #ccc;
+    }
+    a{
+        display: block;
+    }
+	</style>
+</head>
+
+<body>
+    <h2>子元素筛选选择器</h2>
+    <h3>:first-child、:last-child、:only-child</h3>
+    <div class="left first-div">
+        <div class="div">
+            <a>:first-child</a>
+            <a>第二个元素</a>
+            <a>:last-child</a>
+        </div>
+        <div class="div">
+            <a>:first-child</a>
+        </div>
+        <div class="div">
+            <a>:first-child</a>
+            <a>第二个元素</a>
+            <a>:last-child</a>
+        </div>
+    </div>
+
+    
+
+
+    <h3>:nth-child、:nth-last-child</h3>
+    <div class="left last-div">
+        <div class="div">
+            <a>:first-child</a>
+            <a>第二个元素</a>
+            <a>第三个元素</a>
+            <a>:last-child</a>
+        </div>
+        <div class="div">
+            <a>:first-child</a>
+            <a>第二个元素</a>
+        </div>
+        <div class="div">
+            <a>:first-child</a>
+            <a>第二个元素</a>
+            <a>第三个元素</a>
+            <a>:last-child</a>
+        </div>
+    </div>
+<br><br>
+选择一个选择器并观察,边框效果
+<select id="test">
+	<option>.first-div a:first-child</option>
+    <option>.first-div a:nth-child(1)</option>
+    <option>.first-div a:last-child</option>
+    <option>.first-div a:nth-last-child(1)</option> 
+    <option>.first-div a:eq(1)</option>
+    <option>.first-div a:only-child</option>
+    <option>.last-div a:nth-child(2)</option>
+	<option>.last-div a:nth-last-child(2)</option>
+    <option>.last-div a:eq(-1)</option>
+</select>
+<br><br>
+<pre>
+								总结：
+            1.:nth-child(n) 与 :nth-last-child(n) 的区别前者是从前往后计算，后者从后往前计算
+            2.:first-child相当于nth-child(1),:last-child相当于nth-last-child(1)
+            3.所有的选择都只能往后选，往下选，要实现往前选，往上选，则要利用一些现成的方法。
+            4.:first-child,:last-child可以选择多个元素，而:first,:last只能选择一个元素
+            5. :only-child匹配某个元素是父元素中唯一的子元素，就是说当前子元素是父元素中唯一的元素，则匹配
+            6.如果子元素只有一个的话，:first-child与:last-child是同一个
+            7.:eq()只能获取一个元素，而nth-child()可以获取多个元素，并且二者的索引起始值不同
+            8.:first和:first-child,:last和：last-child的区别跟:eq()和:nth-child()的区别是类似的
+			9.:eq(-1)相当于:last,:eq(0)相当于:first
+			            
+</pre>
+
+<script type="text/javascript" src="jquery/jquery-2.2.3.js"></script>
+<script type="text/javascript">
+$(function(){
+	$($("#test").val()).css("border","1px solid blue");
+	$("#test").change(function(){
+			$("*").css("border","");
+			$($(this).val()).css("border","1px solid blue");
+		});
+	});
+</script>
+</body>
+
+</html>

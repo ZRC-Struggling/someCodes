@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+
+<body>
+<p title="选择你最喜欢的水果.">你最喜欢的水果是？</p>
+<ul>
+	<li title="a">苹果</li>
+    <li title="b">橘子</li>
+    <li title="c">菠萝</li>
+</ul>
+<script src="jquery/jquery-2.2.3.js"></script>
+<script>
+//查找元素节点
+var $li = $("ul li:eq(0)");
+alert($li);
+//查找文本节点
+var li_txt = $li.text();
+alert(li_txt);
+//查找属性节点
+alert($li.attr("title"));
+</script>
+</body>
+</html>

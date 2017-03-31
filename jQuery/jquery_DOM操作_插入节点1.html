@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>插入节点</title>
+<style type="text/css">
+div{
+	background:lightblue;
+	width:120px;
+	color:red;
+	padding:10px;}
+img{
+	display:block;
+	padding:10px;
+	background:#e8e8e8;
+	width:100px;
+	height:100px;
+}
+</style>
+</head>
+
+<body>
+<div>知人者智</div>
+<select>
+	<option value="  "> 	</option><!--选中此项则将页面还原为初始状态-->
+	<option value="append">append</option>
+    <option value="appendTo">appendTo</option>
+    <option value="prepend">prepend</option>
+    <option value="prependTo">prependTo</option>
+    <option value="after">after</option>
+    <option value="insertAfter">insertAfter</option>
+    <option value="before">before</option>
+    <option value="insertBefore">insertBefore</option>
+</select>
+<script src="jquery/jquery-2.2.3.js"></script><!--路径记得用自己电脑的文件夹路径来代替-->
+<script>
+$(function(){
+	var $div = $("div"),
+		$addImg = $("<p><img src='images/t01ab7e06858b5f3e99.jpg'></p>"),//自己找个图片，使用自己的图片路径
+		$select = $("select");
+	$select.change(function(){
+		//console.log(document.getElementsByTagName("select")[0].getElementsByTagName('option')[0].value.length);
+		var selectedVal = $select.find("option:selected").val().trim();
+		//alert(selectedVal.length)
+		if(selectedVal){//如果选中的不是第一项（第一项为空字符串，将其转换为布尔值则为false）
+			if(selectedVal.length < 8){//如果选中项的值的长度小于8，即选中的是（append、prepend、after、before）之一。
+					$div[selectedVal]($addImg);
+			}else{//如果选中项的值的长度不小于8，即选中的是（appendTo、prependTo、insertAfter、insertBefore）之一。
+					$addImg[selectedVal]($div);}
+			}
+		else{//选中第一项则将页面还原为初始状态
+			$div.html("知人者智").siblings("p").remove();}
+			});
+
+/*		
+	$select.change(function(){
+		switch($select.find("option:selected").val()){
+			case "append":
+				$div.append($addImg);
+			break;
+			case "appendTo":
+				$addImg.appendTo($div);
+			break;
+			case "prepend":
+				$div.prepend($addImg);
+			break;
+			case "appendTo":
+				$addImg.prependTo($div);
+			break;
+			case "append":
+				$div.prependTo($addTxt);
+			break;
+			case "appendTo":
+				$addImg.appendTo($div);
+			break;
+			case "after":
+				$div.after($addImg);
+			break;
+			case "insertAfter":
+				$addImg.insertAfter($div);
+			break;
+			case "before":
+				$div.before($addImg);
+			break;
+			case "insertBefore":
+				$addImg.insertBefore($div);
+			break;
+			default:
+				$div.html("知人者智").siblings("p").remove();
+			break;
+		}
+		});*/
+	 
+	 
+	});
+</script>
+<pre>
+    总结：
+        1.	append()/appendTo() - 在被选元素的内部的结尾插入内容
+       		prepend()/prependTo() - 在被选元素的内部的开头插入内容
+       	 	after()/insertAfter() - 在被选元的素外部之后插入内容
+        	before()/insertBefore() - 在被选元素的外部之前插入内容
+        2.插入节点的方法不仅能将新创建的DOM元素插入到文档中，也能对原有的DOM元素进行移动
+
+</pre>
+</body>
+</html>

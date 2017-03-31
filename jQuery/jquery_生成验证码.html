@@ -1,0 +1,41 @@
+<doctype html>
+<head>
+<meta charset="utf-8">
+<title>生成验证码</title>
+<script type="text/javascript" src="jquery/jquery-1.12.3.js"></script>
+</head>
+
+<body>
+<form method="" action="">
+	<input type="text"><br>
+	<span id="codes" class="creatCodes" style="background:red;"></span>
+	<span class="creatCodes" style="background:green">看不清楚</span><br>
+	<input type="submit" style="background:blue">
+</form>
+
+<script type="text/javascript">
+
+$(function(){
+	function creatCodes(){
+		//定义一个数组，存储所有构成验证码的字符
+		var allCodes=["0","1","2","3","4","5","6","7","8","9",
+					  "a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","s","y","z",
+					  "A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+		var codes="";//定义验证码
+		var codesLength=4;//定义验证码的长度为4
+		for(var i=0;i < codesLength;i++){
+				var charIndex=Math.floor(Math.random()*62);
+				codes += allCodes[charIndex];//通过索引获得指定的数组字符作为验证码的元素
+			}
+		$("#codes").html(codes);
+	}
+	
+	creatCodes();
+	$(".creatCodes").click(creatCodes);
+		
+	});
+
+	
+</script>
+</body>
+</html>

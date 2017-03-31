@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script type="text/javascript" src="jquery/jquery-1.8.3.js">
+</script>
+<script>
+$(document).ready(function() {
+	
+	$("#toggle").click(function(){
+		$(this).next().toggle(5000,function(){
+			alert("5000");
+		});
+		});
+		
+		
+	$("#dis").click(function(){
+		$("#tab").hide();
+		});
+	$("#sho").click(function(){
+		$("#tab").show();
+		});
+});
+	
+	
+</script>
+</head>
+
+<body>
+<div id="toggle">点击这里，隐藏/显示面板</div>
+<div id="details" style="border:1px solid blue;">
+一寸光阴一寸金，因此，我们为您提供快捷易懂的学习内容。
+
+在这里，您可以通过一种易懂的便利的模式获得您需要的任何知识。
+</div>
+<pre>
+
+
+</pre>
+<div>
+<h3>隐藏/显示面板</h3>
+<button id="dis">隐藏</button>
+<button id="sho">显示</button>
+</div>
+<div id="tab" style="border:1px solid red;">
+一寸光阴一寸金，因此，我们为您提供快捷易懂的学习内容。
+
+在这里，您可以通过一种易懂的便利的模式获得您需要的任何知识。
+</div>
+</body>
+</html>
