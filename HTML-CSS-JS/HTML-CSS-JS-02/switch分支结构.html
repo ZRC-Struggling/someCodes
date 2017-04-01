@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>switch</title>  
+  <script type="text/javascript">
+   function count(){
+    var txt1Val=document.getElementById("txt1").value-0;//获取第一个输入框的值
+	var txt2Val=document.getElementById("txt2").value-0;//获取第二个输入框的值
+	var selectVal=document.getElementById("select").value;//获取选择框的值
+	var fruit=document.getElementById("fruit");
+    //获取通过下拉框来选择的值来改变加减乘除的运算法则   
+	switch(selectVal)
+    {
+        case "+":
+        fruit.value=txt1Val+txt2Val;
+        break;
+        case "-":
+        fruit.value=txt1Val-txt2Val;
+        break;
+        case "*":
+        fruit.value=txt1Val*txt2Val;
+        break;
+        case "/":
+        fruit.value=txt1Val/txt2Val;
+        break;
+    
+    }
+     
+   }
+   
+  </script> 
+ </head> 
+ <body>
+   <input type='text' id='txt1' /> 
+   <select id='select'>
+		<option value='+'>+</option>
+		<option value="-">-</option>
+		<option value="*">*</option>
+		<option value="/">/</option>
+   </select>
+   <input type='text' id='txt2' /> 
+   <input type='button' value=' = ' onClick="count()"/> <!--通过 = 按钮来调用创建的函数，得到结果--> 
+   <input type='text' id='fruit' />   
+ </body>
+</html>
+<!--
+Q：为什么用下面的语句无法实现为按钮绑定事件？
+ var btn=document.getElementsByTagName("input")[2];
+ btn.onclick="count()";
+A：
+第一，由于脚本写在顶部，所以脚本运行时，DOM对象仍然没生成，故访问到它。解决方案：脚本置底或者使用window.onload。
+第二，第二句应该修改为:
+  btn.onclick = count;
+
+
+ -->

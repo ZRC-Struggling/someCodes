@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+
+<body>
+<h1>注册表单</h1>
+<form id="regForm" onSubmit="" method="post">
+<table>
+<tr><label for="username">用户昵称:</label><input id="username" type="text" name="username" autofocus required></tr>
+
+<tr><label for="uemail">Email:</label><input type="email" id="uemail" name="uemail" placeholder="example@domain.com"></tr>
+
+<tr><label for="age">工作年龄:</label><input type="range" id="age" name="range1" max="60" min="18"><output onFormInput="value=range1.value">30</output></tr>
+
+<tr><label for="age2">年龄:</label><input  type="number" id="age2" required placeholder="your age"></tr>
+
+<tr><label for="birthday">出生日期:</label><input type="date" id="birthday"></tr>
+
+<tr><label for="search">个人主页：</label><input type="url" id="search" required list="searchlist"></tr>
+
+	<datalist id="searchlist">
+    	<option label="Google" value="http://www.google.com">
+        <option label="Yahoo" value="http://www.yahoo.com">
+        <option label="Bing" value="http://www.bing.com">
+        <option label="Baidu" value="http://www.baidu.com">
+    </datalist>
+</table>
+<button type="submit">注册</button>    
+</form>
+</body>
+</html>

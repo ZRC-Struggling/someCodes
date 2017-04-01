@@ -1,0 +1,569 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+<style type="text/css">
+*{
+	margin:0;
+	padding:0;
+	}
+body{
+	background:#e3e3e3;}
+ul li{
+	list-style-type:none;}
+a{
+	color:#333;
+	text-decoration:none;}
+a:hover{
+	color:#093;
+	}
+/* box */
+
+.box{
+	width:400px;
+	overflow:hidden;
+	margin:10px auto 0;
+	background:#fff;
+	border:1px solid #d3d3d3;}
+.tab_menu{
+	overflow:hidden;}
+.tab_menu li{
+	width:33.33%;
+	float:left;
+	height:30px;
+	line-height:30px;
+	color:#fff;
+	background:#093;
+	text-align:center;
+	cursor:pointer;}
+.tab_menu li.current{
+	color:#333;
+	background:#fff;}
+.tab_menu li a{
+	color:#fff;}
+.tab_menu li.current a{
+	color:#333;}
+.tab_box{
+	padding:20px;}
+.tab_box p{
+	text-indent:30px;
+	font-size:16px;
+	line-height:24px;
+	margin-bottom:10px;}
+.tab_box ul li,.centent_right ul li{
+	height:28px;
+	font-size:16px;
+	line-height:28px;
+	padding-left:20px;
+	text-overflow:ellipsis;
+	overflow:hidden;
+	white-space:nowrap;
+	background:url(../%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99%E5%BB%BA%E8%AE%BE/images/li_bg.gif) no-repeat left center;
+	border-bottom:1px solid #ccc;
+	}
+.tab_box .hide{
+	display:none;}
+.tab_box span{
+	float:right;
+	margin-right:10px;}
+.tab_box ul{
+	margin-top:38px;
+	clear:both;
+	}
+.centent_left{
+	float:left;
+	width:400px;
+	overflow:hidden;}
+.centent_right{
+	float:left;
+	width:400px;
+	overflow:hidden;
+	margin-left:20px;
+	background:#fff;}
+.centent_right h2{
+	padding-left:20px;}
+.centent_right ul{
+	padding:10px 20px 20px;
+}
+</style>
+<script type="text/javascript" src="jquery/jquery-1.12.3.js"></script>
+<script type="text/javascript" src="plugins/jquery选项卡插件/js/jquery.tabs.js"></script>
+<script type="text/javascript">
+$(function(){
+	$(".box1").Tabs();
+	$(".box2").Tabs();
+	});
+</script>
+<body>
+<div class="centent">
+    <div class="centent_left">
+        <div class="box box1">
+            <ul class="tab_menu"> 
+                <li class="current">大学生活</li>
+                <li>大学学习</li>
+                <li>大学恋爱</li>
+            </ul>
+            <div class="tab_box tab_box1"> 
+                <div>
+                    <h3><a href="http://www.dxsbb.com/news/4015.html" target="_blank" title="大学里的5种人，你是哪一种？">大学里的5种人，你是哪一种？</a></h3>
+                    <p>大学里的5种人，你是哪一种？根据数千份问卷调查结果，并依据目标解析学理论，将大学生分为以下几种类型，请各位对号入座。分类的目的...</p><span><a href="http://www.dxsbb.com/news/4015.html" target="_blank">阅读全文&gt;&gt;</a></span>
+                    <ul>
+                        <li>
+                        <a href="http://www.dxsbb.com/news/29720.html" target="_blank" title="你虽然读的是二流大学，但你不应该过二流生活啊！">你虽然读的是二流大学，但你不应该过二流生活啊！</a>
+                        </li>
+                        <li>
+                        <a href="http://www.dxsbb.com/news/64.html" target="_blank" title="企业老板需要你在大学里学到的10项技能">企业老板需要你在大学里学到的10项技能</a>
+                        </li>
+                        <li>
+                        <a href="http://www.dxsbb.com/news/23984.html" target="_blank" title="现在的你和刚上大学时比，最大的变化是什么？">现在的你和刚上大学时比，最大的变化是什么？</a>
+                        </li>
+                        <li>
+                        <a href="http://www.dxsbb.com/news/22091.html" target="_blank" title="二本三本院校大学生出路在哪？一名三本学生的热血奋斗史！">二本三本院校大学生出路在哪？一名三本学生的热血奋斗史！</a>
+                        </li>
+                        <li>
+                        <a href="http://www.dxsbb.com/news/21480.html" target="_blank" title="李彦宏对话复旦学子:我们该跟什么样的人谈理想?">李彦宏对话复旦学子:我们该跟什么样的人谈理想?</a>
+                        </li>
+                        <li>
+                        <a href="http://www.dxsbb.com/news/19614.html" target="_blank" title="人脉真相：50元就是设计的再好看 也不如100元招人喜欢">人脉真相：50元就是设计的再好看 也不如100元招人喜欢</a>
+                        </li>
+                        <li>
+                        <a href="http://www.dxsbb.com/news/19499.html" target="_blank" title="假如我的大学时代重来一次！">假如我的大学时代重来一次！</a>
+                        </li>
+                        <li>
+                        <a href="http://www.dxsbb.com/news/18947.html" target="_blank" title="读大学，这些道理你必须懂得！">读大学，这些道理你必须懂得！</a>
+                        </li>
+                        <li>
+                        <a href="http://www.dxsbb.com/news/15907.html" target="_blank" title="一位父亲写给考上北大儿子的一封信，或许这是他一路优秀的秘诀…">一位父亲写给考上北大儿子的一封信，或许这是他一路优秀的秘诀…</a>
+                        </li>
+                        <li>
+                        <a href="http://www.dxsbb.com/news/15415.html" target="_blank" title="大学最优生物钟：每个年级如何度过24小时？">大学最优生物钟：每个年级如何度过24小时？</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="hide">
+                    <h3><a href="http://www.dxsbb.com/news/3273.html" target="_blank" title="没智商，没背景，没资本，没关系，我就要学习！">没智商，没背景，没资本，没关系，我就要学习！</a></h3>
+                    <p>&nbsp;&nbsp;你可以一天上八节课两节晚自习,你可以一天写完两支笔芯做至少三套卷子,你可以早起十分钟晚睡十分钟记几个单词和句子,你可...</p><span><a href="http://www.dxsbb.com/news/3273.html" target="_blank">阅读全文&gt;&gt;</a></span>
+                    <ul>
+                        <li>
+                        <a href="http://www.dxsbb.com/news/30721.html" target="_blank" title="大学生为什么上课一定要认真听讲？">大学生为什么上课一定要认真听讲？</a>
+                        </li>
+                        <li>
+                        <a href="http://www.dxsbb.com/news/28676.html" target="_blank" title="如何提高英语口语，牛人经验分享（附带N多资源）">如何提高英语口语，牛人经验分享（附带N多资源）</a>
+                        </li>
+                        <li>
+                        <a href="http://www.dxsbb.com/news/784.html" target="_blank" title="2016大学生考证时间表">2016大学生考证时间表</a>
+                        </li>
+                        <li>
+                        <a href="http://www.dxsbb.com/news/24194.html" target="_blank" title="9个技巧，教你轻松记单词！">9个技巧，教你轻松记单词！</a>
+                        </li>
+                        <li>
+                        <a href="http://www.dxsbb.com/news/18196.html"  target="_blank" title="真正有效的英语学习方法，重要的事就说一遍！信不信由你">真正有效的英语学习方法，重要的事就说一遍！信不信由你</a>
+                        </li>
+                        <li>
+                        <a href="http://www.dxsbb.com/news/15438.html" target="_blank" title="大学最实用考证指南：考证不可盲目，选择是关键！">大学最实用考证指南：考证不可盲目，选择是关键！</a>
+                        </li>
+                        <li>
+                        <a href="http://www.dxsbb.com/news/10946.html" target="_blank" title="价值上万的英语学习视频教程免费分享，快快收藏啦！">价值上万的英语学习视频教程免费分享，快快收藏啦！</a>
+                        </li>
+                        <li>
+                        <a href="http://www.dxsbb.com/news/10421.html" target="_blank" title="你不是寂寞，你只是不想学习">你不是寂寞，你只是不想学习</a>
+                        </li>
+                        <li>
+                        <a href="http://www.dxsbb.com/news/9394.html" target="_blank" title="据说这是大学生开启的9种学习模式，你开启了哪种?">据说这是大学生开启的9种学习模式，你开启了哪种?</a>
+                        </li>
+                        <li>
+                        <a href="http://www.dxsbb.com/news/6766.html" target="_blank" title="一位食堂老板给北大教授上的MBA课">一位食堂老板给北大教授上的MBA课</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="hide">
+                    <h3><a href="http://www.dxsbb.com/news/2831.html" target="_blank" title="大学生有权恋爱，但请一定自爱">大学生有权恋爱，但请一定自爱</a></h3>
+                    <p>&nbsp;&nbsp;大学生有权恋爱，但请一定自爱（作者：V型评说）其实在学校谈恋爱的不是只有大学生，目前很多高中生、初中生、甚至小学生都在卿卿我我...</p><span><a href="http://www.dxsbb.com/news/2831.html"  target="_blank">阅读全文&gt;&gt;</a></span>
+                    <ul>
+                        <li>
+                        <a href="http://www.dxsbb.com/news/22651.html" target="_blank" title="关于女生一些很奇怪的行为,你一定不知道">关于女生一些很奇怪的行为,你一定不知道</a>
+                        </li>
+                        <li>
+                        <a href="http://www.dxsbb.com/news/22193.html" target="_blank" title="结婚前，先谈一场异地恋吧！">结婚前，先谈一场异地恋吧！</a>
+                        </li>
+                        <li>
+                        <a href="http://www.dxsbb.com/news/19080.html" target="_blank" title="少女们，别迷恋大叔了！">少女们，别迷恋大叔了！</a>
+                        </li>
+                        <li>
+                        <a href="http://www.dxsbb.com/news/18434.html" target="_blank" title="原来这才是女生们想要的！男生们真的知道么？">原来这才是女生们想要的！男生们真的知道么？</a>
+                        </li>
+                        <li>
+                        <a href="http://www.dxsbb.com/news/17512.html" target="_blank" title="你知道吗?大部分男生就是这样失去女朋友的！">你知道吗?大部分男生就是这样失去女朋友的！</a>
+                        </li>
+                        <li>
+                        <a href="http://www.dxsbb.com/news/16657.html" target="_blank" title="有一种爱叫蓝颜">有一种爱叫蓝颜</a>
+                        </li>
+                        <li>
+                        <a href="http://www.dxsbb.com/news/16082.html" target="_blank" title="《离婚》，看一次哭一次！">《离婚》，看一次哭一次！</a>
+                        </li>
+                        <li>
+                        <a href="http://www.dxsbb.com/news/15145.html" target="_blank" title="哥哥写给妹妹关于大学生恋爱问题的一封信，尤其女孩子该看">哥哥写给妹妹关于大学生恋爱问题的一封信，尤其女孩子该看</a>
+                        </li>
+                        <li>
+                        <a href="http://www.dxsbb.com/news/14057.html" target="_blank" title="活该你光棍，和女生谈恋爱不懂这些真不行">活该你光棍，和女生谈恋爱不懂这些真不行</a>
+                        </li>
+                        <li>
+                        <a href="http://www.dxsbb.com/news/13064.html" target="_blank" title="这就是我不愿意随便找个人将就的理由">这就是我不愿意随便找个人将就的理由</a>
+                        </li>
+                    </ul>
+                </div>
+            </div><!--tab_box1结束-->
+        </div><!--box1结束-->
+        <div class="box box2">
+            <ul class="tab_menu">
+                <li class="current">励志文章</li>
+                <li>励志演讲</li>
+                <li>励志故事</li>
+            </ul>
+            <div class="tab_box tab_box2">
+                <div>
+                    <h3><a href="http://www.dxsbb.com/news/2106.html" target="_blank" title="今天的你，配不上昨天的梦想，我读到心疼，你呢？">今天的你，配不上昨天的梦想，我读到心疼，你呢？</a></h3>
+                    <p>那年的你，坐在高三的教室里自习到教学楼熄灯赶人。你咬着牙对自己说，一定要以最骄傲的姿态离开，考上梦中的大学。看看今天狼狈不堪的...</p><span><a href="http://www.dxsbb.com/news/2106.html" target="_blank">阅读全文&gt;&gt;</a></span>
+                    <ul>
+                        <li>
+                        <a href="http://www.dxsbb.com/news/29237.html" target="_blank" title="接近那个叫“梦想”的东西，你缺的只是行动而已!">接近那个叫“梦想”的东西，你缺的只是行动而已!</a>
+                        </li>
+                        <li>
+                        <a href="http://www.dxsbb.com/news/54.html" target="_blank" title="别自私了，多考虑下别人—良好寝室人际关系是这样的">别自私了，多考虑下别人—良好寝室人际关系是这样的</a>
+                        </li>
+                        <li>
+                        <a href="http://www.dxsbb.com/news/28628.html" target="_blank" title="你真正想做的事，只要开始了就不会晚！">你真正想做的事，只要开始了就不会晚！</a>
+                        </li>
+                        <li>
+                        <a href="http://www.dxsbb.com/news/28227.html" target="_blank" title="2016，不再找借口，给自己一个敬佩自己的理由！">2016，不再找借口，给自己一个敬佩自己的理由！</a>
+                        </li>
+                        <li>
+                        <a href="http://www.dxsbb.com/news/28226.html" target="_blank" title="目标的必要性|5年之后，10年之后，你想成为什么样的人？">目标的必要性|5年之后，10年之后，你想成为什么样的人？</a>
+                        </li>
+                        <li>
+                        <a href="http://www.dxsbb.com/news/27999.html" target="_blank" title="二十岁的女生该干嘛，赚钱？">二十岁的女生该干嘛，赚钱？</a>
+                        </li>
+                        <li>
+                        <a href="http://www.dxsbb.com/news/27770.html" target="_blank" title="那些永远不去尝试的人，是绝不会失败的！">那些永远不去尝试的人，是绝不会失败的！</a>
+                        </li>
+                        <li>
+                        <a href="http://www.dxsbb.com/news/26842.html" target="_blank" title="一个女孩子为什么要努力？">一个女孩子为什么要努力？</a>
+                        </li>
+                        <li>
+                        <a href="http://www.dxsbb.com/news/26490.html" target="_blank" title="少动动嘴，多动动手，梦想将不再是梦想！">少动动嘴，多动动手，梦想将不再是梦想！</a>
+                        </li>
+                        <li>
+                        <a href="http://www.dxsbb.com/news/26304.html" target="_blank" title="稳扎稳打、耐心付出，成功才会有可能。">稳扎稳打、耐心付出，成功才会有可能。</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="hide">
+                    <h3><a href="http://www.dxsbb.com/news/559.html" target="_blank" title="北大才女张泉灵在北大演讲——我是谁？我要什么？">北大才女张泉灵在北大演讲——我是谁？我要什么？</a></h3>
+                    <p>北大才女、央视主播张泉灵在北大演讲——我是谁？我要什么？如果，你考大学时选的专业不是你喜欢的，而是你父母喜欢的；你的选修课不是你喜...<p><span><a href="http://www.dxsbb.com/news/559.html" class="font2_2" target="_blank">阅读全文&gt;&gt;</a></span>
+                    <ul>
+                        <li>
+                        <a href="http://www.dxsbb.com/news/24428.html" target="_blank" title="北大才女王帆：有不为，才能有所为！">北大才女王帆：有不为，才能有所为！</a>
+                        </li>
+                        <li>
+                        <a href="http://www.dxsbb.com/news/24061.html" target="_blank" title="北大才女王帆感动全场：做一个什么样的子女？">北大才女王帆感动全场：做一个什么样的子女？</a>
+                        </li>
+                        <li>
+                        <a href="http://www.dxsbb.com/news/23543.html" target="_blank" title="如果金钱不是问题，你最想做什么？">如果金钱不是问题，你最想做什么？</a>
+                        </li>
+                        <li>
+                        <a href="http://www.dxsbb.com/news/23117.html" target="_blank" title="美女老师谈大学《无用之用》">美女老师谈大学《无用之用》</a>
+                        </li>
+                        <li>
+                        <a href="http://www.dxsbb.com/news/22935.html" target="_blank" title="温城辉：当我和世界不一样，就是那个什么马云把你给害了！">温城辉：当我和世界不一样，就是那个什么马云把你给害了！</a>
+                        </li>
+                        <li>
+                        <a href="http://www.dxsbb.com/news/21662.html" target="_blank" title="倪子钧：穷的只剩下钱！震撼人心的演讲。">倪子钧：穷的只剩下钱！震撼人心的演讲。</a>
+                        </li>
+                        <li>
+                        <a href="http://www.dxsbb.com/news/19162.html" target="_blank" title="林志玲励志演讲：把话说小，把事做好">林志玲励志演讲：把话说小，把事做好</a>
+                        </li>
+                        <li>
+                        <a href="http://www.dxsbb.com/news/17604.html" target="_blank" title="上海交大校长开学致辞：独立，成就更好的自己！">上海交大校长开学致辞：独立，成就更好的自己！</a>
+                        </li>
+                        <li>
+                        <a href="http://www.dxsbb.com/news/16252.html" target="_blank" title="开讲啦 莫文蔚 ：世界那么大 我想去看看">开讲啦 莫文蔚 ：世界那么大 我想去看看</a>
+                        </li>
+                        <li>
+                        <a href="http://www.dxsbb.com/news/16159.html" target="_blank" title="中科大校长万立骏：回归这四个常识，才不辜负大学时光">中科大校长万立骏：回归这四个常识，才不辜负大学时光</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="hide">
+                    <h3><a href="http://www.dxsbb.com/news/3860.html" class="font1_2" target="_blank" title="别眼红马云，看看你能不能像他一样跨过这十道槛">别眼红马云，看看你能不能像他一样跨过这十道槛</a></h3>
+                    <p>别眼红马云，看看你能不能像他一样跨过这十道槛。阿里巴巴集团上市，马云成了中国首富。俗话说的好，台上十分钟台下十年功。马云从屌丝逆...</p><span><a href="http://www.dxsbb.com/news/3860.html" class="font2_2" target="_blank">阅读全文&gt;&gt;</a></span>
+                    <ul>
+                        <li>
+                        <a href="http://www.dxsbb.com/news/27682.html" target="_blank" title="任正非:充分发挥自己的优点，不要做一个完人">任正非:充分发挥自己的优点，不要做一个完人</a>
+                        </li>
+                        <li>
+                        <a href="http://www.dxsbb.com/news/16357.html" target="_blank" title="撒贝宁：从&quot;捣蛋鬼&quot;到&quot;综艺小王子&quot;的蜕变">撒贝宁：从"捣蛋鬼"到"综艺小王子"的蜕变</a>
+                        </li>
+                        <li>
+                        <a href="http://www.dxsbb.com/news/15853.html" target="_blank" title="央视主播张泉灵：生命的后半段， 我想，重来一次">央视主播张泉灵：生命的后半段， 我想，重来一次</a>
+                        </li>
+                        <li>
+                        <a href="http://www.dxsbb.com/news/11603.html" target="_blank" title="那些高考落榜的名人们，如何逆袭人生？">那些高考落榜的名人们，如何逆袭人生？</a>
+                        </li>
+                        <li>
+                        <a href="http://www.dxsbb.com/news/7774.html" target="_blank" title="孙俪：恨一个人，你永远得不到幸福，而爱可以">孙俪：恨一个人，你永远得不到幸福，而爱可以</a>
+                        </li>
+                        <li>
+                        <a href="http://www.dxsbb.com/news/6464.html" target="_blank" title="朱镕基 哪儿来的4000万捐款， 震惊了所有中国人">朱镕基 哪儿来的4000万捐款， 震惊了所有中国人</a>
+                        </li>
+                        <li>
+                        <a href="http://www.dxsbb.com/news/6366.html" target="_blank" title="陈安妮：还记得吗？曾经，你有一个梦">陈安妮：还记得吗？曾经，你有一个梦</a>
+                        </li>
+                        <li>
+                        <a href="http://www.dxsbb.com/news/6186.html" target="_blank" title="马云最佩服的人：顺丰王卫">马云最佩服的人：顺丰王卫</a>
+                        </li>
+                        <li>
+                        <a href="http://www.dxsbb.com/news/5681.html" target="_blank" title="潘晓婷：成功，不在于赢了多少对手，而是能不能一直赢自己">潘晓婷：成功，不在于赢了多少对手，而是能不能一直赢自己</a>
+                        </li>
+                        <li>
+                        <a href="http://www.dxsbb.com/news/5432.html" target="_blank" title="有些人开始是个笑话,后来却成了神话">有些人开始是个笑话,后来却成了神话</a>
+                        </li>
+                    </ul>
+                </div>
+            </div><!--tab_box2结束-->
+        </div><!--box2结束-->
+    </div><!--centent_left结束-->
+    <div class="centent_right">
+        <h2>热门文章</h2>
+        <ul>
+        <li>
+            <a href="http://www.dxsbb.com/news/879.html" target="_blank" title="送给有野心的大学生，几万集名校公开课视频免费分享">
+            送给有野心的大学生，几万集名校公开课视频免费分享
+            </a>
+        </li>
+        <li>
+            <a href="http://www.dxsbb.com/news/44.html" target="_blank" title="给还没有毕业孩子的一些忠告，一切还来得及！">
+            给还没有毕业孩子的一些忠告，一切还来得及！
+            </a>
+        </li>
+        <li>
+            <a href="http://www.dxsbb.com/news/288.html" target="_blank" title="清华女生与二本男生的QQ聊天记录，震撼！">
+            清华女生与二本男生的QQ聊天记录，震撼！
+            </a>
+        </li>
+        <li>
+            <a href="http://www.dxsbb.com/news/629.html" target="_blank" title="大学生十大禁忌——你不得不看">
+            大学生十大禁忌——你不得不看
+            </a>
+        </li>
+        <li>
+            <a href="http://www.dxsbb.com/news/146.html" target="_blank" title="大学生找工作时需要的10大证书排行榜">
+            大学生找工作时需要的10大证书排行榜
+            </a>
+        </li>
+        <li>
+            <a href="http://www.dxsbb.com/news/886.html" target="_blank" title="青春校园电影_好看的校园电影">
+            青春校园电影_好看的校园电影
+            </a>
+        </li>
+        <li>
+            <a href="http://www.dxsbb.com/news/910.html" target="_blank" title="大学毕业前，一定要做的18件事">
+            大学毕业前，一定要做的18件事
+            </a>
+        </li>
+        <li>
+            <a href="http://www.dxsbb.com/news/5463.html" target="_blank" title="中国大学排名2016排行榜">
+            中国大学排名2016排行榜
+            </a>
+        </li>
+        <li>
+            <a href="http://www.dxsbb.com/news/1394.html" target="_blank" title="2016全国二本大学排名理科">
+            2016全国二本大学排名理科
+            </a>
+        </li>
+        <li>
+            <a href="http://www.dxsbb.com/news/15.html" target="_blank" title="为什么有些人大学坚持不恋爱？">
+            为什么有些人大学坚持不恋爱？
+            </a>
+        </li>
+        <li>
+            <a href="http://www.dxsbb.com/news/21.html" target="_blank" title="《职来职往》那些现实得震惊无数大学生的语录">
+            《职来职往》那些现实得震惊无数大学生的语录
+            </a>
+        </li>
+        <li>
+            <a href="http://www.dxsbb.com/news/814.html" target="_blank" title="北大清华推荐的经典书籍，不明觉厉！">
+            北大清华推荐的经典书籍，不明觉厉！
+            </a>
+        </li>
+        <li>
+            <a href="http://www.dxsbb.com/news/1042.html" target="_blank" title="学姐给学弟学妹的一封信—看了你会动心的">
+            学姐给学弟学妹的一封信—看了你会动心的
+            </a>
+        </li>
+        <li>
+            <a href="http://www.dxsbb.com/news/280.html" target="_blank" title="献给那些依然单身的大学生：如果一个人，请这样活着">
+            献给那些依然单身的大学生：如果一个人，请这样活着
+            </a>
+        </li>
+        <li>
+            <a href="http://www.dxsbb.com/news/599.html" target="_blank" title="大一新生必备品列表清单—2016史上最全">
+            大一新生必备品列表清单—2016史上最全
+            </a>
+        </li>
+        <li>
+            <a href="http://www.dxsbb.com/news/545.html" target="_blank" title="俞敏洪谈大学爱情：终于在清华说实话了">
+            俞敏洪谈大学爱情：终于在清华说实话了
+            </a>
+        </li>
+        <li>
+            <a href="http://www.dxsbb.com/news/1082.html" target="_blank" title="大一新生自我介绍怎么说？">
+            大一新生自我介绍怎么说？
+            </a>
+        </li>
+        <li>
+            <a href="http://www.dxsbb.com/news/1421.html" target="_blank" title="2016电气工程及其自动化专业大学排名">
+            2016电气工程及其自动化专业大学排名
+            </a>
+        </li>
+        <li>
+            <a href="http://www.dxsbb.com/news/1053.html" target="_blank" title="寒门再难出贵子，太现实了！！">
+            寒门再难出贵子，太现实了！！
+            </a>
+        </li>
+        <li>
+            <a href="http://www.dxsbb.com/news/1953.html" target="_blank" title="2016就业前景好的专业排名">
+            2016就业前景好的专业排名
+            </a>
+        </li>
+        <li>
+            <a href="http://www.dxsbb.com/news/174.html" target="_blank" title="大学忏悔录——假如时光倒流四年">
+            大学忏悔录——假如时光倒流四年
+            </a>
+        </li>
+        <li>
+            <a href="http://www.dxsbb.com/news/8454.html" target="_blank" title="全国专科学校排名2016">
+            全国专科学校排名2016
+            </a>
+        </li>
+        <li>
+            <a href="http://www.dxsbb.com/news/3236.html" target="_blank" title="英语四级准考证号忘了怎么办 | 找回查成绩">
+            英语四级准考证号忘了怎么办 | 找回查成绩
+            </a>
+        </li>
+        <li>
+            <a href="http://www.dxsbb.com/news/920.html" target="_blank" title="李嘉诚的经典名言">
+            李嘉诚的经典名言
+            </a>
+        </li>
+        <li>
+            <a href="http://www.dxsbb.com/news/1257.html" target="_blank" title="神一样的科比：你知道凌晨四点的洛杉矶是什么样子吗？">
+            神一样的科比：你知道凌晨四点的洛杉矶是什么样子吗？
+            </a>
+        </li>
+        <li>
+            <a href="http://www.dxsbb.com/news/921.html" target="_blank" title="是大学生,都应该想清楚的7个问题">
+            是大学生,都应该想清楚的7个问题
+            </a>
+        </li>
+        <li>
+            <a href="http://www.dxsbb.com/news/616.html" target="_blank" title="写给不想堕落的大学生，相见恨晚！！！">
+            写给不想堕落的大学生，相见恨晚！！！
+            </a>
+        </li>
+        <li>
+            <a href="http://www.dxsbb.com/news/2468.html" target="_blank" title="最适合大学生看的10本书">
+            最适合大学生看的10本书
+            </a>
+        </li>
+        <li>
+            <a href="http://www.dxsbb.com/news/1057.html" target="_blank" title="网络十大励志哥">
+            网络十大励志哥
+            </a>
+        </li>
+        <li>
+            <a href="http://www.dxsbb.com/news/757.html" target="_blank" title="因为你是大学生，所以你什么也不是！--俞敏洪">
+            因为你是大学生，所以你什么也不是！--俞敏洪
+            </a>
+        </li>
+        <li>
+            <a href="http://www.dxsbb.com/news/1797.html" target="_blank" title="2016计算机专业大学排名">
+            2016计算机专业大学排名
+            </a>
+        </li>
+        <li>
+            <a href="http://www.dxsbb.com/news/176.html" target="_blank" title="大学学生会面试问题及答案大全">
+            大学学生会面试问题及答案大全
+            </a>
+        </li>
+        <li>
+            <a href="http://www.dxsbb.com/news/2799.html" target="_blank" title="211大学名单排名2016">
+            211大学名单排名2016
+            </a>
+        </li>
+        <li>
+            <a href="http://www.dxsbb.com/news/1449.html" target="_blank" title="2015全国理工类大学排名">
+            2015全国理工类大学排名
+            </a>
+        </li>
+        <li>
+            <a href="http://www.dxsbb.com/news/243.html" target="_blank" title="李开复给大学生的第四封信—大学四年应是这样度过">
+            李开复给大学生的第四封信—大学四年应是这样度过
+            </a>
+        </li>
+        <li>
+            <a href="http://www.dxsbb.com/news/1119.html" target="_blank" title="姐姐告诉你，大部分美女都嫁给什么男人了">
+            姐姐告诉你，大部分美女都嫁给什么男人了
+            </a>
+        </li>
+        <li>
+            <a href="http://www.dxsbb.com/news/2466.html" target="_blank" title="豆瓣好书推荐排行榜2016">
+            豆瓣好书推荐排行榜2016
+            </a>
+        </li>
+        <li>
+            <a href="http://www.dxsbb.com/news/1429.html" target="_blank" title="2016自动化专业大学排名">
+            2016自动化专业大学排名
+            </a>
+        </li>
+        <li>
+            <a href="http://www.dxsbb.com/news/1445.html" target="_blank" title="2016车辆工程专业大学排名">
+            2016车辆工程专业大学排名
+            </a>
+        </li>
+        <li>
+            <a href="http://www.dxsbb.com/news/3237.html" target="_blank" title="英语六级准考证号忘了怎么办 | 找回查成绩">
+            英语六级准考证号忘了怎么办 | 找回查成绩
+            </a>
+        </li>
+        <li>
+            <a href="http://www.dxsbb.com/news/1135.html" target="_blank" title="11种值得深交的男生">
+            11种值得深交的男生
+            </a>
+        </li>
+        <li>
+            <a href="http://www.dxsbb.com/news/1427.html" target="_blank" title="2016电子信息工程专业大学排名">
+            2016电子信息工程专业大学排名
+            </a>
+        </li>
+        <li>
+            <a href="http://www.dxsbb.com/news/1136.html" target="_blank" title="11种值得深交的女生">
+            11种值得深交的女生
+            </a>
+        </li>
+        <li>
+            <a href="http://www.dxsbb.com/news/1015.html" target="_blank" title="林志颖个人简历,奥巴马看了都震惊了">
+            林志颖个人简历,奥巴马看了都震惊了
+            </a>
+        </li>
+        <li>
+            <a href="http://www.dxsbb.com/news/836.html" target="_blank" title="99首优美且适合练习听力的英文歌曲">
+            99首优美且适合练习听力的英文歌曲
+            </a>
+        </li>
+        </ul>
+    </div><!--centent_right-->
+</div><!--centent结束-->
+</body>
+</html>

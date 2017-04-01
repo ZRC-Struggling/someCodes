@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>导航栏的制作</title>
+    <style>
+    *{
+        margin:0;
+        padding: 0;
+    }
+    body{
+        background-color: #eeeeee;
+    }
+    nav{
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    ul{
+        list-style: none;
+    }
+    ul li{
+        float: left;
+        text-align: center;
+    }
+    ul li a{
+        display: block;
+        text-decoration: none;
+        width: 120px;
+        height: 42px;
+        line-height: 42px;
+        color:white;
+        background-color: #333;
+    }
+    ul li a span{
+        display: block;
+        width: 120px;
+        height: 42px;
+        transition: transform 0.5s,color 0.5s;
+    }
+    ul li a span:first-child{
+        position: absolute;
+        z-index: 2;
+    }
+    ul li a span:last-child{
+        position: absolute;
+        z-index: 1;
+        opacity: 0;       
+    }
+    ul li:hover a span:first-child{
+        background-color: white;
+        color: black;
+    }
+    ul li:hover a span:last-child{
+        transform: translateY(70%);       
+        opacity: 1;
+        color: black;
+    }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#"><span>主页</span><span class="en">home</span></a></li>
+            <li><a href="#"><span>知识</span><span class="en">knowledge</span></a></li>
+            <li><a href="#"><span>生活</span><span class="en">life</span></a></li>
+            <li><a href="#"><span>个人介绍</span><span class="en">aboutMe</span></a></li>
+        </ul>
+    </nav>
+</body>
+</html>

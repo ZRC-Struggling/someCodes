@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>用图片做列表项目符号</title>
+<style type="text/css">
+	ol{
+		margin: 0 auto;
+		border: 1px solid red;
+		padding-left: 120px;		
+		list-style-image: url(images/30.jpg);
+	}
+	li:nth-child(1){
+		border: 1px solid green;
+	}
+</style>
+</head>
+
+<body>
+<ol>
+	<li><a href = "#">HTML</a></li>
+	<li><a href = "#">CS</a></li>S
+	<li><a href = "#">JS</a></li>
+	<li><a href = "#">C</a></li>
+	<li><a href = "#">PHP</a></li>
+	<li><a href = "#">C++</a></li>
+	<li><a href = "#">PS</a></li>
+</ol>
+
+<!-- attentions:
+	1.ol默认有40px的左内边距
+	2.列表项目符号默认位于li的左侧,即位于ol的做内边距处。
+ -->
+</body>
+</html>

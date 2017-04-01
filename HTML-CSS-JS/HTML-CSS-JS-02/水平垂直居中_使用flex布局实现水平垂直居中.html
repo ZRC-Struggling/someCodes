@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>使用flex布局实现水平垂直居中</title>
+	<style>
+		.wrap{
+			display: flex;
+			align-items:center;	/*实现垂直居中*/
+			justify-content: center;/*实现水平居中*/
+		}
+		.wrap>div{
+			width: 600px;
+			height: 200px;
+			line-height: 200px;
+			text-align: center;
+			background-color: red;
+		}
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		<div>我所在的容器是通过flex布局实现水平垂直居中的</div>
+	</div>
+	<!-- attention:
+	1.通过flex布局实现垂直居中的实现思路：把其父容器的display属性设置为flex，将align-items和justify-content属性设置为center
+	2.safari浏览器完全失效，而在其它四个浏览器中则只实现了水平居中，无法实现垂直居中。由此可以看出此种方法设置水平垂直居中存在很严峻的浏览器兼容性问题 -->
+</body>
+</html>

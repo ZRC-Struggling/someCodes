@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+<style type="text/css">
+div{
+	width:520px;
+	height:473px;
+	margin:0 auto;}
+img{
+	border:5px solid blue;}
+</style>
+<script type="text/javascript">
+var i=1;
+function fun(){
+	if(i>5){
+			i=1;
+		}else{
+		document.getElementById("photos").src="images/"+i+".jpg";
+		i++;
+			}
+	setTimeout("fun()",2000);	//不要这样写，"fun()"最好改成fun
+	}
+//函数的逻辑明显有问题，导致了最后一张图片展示之后，还要过4s才展示第一张。
+//若要解决，可考虑把else  和  它携带的一对尖括号去掉	
+</script>
+
+<body onLoad="fun()">
+<div>
+<img src="images/1.jpg"  id="photos" title="" alt="" width="528" height="473">
+</div>
+<!-- 重新看了一下，这些代码确实写得很糟糕，不值得借鉴，仅留作回忆 -->
+</body>
+</html>

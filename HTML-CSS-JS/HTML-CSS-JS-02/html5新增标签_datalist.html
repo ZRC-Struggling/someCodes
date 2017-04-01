@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>datalist</title>
+</head>
+
+<body>
+
+
+
+<form action="" method="" id="">
+	<!-- 用户名：<input type="text" id="userName">
+			<datalist>
+				<option value="1"></option>
+				<option value="2"></option>
+				<option value="3"></option>
+				<option value="4"></option>
+			</datalist> -->
+	用户名：<input type="text" id="uName" list="userN">
+			<datalist id="userN">
+				<option value="1"></option>
+				<option value="2"></option>
+				<option value="3"></option>
+				<option value="4"></option>
+			</datalist>
+    <input type="submit" value="提交">
+</form>
+
+<!-- 
+
+为什么无效？
+问题已经解决，因为没有将datalist控件和input框相关联起来。
+ -->
+</body>
+</html>

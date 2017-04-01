@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>全选_全不选_反选（初级版）</title>
+</head>
+
+<body>
+你是否熟悉以下的知识:<br>
+<label for="chk1">HTML</label><input type="checkbox" name="knowledge" id="chk1"><br>
+<label for="chk2">CSS</label><input type="checkbox" name="knowledge" id="chk2"><br>
+<label for="chk3">JS</label><input type="checkbox" name="knowledge" id="chk3"><br>
+<label for="chk4">JQUERY</label><input type="checkbox" name="knowledge" id="chk4"><br>
+<label for="chk5">PHP</label><input type="checkbox" name="knowledge" id="chk5"><br>
+
+
+<input type="button" id="chk_all" value="全选">
+<input type="button" id="chk_none" value="全不选">
+<input type="button" id="chk_r" value="反选">
+<script type="text/javascript">
+window.onload=function(){
+	//即使把下面三行语句删去，也能正常运行，思考原因
+	// var chk_all=document.getElementById("chk_all"),
+		// chk_none=document.getElementById("chk_none"),
+		// chk_r=document.getElementById("chk_r");
+		// 
+		
+	var knowledge=document.getElementsByName("knowledge");
+	chk_all.onclick=function(){
+		for(var i=0;i<5;i++){
+			knowledge[i].checked="checked";
+			}
+			}
+	chk_none.onclick=function(){
+		for(var i=0;i<5;i++){
+			knowledge[i].checked="";
+			}}
+	chk_r.onclick=function(){
+		for(var i=0;i<5;i++){
+			knowledge[i].checked=!knowledge[i].checked;	/*取非*/
+			}}
+	// alert(typeof chk_all);	//object
+	}
+</script>
+</body>
+<!--	//即使把下面三行语句删去，也能正常运行，思考原因
+	var chk_all=document.getElementById("chk_all"),
+		chk_none=document.getElementById("chk_none"),
+		chk_r=document.getElementById("chk_r");
+
+	假设：难道在HTML中设置了id的元素都要自动生成以其id命名的DOM对象
+	测试：将id改为class之后，浏览器就会报错
+	结论：原假设有成立的可能性。
+-->
+</html>

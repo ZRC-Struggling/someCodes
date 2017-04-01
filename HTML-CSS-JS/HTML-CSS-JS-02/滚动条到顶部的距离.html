@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>滚动条到顶部的距离</title>
+	<style>
+		body{
+			background-color: #e8e8e8;
+			height: 1000px;
+		}
+		#btn{
+			position: fixed;
+			right: 20px;
+			bottom: 20px;
+			width:300px;
+			height:300px;
+			border-radius:150px;
+			background-color: lightblue;
+			text-align:center;
+			line-height: 300px;
+		}
+	</style>
+</head>
+<body>
+	<div>
+		通过弹出框弹出document.documentElement.scrollTop<br>
+		通过标题栏的标题弹出document.body.scrollTop<br>
+		通过控制台输出((document.documentElement.scrollTop||document.body.scrollTop))
+	</div>
+	<div id="btn">
+		我是一个按钮，点击查看滚动了多远。<br>
+	</div>
+	<script>
+		var obtn = document.getElementById("btn");
+		obtn.onclick = function () {
+			//Chrome浏览器、Safari浏览器、opera浏览器不支持document.documentElement.scrollTop,只支持document.body.scrollTop;而IE和Firefox都只支持document.documentElement.scrollTop，而不支持document.body.scrollTop
+			alert("document.documentElement.scrollTop为"+document.documentElement.scrollTop);
+			document.title = "document.body.scrollTop为"+document.body.scrollTop;
+			console.log("document.documentElement.scrollTop||document.body.scrollTop为"+(document.documentElement.scrollTop||document.body.scrollTop));
+		}
+	</script>
+</body>
+</html>

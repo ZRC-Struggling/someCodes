@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style type="text/css">
+</style>
+<script type="text/javascript" src="plugins/myfocus/js/myfocus-2.0.1.min.js" charset="utf-8"></script><!--引入myFocus库-->
+<script type="text/javascript">
+myFocus.set({
+    id:'boxID',//焦点图盒子ID
+    pattern:'mF_expo2010',//风格应用的名称
+    time:3,//切换时间间隔(秒)
+    trigger:'mouseover',//触发切换模式:'click'(点击)/'mouseover'(悬停)
+    width:720,//设置图片区域宽度(像素)
+    height:240,//设置图片区域高度(像素)
+    txtHeight:'default'//文字层高度设置(像素),'default'为默认高度，0为隐藏
+});
+</script>
+
+</head>
+
+<body>
+
+    <div class="banner" id="boxID"><!--焦点图盒子-->
+      <div class="loading"><img src="images/loading.gif" alt="请稍候..." /></div>
+      <!--载入画面(可删除)-->
+      <div class="pic"><!--内容列表(li数目可随意增减)-->
+        <ul>
+          <li><img src="images/banner_1.jpg" thumb="" alt="" text="详细描述2" id="photos"/></li>
+          <li><img src="images/banner_2.jpg" thumb="" alt="" text="详细描述3" id="photos"/></li>
+          <li><img src="images/banner_3.jpg" thumb="" alt="" text="详细描述4" id="photos"/></li>
+          <li><img src="images/banner_4.jpg" thumb="" alt="" text="详细描述5" id="photos"/></li>
+          <li><img src="images/banner_5.jpg" thumb="" alt="" text="详细描述5" id="photos"/></li>
+        </ul>
+      </div>
+    </div>
+
+
+</body>
+</html>
+<!--要注意的问题：
+1.焦点图初始化的ID,与图片列表最外层的ID一致。
+2.图片列表外面，包裹一个class为pic的div。-->

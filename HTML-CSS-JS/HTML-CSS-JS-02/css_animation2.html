@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style type="text/css">
+@keyframes around{
+	0%{
+		transform:translate(0,0);}
+	25%{
+		transform:translate(300px,0);}
+	50%{
+		transform:translate(300px,300px);}
+	75%{
+		transform:translate(0,300px);}
+	100%{
+		transform:translate(0,0);}
+	}
+div{
+	position:absolute;
+	top:50%;
+	left:50%;
+	border:1px solid red;
+	margin:-151px 0 0 -151px; 
+	width:300px;
+	height:300px;}
+span{
+	position:absolute;
+	top:0;
+	left:0;}
+span:nth-child(1){
+	display:block;
+	margin:-3px 0 0 -3px;
+	width:6px;
+	height:6px;
+	border-radius:50%;
+	animation:around 16s infinite;
+	background-color:red;
+	}
+span:nth-child(2){
+	display:block;
+	margin:-3px 0 0 -3px;
+	width:6px;
+	height:6px;
+	border-radius:50%;
+	animation:around 16s infinite 4s;
+	background-color:red;
+	}
+span:nth-child(3){
+	display:block;
+	margin:-3px 0 0 -3px;
+	width:6px;
+	height:6px;
+	border-radius:50%;
+	animation:around 16s infinite 8s;
+	background-color:red;
+	}
+span:nth-child(4){
+	display:block;
+	margin:-3px 0 0 -3px;
+	width:6px;
+	height:6px;
+	border-radius:50%;
+	animation:around 16s infinite 12s;
+	background-color:red;
+	}
+</style>
+</head>
+
+<body>
+
+<div>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+
+</div>
+
+
+
+<!--
+1. css3动画的使用：
+	1）先用@keyframes定义动画，必须指定动画的名称
+	2）在选择器中引用动画名，并且必须设置动画的时长
+2. 此处的divd的margin的设置有玄机（“-151”而不是“-150”）:
+	在absolute定位机制中，元素的左上角以其已经定位的祖辈元素的左上角作为偏移参照基点，这里的“左上角”在元素（的border）之外
+3. 当然，css3动画必然存在浏览器兼容性的问题，此案例中未予考虑
+-->
+</body>
+</html>

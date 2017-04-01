@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+
+<body>
+  <script type="text/javascript">
+  var p=document.createElement("p");
+  document.body.appendChild(p);
+  function fun(){
+  	var t=new Date();
+  	p.innerHTML=t.toLocaleString();
+  	setTimeout(fun,500);
+  }
+  window.onload=fun();
+  
+  	
+  
+  </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+</head>
+
+<body>
+<div id="content">
+  <h1>html</h1>
+  <h1>php</h1>
+  <h1>javascript</h1>
+  <h1>jquery</h1>
+  <h1>java</h1>
+</div>
+<button onclick="clearText()">清除节点内容</button>
+
+
+<script type="text/javascript">
+
+function clearText() {
+  var content=document.getElementById("content");
+  for(var i=content.childNodes.length-1;i>=0;i--){
+     var childNode = content.childNodes[i];
+     content.removeChild(childNode);
+  }
+}
+/*function clearText() {
+  var content=document.getElementById("content");
+  // 在此完成该函数
+  var mynodes=content.childNodes;
+  for(var i=0;i<mynodes.length;i++){
+      content.removeChild(mynodes[i]);
+  }
+  
+}*/
+</script>
+
+
+
+</body>
+</html>
+<!--为什么自己编写的函数实现不了功能？-->

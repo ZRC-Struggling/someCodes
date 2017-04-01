@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style type="text/css">
+body{
+	margin:0;
+	padding:0;
+	font-size:14px;
+	font-family:Georgia, "Times New Roman", Times, serif;}
+div{
+	width:100px;
+	height:100px;
+	line-height:100px;
+	background:blue;
+	margin:50px auto;
+	text-align:center;}
+.div1:hover{
+	transform:translate(20px,10px);
+	-moz-transform:translate(20px,10px);/* Firefox */
+	-ms-transform:translate(20px,10px);/* IE 9 */
+	-o-transform:translate(20px,10px);/* Opera */
+	-webkit-transform:translate(20px,10px);/* Safari and Chrome */
+	}
+.div2:hover{
+	transform:rotate(60deg);
+	-moz-transform:rotate(60deg);
+	-ms-transform:rotate(60deg);
+	-o-transform:rotate(60deg);
+	-webkit-transform:rotate(60deg);
+	}
+.div3:hover{
+	transform:scale(2,0.5);
+	-moz-transform:scale(2,0.5);
+	-ms-transform:scale(2,0.5);
+	-o-transform:scale(2,0.5);
+	-webkit-transform:scale(2,0.5);}
+.div4:hover{
+	transform: skew(30deg,20deg);
+	-ms-transform: skew(30deg,20deg);	/* IE 9 */
+	-webkit-transform: skew(30deg,20deg);	/* Safari and Chrome */
+	-o-transform: skew(30deg,20deg);	/* Opera */
+	-moz-transform: skew(30deg,20deg);	/* Firefox */
+}
+.div5:hover{
+	transform:matrix(0.866,0.5,-0.5,0.866,0,0);
+	-ms-transform:matrix(0.866,0.5,-0.5,0.866,0,0);		/* IE 9 */
+	-moz-transform:matrix(0.866,0.5,-0.5,0.866,0,0);	/* Firefox */
+	-webkit-transform:matrix(0.866,0.5,-0.5,0.866,0,0);	/* Safari and Chrome */
+	-o-transform:matrix(0.866,0.5,-0.5,0.866,0,0);		/* Opera */
+}
+</style>
+</head>
+
+<body>
+<h1>你将会学到这五个方法：translate() rotate() scale() skew() matrix()</h1>
+<div class="div1">translate</div>
+<div class="div2"> rotate</div>
+<div class="div3"> scale</div>
+<div class="div4"> skew</div>
+<div class="div5">matrix 将 div 旋转 30 度：
+</div>
+</body>
+</html>

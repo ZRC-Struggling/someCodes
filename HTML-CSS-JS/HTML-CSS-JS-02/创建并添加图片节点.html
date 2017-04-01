@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>创建并添加节点</title>
+</head>
+<script type="text/javascript">
+// 为元素创建子节点的总体思路：
+// 	1.获取要添加子节点的元素
+// 	2.通过document.createElement()创建标签节点
+// 	3.通过点运算符直接为标签节点创建属性节点
+// 	4.通过appendChild()将创建好的节点设置为某元素的子节点（attention:这是最需要注意的一个步骤）
+
+	function fun1(){
+		var d1=document.getElementById("d1");
+		var img=document.createElement("img");
+		img.src="images/1.jpg";
+		img.style.width="80%";
+		img.height="200";
+		img.alt="很抱歉，图片下载失败了";
+		d1.appendChild(img);
+	}
+
+	function fun2(){
+		var d2=document.getElementById("d2");
+		var a=document.createElement("a");
+		a.href="克隆.html";
+		a.innerHTML="该链接将跳往‘克隆.html’";
+		d2.appendChild(a);	
+	}
+</script>
+<body>
+	<input type="button" value="加一幅图" onClick="fun1()">
+	<input type="button" value="加超链接" onClick="fun2()">
+	<div id="d1">
+	</div>
+	<div id="d2">
+	</div>
+</body>
+</html>

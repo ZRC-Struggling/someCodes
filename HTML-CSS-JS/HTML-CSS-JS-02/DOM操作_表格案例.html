@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title></title>  
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>   
+  <style>
+  td,th{
+	  width:200px;
+	  height:60px;
+	  text-align:center;}
+  </style>
+  <script type="text/javascript">
+  	  var tables = document.getElementsByTagName("table"); 
+	  var trs = document.getElementsByTagName("tr");
+	  var as = document.getElementsByTagName("a"); 
+      window.onload = function(){
+                  
+     // 鼠标移动改变背景,可以通过给每行绑定鼠标移上事件和鼠标移除事件来改变所在行背景色。
+     //这件事其实用css来实现更简单  
+	  for(var i = 1;i<trs.length;i++){
+		  trs[i].onmouseover = function(){
+			 this.style.backgroundColor = "#f2f2f2";
+		   }
+		  trs[i].onmouseout = function(){
+			 this.style.backgroundColor = "#fff";
+		   }
+	  }
+       
+       
+      //为每个实现删除功能的超链接添加单击事件
+       for(var j = 0;j<as.length;j++){
+           as[j].onclick = deleteNode;
+           
+       }
+	   //为添加按钮绑定单击事件
+       var create = document.getElementById("create");
+	   create.onclick = createNode;
+	  
+	 
+	 }
+     
+      // 编写一个函数，供添加按钮调用，动态在表格的最后一行添加子节点；
+     function createNode(){
+         var node = document.createElement("tr");
+		 node.innerHTML="<td>aNumber</td><td>aName</td><td><a href='javascript:;'>删除</a></td>";
+		 tables[0].lastChild.appendChild(node);	//给tbody添加子节点
+		 //为新添加的tr标签加onmouseover和onmouseout事件
+		 var trs = document.getElementsByTagName("tr");
+		 trs[trs.length-1].onmouseover = function(){
+			 this.style.backgroundColor = "#f2f2f2";
+		   }
+		  trs[trs.length-1].onmouseout = function(){
+			 this.style.backgroundColor = "#fff";
+		   }
+		 //为新添加的a标签加单击事件
+		 var as = document.getElementsByTagName("a");
+         as[as.length-1].onclick = deleteNode;
+     }
+    		
+   	 
+     // 创建删除函数
+     function deleteNode(){
+         tables[0].lastChild.removeChild(this.parentNode.parentNode);
+     }
+
+
+  </script> 
+ </head> 
+ <body> 
+	   <table border="1" width="50%" id="table">
+	   <tr>
+		<th>学号</th>
+		<th>姓名</th>
+		<th>操作</th>
+	   </tr>  
+
+	   <tr>
+		<td>xh001</td>
+		<td>王小明</td>
+		<td><a href="javascript:;" >删除</a></td> 
+	   </tr>
+
+	   <tr>
+		<td>xh002</td>
+		<td>刘小芳</td>
+		<td><a href="javascript:;" >删除</a></td>   
+	   </tr>  
+
+	   </table>
+       <input type="button" value="添加一行"   id="create"/>  
+<!--       attentions:
+       		1.如果table中未出现thead,tbody,tfoot这三个标签，那么只要table里面包含内容，实际上就会默认生成一个tbody标签。--> 
+</body>
+</html>

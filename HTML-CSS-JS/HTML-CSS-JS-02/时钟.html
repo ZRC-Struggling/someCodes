@@ -1,0 +1,127 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style type="text/css">
+#wrap{
+	width:240px;
+	height:240px;
+	border-radius:120px;
+	background:cyan;
+	margin:50px auto;
+	position:relative;}
+#clock{
+	width:200px;
+	height:200px;
+	border-radius:50%;
+	background:white;
+	position:absolute;
+	left:20px;
+	top:20px;}
+#bNumber{
+	width:100%;
+	height:100%;
+	position:relative;
+	}
+#bNumber div{
+	width:190px;
+	height:20px;
+	position:absolute;
+	left:10px;
+	top:90px;
+	}
+#bNumber span{
+	display:block;
+	width:20px;
+	height:20px;
+	}
+.number{
+	position:absolute;
+	bottom:100px;
+	transform-origin:50% 90%;
+	}
+#hour{
+	width:5px;
+	height:60px;
+	left:100px;
+	background:black;
+	}
+#minute{
+	width:3px;
+	height:80px;
+	left:101px;
+	background:gray;}
+#second{
+	width:1px;
+	height:90px;
+	left:102px;
+	background:red;}
+
+</style>
+</head>
+
+<body>
+<!--表盘-->
+<div id="wrap">
+	<!--钟表-->
+	<div id="clock">
+    	<!--指针数-->
+    	<div id="bNumber">
+        	<div><span>9</span></div>
+            <div><span>10</span></div>
+            <div><span>11</span></div>
+            <div><span>12</span></div>
+            <div><span>1</span></div>
+            <div><span>2</span></div>
+            <div><span>3</span></div>
+            <div><span>4</span></div>
+            <div><span>5</span></div>
+            <div><span>6</span></div>
+            <div><span>7</span></div>
+            <div><span>8</span></div>
+        </div>
+       <!-- 时针-->
+        <div id="hour" class="number"></div>
+        <!--分针-->
+        <div id="minute" class="number"></div>
+        <!--秒针-->
+        <div id="second" class="number"></div>
+    </div>
+</div>
+<script>
+var bNumber=document.getElementById("bNumber");
+var divs=bNumber.getElementsByTagName("div");
+var spans=bNumber.getElementsByTagName("span");
+//通过旋转，重置钟点数的位置
+for(var i=0;i<divs.length;i++){
+	divs[i].style.transform="rotate("+i*30+"deg)";
+	}
+//通过旋转，重置字的位置
+for(var i=0;i<divs.length;i++){
+	spans[i].style.transform="rotate("+i*-30+"deg)";
+	}
+	
+var hour=document.getElementById("hour");
+var minute=document.getElementById("minute");
+var second=document.getElementById("second");
+function colorNumber(){
+	//获取系统时间
+	var nowTime=new Date();
+	var nowHour=nowTime.getHours();
+	var nowMinute=nowTime.getMinutes();
+	var nowSecond=nowTime.getSeconds();
+	var minuteDeg=nowMinute/60*30;
+	//时针旋转角度
+	hour.style.transform="rotate("+(nowHour*30+minuteDeg)+"deg)";
+	var secondDeg=nowSecond/60*6;
+	//分针旋转角度
+	minute.style.transform="rotate("+(nowMinute*6+secondDeg)+"deg)";
+	//秒针旋转角度
+	second.style.transform="rotate("+nowSecond*6+"deg)";	
+}
+colorNumber();
+setInterval("colorNumber()",1000);
+</script>
+</body>
+</html>

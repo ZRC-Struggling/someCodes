@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>一个满屏品字布局</title>
+	<style>
+		body{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			box-sizing: border-box;
+			height: 280px;
+		}
+		div.top{
+			width: 100%;
+			border: 1px solid red;
+		}
+		div.left{
+			float: left;
+			width: 50%;
+			border: 1px solid green;
+		}
+		div.right{
+			float: right;
+			width: 50%;
+			border: 1px solid blue;
+		}
+		
+		/*清除浮动*/
+		div.clearfix:before,div.clearfix:after{
+			content: "";
+			display: table;
+		}
+		div.clearfix:after{
+			clear: both;
+			overflow: hidden;
+		}
+		div.clearfix{
+			*zoom:1;
+		}
+
+		div:nth-child(4),div:nth-child(5),div:nth-child(6){
+			box-sizing: content-box;
+		}
+		div:nth-child(4){
+			width: 100%;
+			background-color: red;}
+		div:nth-child(5){
+			float: left;
+			width: 50%;
+			background-color: green;}
+		div:nth-child(6){
+			float: right;
+			width: 50%;
+			background-color: blue; }
+	</style>
+</head>
+<body>
+	<div class="top"></div>
+	<div class="left"></div>
+	<div class="right clearfix"></div>
+	
+	<div class="anotherTop" style="clear: both;"></div>
+	<div class="anotherLeft"></div>
+	<div class="anotherRight"></div>
+
+	<!-- attention:
+			1.Q:为什么清除浮动会出现问题? 内嵌样式表里清除浮动的那一块没能起到作用，最终起到作用的是div.anotherTop的行内样式
+			A:它清除的是其子元素的浮动对自己的影响，很明显用法出错了。
+
+			-->
+
+ </body>
+</html>

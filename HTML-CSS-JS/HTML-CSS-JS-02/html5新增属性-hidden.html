@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>HTML5新增的hidden属性</title>
+</head>
+<script type="text/javascript">
+	function Rdo_Click(v){
+		var strArt=document.getElementById("art");
+		if(v==1){
+			strArt.removeAttribute("hidden");}
+		else{
+			strArt.setAttribute("hidden","hidden");}}
+</script>
+<body>
+<h4>元素的隐藏属性</h4>
+<nav style="padding:5px;">
+	<input type="radio" id="rdoHidden_1" onChange="Rdo_Click(this.value)" name="rdoHidden" value="1" checked>显示
+	<input type="radio" id="rdoHidden_2" onChange="Rdo_Click(this.value)" name="rdoHidden" value="0">隐藏
+</nav>
+<article id="art" class="art"> 
+欢迎您光临明日图书网！
+</article>
+</body>
+</html>

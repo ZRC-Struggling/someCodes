@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style type="text/css">
+span{
+	font-weight:bold;
+	padding:0 10px;
+	color:blue;}
+</style>
+</head>
+
+<body>
+<div class="time">距离高考还有<span id="exam"></span>天</div>
+<pre>
+
+
+
+
+</pre>
+<div class="time" id='t'>距团购结束还剩：<span id="LeftTime"></span></div>
+<script type="text/javascript">
+//高考倒计时
+window.onload = function(){
+	var thatDate = new Date("2017/6/7");
+	var today = new Date();
+	var timeGap = thatDate.getTime()-today.getTime();//得出的为毫秒
+	var dateGap = Math.ceil(timeGap/(24*60*60*1000));
+	var exam = document.getElementById("exam");
+	if(dateGap>0){
+		exam.innerHTML=dateGap;}
+}
+	
+//团购倒计时	
+function FreshTime(){
+	var endtime=new Date("2016/10/15,12:20:12");//结束时间
+	var nowtime = new Date();//当前时间
+	var lefttime=parseInt((endtime.getTime()-nowtime.getTime())/1000); 
+	var d=parseInt(lefttime/3600/24),
+		h=parseInt((lefttime/3600)%24),
+		m=parseInt((lefttime/60)%60),
+		s=parseInt(lefttime%60);
+   
+	
+	if(lefttime<=0){
+	document.getElementById("t").innerHTML="团购已结束";
+	clearInterval(sh);
+	}else{
+		document.getElementById("LeftTime").innerHTML=d+"天"+h+"小时"+m+"分"+s+"秒";}
+}
+FreshTime();
+var sh=setInterval(FreshTime,1000);
+</script>
+</body>
+</html>

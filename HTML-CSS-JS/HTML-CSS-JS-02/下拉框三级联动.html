@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>下拉框三级联动</title>
+</head>
+
+	<script type="text/javascript">
+	<!--
+	  var arr = ["工程学院","计算机学院","软件学院"] ;
+		  
+		  arr["工程学院"] = ["通信","电子","机械"] ;
+		  arr["计算机学院"] = ["计算机科学与技术","计算机学院22","计算机学院23"] ;
+		  arr["软件学院"] = ["软件工程","软件学院32","软件学院33"] ;
+		
+		  arr["通信"] = ["通信1班","通信2班","通信3班","通信4班"] ;
+		  arr["电子"] = ["121","122","123","124"] ;
+		  arr["机械"] = ["131","132","133","134"] ;
+
+		  arr["计算机科学与技术"] = ["211","212","213","214"] ;
+		  arr["计算机学院22"] = ["221","222","223","224"] ;
+		  arr["计算机学院23"] = ["231","232","233","234"] ;
+
+		  arr["软件工程"] = ["311","312","313","314"] ;
+		  arr["软件学院32"] = ["321","322","323","324"] ;
+		  arr["软件学院33"] = ["331","332","333","334"] ;
+
+		  function fillData(arr,id){
+			  //清空select选项
+			  document.getElementById(id).options.length = 0 ;
+			  //添加选项
+			  for(var i = 0 ;i<arr.length ;i++){
+				  //创建一个option对象
+				  var option = new Option(arr[i],arr[i]) ;
+				  //将option对象添加到select中
+				  document.getElementById(id).options.add(option) ;
+			  }
+		  }
+
+		  function init(){
+			  //填充学院
+			  fillData(arr,"college") ;
+			   //填充专业
+			  fillData(arr[arr[0]],"specialty") ;
+			    //填充班别
+			  fillData(arr[arr[arr[0]][0]],"class") ;
+		  }
+
+
+		  function changeSpecilty(i){
+			  //添加专业
+			  fillData(arr[i],"specialty") ;
+			  //添加班别
+			  fillData(arr[arr[i][0]],"class") ;
+		  }
+
+		  function changeClass(j){
+			//改变班别
+			fillData(arr[j],"class") ;
+		  }
+
+		  window.onload = function(){
+		  
+		  	var college = document.getElementById("college"),
+		  		specialty = document.getElementById("specialty");
+
+		  	init();
+
+		  	college.onchange = function () {
+		  		// body...
+		  		changeSpecilty(this.value);
+		  	}
+
+		  	specialty.onchange = function () {
+		  		// body...
+		  		changeClass(this.value);
+		  	}
+		  }
+	//-->
+	</script>
+ <body>
+	 学院：<select id = "college"></select>
+	 专业：<select id = "specialty"></select>
+	 班别：<select id = "class"></select>
+ </body>
+</html>

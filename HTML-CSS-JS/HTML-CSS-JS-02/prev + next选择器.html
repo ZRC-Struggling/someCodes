@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    	<meta charset="utf-8">
+        <title>prev + next选择器</title>
+        <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js" type="text/javascript"></script>
+    </head>
+    <style type="text/css">
+	div, p, label
+        {
+            float: left;
+            border: solid 1px #ccc;
+            margin: 5px;
+            padding: 5px;
+        }
+        p,label
+        {
+            width:230px;
+            height:30px;
+        }
+        p
+        {
+            border: solid 1px red;
+        }
+	</style>
+    <body>
+        <div>
+            码农家族
+            <label>1</label>
+            <p></p>
+     <!--
+     <ul><li><label>00000000</label></li></ul>
+     -->
+            <label>2</label>
+            <label>3</label>
+        </div>
+        <label></label>
+        
+        <script type="text/javascript">
+            $("p+label").css("background-color","red");
+        </script>
+    </body>
+</html>
+有一点必须说明：我故意把外部脚本置于页面的顶部，以此来证明该行为的不可行性。当外部脚本无法被加载，页面的其它内容长时间（十几秒）无法显示。
+<!--位置必须紧挨，所有必须是同辈的元素
+其中参数prev为任何有效的选择器，参数“next”为另外一个有效选择器，
+它们之间的“+”表示一种上下的层次关系，也就是说，
+“prev”元素最紧邻的下一个元素由“next”选择器返回的并且只返回唯的一个元素。-->

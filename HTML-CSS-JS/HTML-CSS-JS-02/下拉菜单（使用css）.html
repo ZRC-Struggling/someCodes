@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>下拉菜单（使用CSS)</title>
+<style type="text/css">
+*{
+	margin:0;
+	padding:0;
+	font-size:18px;}
+nav{
+	width:900px;
+	height:60px;
+	line-height:60px;
+	margin:66px auto 0;
+	background:black;
+	padding-left:86px;
+	border-radius:29px;
+	-moz-border-radius:29px;/*兼容老Firefox*/
+	box-shadow:0px 10px #333333;}
+nav ul li{
+	position:relative;	/*先在此设置定位，让其后代元素能以其为定位的参照点*/
+	float:left;
+	text-align:center;
+	list-style-type:none;}
+nav ul li a{
+	display:block;		/*将行内元素转化为块级元素，以便设置宽高、padding、margin*/
+	padding:0 20px;
+	text-decoration:none;
+	color:white;
+	background:black;
+	}
+nav ul li a:hover{
+	background-color:rgb(51,51,51);
+}
+
+/*下拉菜单的关键样式*/
+nav ul li ul{
+	position:absolute;		/*为了让列表项竖向显示*/
+	display:none;
+	}
+nav ul li ul a{
+	width:80px;		/*为了竖向显示时边线对齐，所以必须给它们设置固定的宽度*/
+	margin-top:1px;		/*使得竖向显示的列表项之间有一定的间隔*/
+	}
+nav ul li:hover ul{
+	display:block;}
+</style>
+</head>
+
+<body>
+
+<nav id="menu">
+	<ul>
+	  <li><a href="#">首页</a></li>
+	  <li><a href="#">课程大厅</a>
+	    <ul>
+	      <li><a href="#">JavaScript</a></li>
+	      <li><a href="#">JQuery</a></li>
+	    </ul>
+	  </li>
+	  <li><a href="#">学习中心</a>
+	    <ul>
+	      <li><a href="#">视频学习</a></li>
+	      <li><a href="#">案例学习</a></li>
+	      <li><a href="#">交流平台</a></li>
+	    </ul>
+	  </li>
+	  <li><a href="#">经典案例</a></li>
+	  <li><a href="#">关于我们</a></li>
+	</ul>
+</nav> 
+
+<!-- 
+1.导航条的制作：采用ul li a 的嵌套层次结构
+2.下拉菜单的制作：通过给相应的li元素添加元素（可采用ul li a 的嵌套层次结构），并设置元素为默认隐藏，鼠标悬浮时显示，即可实现下拉菜单效果。 
+-->
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>克隆</title>
+</head>
+<script type="text/javascript">
+//关于cloneNode:
+// cloneNode() 方法创建指定节点的副本。
+// cloneNode() 方法有一个参数（true 或 false）。该参数指示被复制的节点是否包括原节点的所有属性和子节点。
+function changeIt(){
+	var ANode=document.getElementById("American");
+	var henanNode=document.getElementById("henan");
+	var node=henanNode.cloneNode(true);	//true表示，将该元素节点的属性节点和文本节点一并克隆
+	//接下来，通过父节点对子元素进行修改
+	ANode.parentNode.replaceChild(node,ANode);	//注意顺序，用前者来代替后者
+}
+</script>
+
+<body>
+<input type="button" value="随意更改文本" onClick="changeIt()">
+<ul>
+<li>福建</li>
+<li>广东</li>
+<li>湖南</li>
+<li id="American" style="color:#0F3" onClick="changeIt()"><b>美国</b></li>
+<li>河北</li>
+</ul>
+<ul>
+<li>中国</li>
+<li>日本</li>
+<li>韩国</li>
+<li>朝鲜</li>
+<li id="henan" style="color:#F00; font-size:36px;">河南</li>
+</ul>
+</body>
+</html>

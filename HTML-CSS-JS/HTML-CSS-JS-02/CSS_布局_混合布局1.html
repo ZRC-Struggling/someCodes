@@ -1,0 +1,62 @@
+<!doctype html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>混合布局编程挑战</title>
+<style type="text/css">
+body{
+	margin:0; 
+	padding:0; 
+	font-size:30px;
+	color:#fff;
+	text-align:center;}
+.top{
+	height:120px;
+	background-color:#ccc;}
+.main{
+	width:80%;
+	height:800px;
+	margin:0 auto;
+	position:relative;}
+.left{
+	width:200px;
+	height:800px;
+	background-color:red;
+	position: absolute;
+	top: 0;
+	left: 0;}
+.right{
+	height:800px;
+	background-color:green;
+	margin-left:210px;}
+.foot{
+	height:80px;
+	background-color:blue;}
+</style>
+
+</head>
+
+<body>
+<div class="top">top</div>
+<div class="main">
+<div class="right">right</div>
+<div class="left">left</div>
+</div>
+<div class="foot">foot</div>
+
+</body>
+</html>
+<!--
+任务1：完成顶部（top）、底部（foot）宽度自适应
+
+任务2：中间分为2两栏，其中，左侧（left）宽度为200px， 右侧（right）宽度自适应
+
+任务3：要求右侧（right）先加载，左侧（left）后加载
+
+任务4：编写的代码要兼容ie6
+
+要点：
+1.main要设置margin:0 auto;position:relative;
+2.left要设置绝对定位
+3.right要设置外填充
+注意：设置了绝对定位的块的高度要比其兄弟块小。
+-->

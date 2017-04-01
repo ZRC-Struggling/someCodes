@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>关于盒子模型</title>
+<style type="text/css">
+body{
+	margin:0;
+	padding:0;
+}
+div{
+	margin:20px;
+}
+div:nth-child(1){
+	width:500px;
+	height:200px;
+	background:red;
+	}
+p{
+	width:200px;
+	height:120px;
+	margin: 0 auto;
+	border:1px solid green;}	
+div:nth-child(2){
+	width:500px;
+	height:200px;
+	background:blue;
+	padding:20px;
+}
+div:nth-child(3){
+	width:500px;
+	height:200px;
+	background:yellow;}
+div:nth-child(3) p{
+	padding:20px;
+}
+</style>
+</head>
+
+<body>
+<div>
+	<p>父元素的宽高为500px和200px ，不设置内边距
+	<br>
+	子元素不设置内边距
+	</p>
+</div>
+<div>
+	<p>父元素的宽高为500px和200px ，并设置了20px的内边距
+	<br>
+	子元素不设置内边距
+	</p>
+</div>
+<div>
+	<p>父元素的宽高为500px和200px ，不设置内边距
+	<br>
+	子元素设置了20px的内边距
+	</p>
+</body>
+</html>

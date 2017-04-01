@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>图片轮播</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.banner{
+			position:relative;
+			width:1030px;
+			margin:10px auto;
+		}
+		#pic{
+			width: 1020px;
+			height: 420px;
+			border: 5px solid #ccc;
+		}
+		.scrollNum{
+			list-style:none;
+			position: absolute;
+			left: 8px;
+			bottom:12px;
+		}
+		
+		.scrollNum li{
+			display: inline-block;
+			width: 24px;
+			height: 18px;
+			background-color: #666;
+			color: #ccc;
+			font-size: 14px;
+			line-height: 18px;
+			text-align: center;
+		}
+		li.active{
+			background-color: #F96;
+			color:white;
+		}
+	</style>
+</head>
+<body>
+	
+
+	<div class="banner">
+		<img id="pic" src="images/banner_1.jpg" alt="...">
+		<ul class="scrollNum">
+			<li class="active">1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+		</ul>
+	</div>
+
+	<script>
+		//要实现的需求主要有两个：
+		//1.图片轮播
+		//2.当鼠标移到某序号时，从该序号所对应的图片开始轮播
+
+		window.onload = function () {	
+			var pic = document.getElementById("pic");	//获取图片控件
+			var scrollNumItems = document.getElementsByTagName("li");	//获取所有的图片序号
+			var picArr = ["banner_1","banner_2","banner_3","banner_4","banner_5"];	//通过数组存储所有图片的名字
+			var picCurrentIndex = 0;	//设置当前图片的索引为0 ， 目的是在加载的时候先显示第一张图片
+			var timer = null;	//空对象指针，将用于存储定时器，以实现对定时器的存储和删除
+			// carousel函数的功能是实现图片的轮播的效果。
+			// 主要逻辑：
+			// 	1.判断是否到了最后一张图片，若是，那么把图片索引设置为第一张图片的索引,从头开始播放
+			// 	2.改变图片源路径
+			// 	3.通过循环结构遍历数组，为当前图片所对应的图片序号加高亮，同时，将其它的图片序号去高亮。
+			// 	4.图片索引递增1
+			// 	5.设置定时器，每个2秒调用一次函数。
+			function carousel() {
+				if(picCurrentIndex > picArr.length-1){
+					picCurrentIndex = 0;
+				}
+				
+				pic.src = "images/"+picArr[picCurrentIndex]+".jpg";
+				for (var i = 0; i < scrollNumItems.length; i++) {
+					scrollNumItems[i].className = (i === picCurrentIndex)?"active":"";
+				}
+				picCurrentIndex++;//此句不能和前面的代码调换位置
+				
+				timer = setTimeout(carousel,2000);
+			}
+
+			carousel();
+			//通过循环结构为每一个图片序号添加鼠标悬浮事件，先将原有的定时器删除，再在事件处理函数中对当前图片索引做出修改，最后调用图片轮播函数以实现从当前的图片序号对应的图片开始轮播的效果。
+			for (var i = 0; i < scrollNumItems.length; i++) {
+				scrollNumItems[i].onmouseover = function(num){
+					return function(){
+						clearTimeout(timer);	//清除定时器
+						picCurrentIndex = num;	//将当前图片索引改变为图片序号对应的索引值
+						carousel();
+					}
+				}(i)
+			}
+		}
+	</script>
+
+
+
+<!-- 	attentions:
+		1.在浏览器的调试器中，观察发现div.banner实际上比图片要高一点（435>420+2*5），为什么？ -->
+</body>
+</html>

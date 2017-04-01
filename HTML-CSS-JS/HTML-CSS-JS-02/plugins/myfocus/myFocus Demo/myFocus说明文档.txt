@@ -1,0 +1,4 @@
+js文件夹：包含myFocus库和myFocus风格应用（21款）
+
+详细说明文档：http://bbs.blueidea.com/thread-3006673-1-1.html
+demo地址：http://www.cosmissy.com/myfocus/demo.html

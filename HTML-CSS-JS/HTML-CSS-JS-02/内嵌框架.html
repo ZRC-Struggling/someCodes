@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>内嵌框架</title>
+<style type="text/css">
+	a{
+		display: block;
+		width:260px;
+		height: 30px;
+		margin: 2px;
+		background: #e8e8e8;
+		text-decoration: none;
+		color: #333;
+	}
+	a:hover{
+		color: blue;
+		text-decoration: underline;
+	}
+</style>
+</head>
+
+<body>
+<a href="添加下拉列表的选项.html" target="iframe">跳往“添加下拉列表的选项.html”</a></br>
+<a href='克隆.html' target="iframe">跳往“克隆.html"</a></br>
+<a href="下拉框三级联动.html" target="iframe">跳往“下拉框三级联动.html”</a></br>
+<!--注意此次要给内嵌框架命名，否则就算上面的超链接设置了target="iframe"，事实上是无法实现
+-->
+<iframe src="畅销书排行榜.html" width="480" height="320" name="iframe"></iframe>
+</body>
+</html>

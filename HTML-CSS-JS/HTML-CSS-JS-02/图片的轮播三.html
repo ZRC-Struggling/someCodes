@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+<script type="text/javascript">
+var i=4;
+var k=document.getElementById("photos");
+function fun(){
+	alert(i);	
+	//var k=document.getElementById("photos");为何此语句放到函数外就失效了。而“var i=4；”则不会?
+	//原因：4是一个常数，直接赋值给i就可以了。而进行k的赋值操作时，文档还未加载完毕，图片还未加载，故获取不到相应的元素
+	//解决方案：把脚本放到body内的最后，或者把它放到window.onload事件里面
+	alert(k);
+	alert(typeof(k));
+	k.src="images/2.jpg";
+	setTimeout("fun()",1000);
+	}
+
+</script>
+
+<body onLoad="fun()">
+<img src="images/1.jpg"  id="photos" alt="" width="528" height="473">
+
+
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>加速回到顶部</title>
+<style type="text/css">
+*{
+    margin: 0;
+    padding: 0;
+}
+.container{
+    width:900px; 
+    overflow: hidden;
+    margin:0 auto; 
+    }
+#backToTop {
+    width:40px;
+    height:40px;
+    position:fixed;
+    left:50%;   /* 将其左上角置于容器的水平方向上的中点 */
+    margin-left:450px;  /* 向右移动图片容器的宽度的一半，以实现其左侧贴紧图片的边线的效果 */
+    bottom:0; 
+    background:url(images/top_bg.png) no-repeat 0 0;
+    display:none;   /*将按钮隐藏*/
+    transition:all 0.5s ease;   /* 增加过渡效果 */
+    }
+    /*鼠标悬浮时改变样式*/
+#backToTop:hover {
+    bottom:14px;
+    background-position: 0 -40px;
+    }
+
+</style>
+</head>
+
+<body>
+	<div class="container">
+		<img alt="..." src="images/一眼看破插入节点的8个方法_慕课手记.png" />
+	</div>
+    <!-- 此处设置href的值的是为了阻止其回到顶部的默认行为。 -->
+	<a href="javascript:;" id="backToTop" title="回到顶部"></a>
+
+
+    <script type="text/javascript">
+
+    window.onload = function () {
+
+        var backToTop = document.getElementById("backToTop");//获取用于设置回到顶部功能的按钮
+        var clientHeight =  document.documentElement.clientHeight;//获取可视区的高度
+        var speed;    /*声明控制滚动速度的变量*/
+        // 添加全局的滚动事件
+        window.onscroll = function () {
+            //获取滚动条到顶部的距离，即滚动条滚动了的距离
+            var scrollTop = document.documentElement.scrollTop||document.body.scrollTop;
+            //若滚动条到顶部的距离大于可视区的高度，即滚动的距离超过一屏，则显示按钮,反之，则隐藏。
+            backToTop.style.display = (scrollTop>clientHeight)?"block":"none";
+        }
+        //实现加速滚动的函数
+        function scrollToTop() {
+            var scrollTop = document.documentElement.scrollTop||document.body.scrollTop;
+            if(scrollTop>0){
+                //将滚动条向上移动
+                document.documentElement.scrollTop = document.body.scrollTop = scrollTop - speed; 
+                speed += 4;   //增加步长，以实现加速滚动的效果
+                setTimeout(scrollToTop,40); //每隔40ms，滚动一次
+            }
+        }
+        //为按钮绑定单击事件
+        backToTop.onclick = function () {
+            speed = 10; //设置步长的初值
+            scrollToTop();  //开始滚动
+        }
+    }
+    
+    </script>
+<!--     attentions:
+    1.问题：Chrome浏览器、Safari浏览器、opera浏览器不支持document.documentElement.scrollTop,只支持document.body.scrollTop;而IE和Firefox都只支持document.documentElement.scrollTop，而不支持document.body.scrollTop
+      解决方案：通过  ||  操作符提供后备值。
+    2.步长speed的初始化不能放到其声明的位置，而应该放到用于回到顶部的按钮上的单击事件里，当再次触发单击事件时，将其值还原到初始状态。
+    3.不要因为该语句（var scrollTop = document.documentElement.scrollTop||document.body.scrollTop;）出现重复而将其转移到外层以实现复用，那是错误的。
+    如果转移到了最外层，scrollTop将无法获取到更新后的值
+
+     -->
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+</head>
+<body>
+<ul id="con">
+<li id="lesson1">javascript
+  <ul> 
+      <li id="tcon"> 基础语法</li>
+      <li>流程控制语句</li>
+      <li>函数</li>
+      <li>事件</li>
+      <li>DOM</li>
+  </ul>
+</li>
+<li id="lesson2">das</li>
+<li id="lesson3">dadf</li>
+<li id="lesson4">HTML/CSS 
+  <ul>
+    <li>文字</li>
+    <li>段落</li>
+    <li>表单</li>
+    <li>表格</li>  
+  </ul> 
+</li></ul>  
+<script  type="text/javascript">    
+   var mylist = document.getElementById("tcon"); 
+   	console.log("关于firstChild");
+	console.log(mylist.parentNode.parentNode.parentNode.firstChild.innerHTML);
+	console.log("关于lastChild");
+	console.log(mylist.parentNode.parentNode.parentNode.lastChild.innerHTML);
+	console.log("关于children[0]");
+	console.log(mylist.parentNode.parentNode.parentNode.children[0].innerHTML);
+	console.log("关于childNodes[0]");
+	console.log(mylist.parentNode.parentNode.parentNode.childNodes[0].innerHTML);
+</script> 
+
+<!-- children -->
+</body>
+</html>

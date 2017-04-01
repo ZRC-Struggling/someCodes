@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+<style type="text/css">
+
+.banner{
+	position:relative;}
+.banner #photos{
+	width:796px;
+	height:200px;
+	border:2px solid red;
+	}
+
+</style>
+<body>
+                <div class="banner">
+                   <div class="pic"><img src="images/banner_1.jpg" alt="" title="" id="photos"></div>
+                </div>    	
+
+<script type="text/javascript">	
+	window.onload=fun;
+	var photosIndex=1;
+	photoslLen=5;
+	function fun(){
+	if(photosIndex>photoslLen){
+			photosIndex=1;
+		}else{
+		document.getElementById("photos").src="images/banner_"+photosIndex+".jpg";
+		photosIndex++;
+			}
+	}
+	//函数的逻辑明显有问题，导致了最后一张图片展示之后，还要过4s才展示第一张。
+	//若要解决，可考虑把 else  和  它携带的一对尖括号去掉	
+	setInterval("fun()",2000);
+</script>
+</body>
+</html>

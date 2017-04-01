@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>CSS3的边框属性</title>
+<style type="text/css">
+div{
+	margin:10px;}
+.div1{
+	width:100px;
+	height:100px;
+	border:1px solid red;
+	border-radius:50px;
+	-moz-border-radius:50px; /* Old Firefox */
+	}
+.div2{
+	width:100px;
+	height:100px;
+	border:1px solid red;
+	box-shadow:10px 10px 5px #CCCCCC;
+	-moz-box-shadow:10px 10px 5px #CCCCCC;
+	}
+.div3{
+	width:100px;
+	height:100px;
+	border:10px solid red;
+	border-image:url(images/12.jpg) 30 30 round;
+	-moz-border-image:url(images/12.jpg) 30 30 round; /* 老的 Firefox */
+	-webkit-border-image:url(images/12.jpg) 30 30 round; /* Safari 和 Chrome */
+	-o-border-image:url(images/12.jpg) 30 30 round; /* Opera */	
+}
+</style>
+</head>
+
+<body>
+<p>
+您将学到以下边框属性：
+<ul>
+<li>border-radius</li> 
+<li>box-shadow</li>
+<li>border-image</li>
+</p>
+<div class="div1"></div>
+<div class="div2"></div>
+<div class="div3"></div>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>三列的高度固定，三列的宽度自适应</title>
+</head>
+<style type="text/css">
+body{
+	margin:0;
+	padding:0;
+	}
+div{
+	font-size:24px;
+	font-weight:bold;
+	color:yellow;
+	text-align:center;
+	}
+#main,#left,#center,#right{
+	height:600px;
+	margin:0 auto;}
+#main{
+	width:80%;}
+#left{
+	width:30%;
+	background-color:red;
+	float:left;}
+#center{
+	width:20%;
+	margin:0 5%;
+	float:left;
+	background-color:green;
+	}
+#right{
+	width:40%;
+	background-color:blue;
+	float:right;}
+</style>
+<body>
+<div id="main">
+	<div id="left">left</div>
+    <div id="center">center</div>
+    <div id="right">right</div>
+</div>
+
+</html>
+<!--三者皆设左浮动，并对中间块设置左右的外边距（width使用相对值）。-->

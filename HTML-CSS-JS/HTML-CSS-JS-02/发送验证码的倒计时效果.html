@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+	<title>发送验证码的倒计时效果</title>
+	<script type="text/javascript">
+	// 总体思路：
+	// 	获取按钮，绑定点击事件，在事件处理函数中先把按钮设置为不可用状态(以防止用户多次点击)，接着调用一个函数来实现60s的倒计时（函数内部逻辑可以用分支语句来做）
+	window.onload=function(){
+		
+	    var send=document.getElementById('send'),//获取按钮
+	        times=60;	//设置倒计时的初值
+
+		function DownToZero(){
+			
+			if(times>0){
+				send.value=times+"s后重试";	//更新按钮的文本
+				times--;	//递减
+				setTimeout(DownToZero,1000);	//通过定时器再次调用函数本身
+			}else{
+				send.value="发送验证码";	//将文本复原
+				send.disabled = false;	//将按钮置为可用
+				times=60;	//将数字还原为初值，以便再次计数
+				}
+		}
+	    send.onclick=function(){
+	      // 计时开始 
+          send.disabled = true;
+		  DownToZero();
+         
+	    } 
+	}
+	</script>
+</head>
+<body>
+	<input type="button" id="send" value="发送验证码">
+
+</body>
+</html>

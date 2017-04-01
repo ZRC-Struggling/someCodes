@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+</head>
+<style type="text/css">
+*{
+	margin:0;
+	padding:0;
+	font-size:18px;}
+nav{
+	margin-top:66px;}
+ul{
+	width:900px;
+	overflow:hidden;
+	border-radius:29px;
+	-moz-border-radius:29px;/*兼容老Firefox*/
+	margin:0 auto;	
+	background:black;
+	padding-left:86px;
+	box-shadow:0px 10px #333333;
+	}
+ul li{
+	float:left;
+	list-style-type:none;}
+ul li a{
+	display:block;
+	margin:0 5px;
+	padding:20px;
+	border-radius:29px;
+	-moz-border-radius:29px;/*兼容老Firefox*/
+	text-decoration:none;
+	color:white;
+	transition:all 0.5s ease-in-out;
+	-moz-transition:all 0.5s ease-in-out;
+	-ms-transition:all 0.5s ease-in-out;
+	-o-transition:all 0.5s ease-in-out;
+	-webkit-transition:all 0.5s ease-in-out;
+	
+	}
+ul li a:hover{
+	background:blue;
+	transform:rotate(10deg);
+	-moz-transform:rotate(10deg);
+	-ms-transform:rotate(10deg);
+	-o-transform:rotate(10deg);
+	-webkit-transform:rotate(10deg);}
+</style>
+<body>
+<nav>
+    <ul>
+        <li><a href="#">首页</a></li>
+        <li><a href="#">学员问答</a></li>
+        <li><a href="#">IT圈子</a></li>
+        <li><a href="#">实时课堂</a></li>
+        <li><a href="#">客户端下载</a></li>
+        <li><a href="#">帮助中心</a></li>
+    </ul>
+</nav>
+</body>
+
+</html>
+<!--
+1.由于a标签属于内联元素，无高度和宽度，因此控制鼠标经过状态改变背景颜色时，仅在有文字的地方显示背景颜色。解决的方法是把a标签变为块级元素，display:block	
+2.去除列表的项目符号，有两种方法：
+		ul{
+        	list-style:none;}
+         或
+        ul li{
+        	list-style-type:none;}
+3.关于配色，blue和black是不太搭配的
+
+-->

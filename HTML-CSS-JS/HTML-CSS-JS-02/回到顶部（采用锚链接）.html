@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>回到顶部(采用锚点链接)</title>
+<style type="text/css">
+*{
+	margin:0;
+	padding:0;}
+.main{
+	margin:0 auto;
+	width:1190px;
+	height:2787px;
+	border:1px solid #e8e8e8;
+	outline:3px solid #e8e8e8;
+	outline-offset:1px;
+}
+#top{
+	position:absolute;
+	top:0;
+	left:0;
+	}
+a{
+	display:block;
+	/*因为没有其他内容，所有宽度和高度是必不可少的*/
+	width:40px;
+	height:40px;
+	text-decoration:none;
+/*	设置固定定位fixed，水平方向上先向右偏移其父容器的一半，使其定位到父容器的中间，然后再向右偏移图片宽度的一半，使其左上角定位到图片的右侧边线。垂直方向上设置bottom属性即可。
+*/	
+	position:fixed;
+	left:50%; 
+    margin-left:600px;
+	bottom:20px;
+	background:url(images/top_bg.png) no-repeat ;
+}
+a:hover{
+	background:url(images/top_bg.png) no-repeat left bottom;}
+</style>
+</head>
+
+<body>
+<div id="top"></div>
+<div class="main">
+	<img src="images/taobaowang.jpg" alt="淘宝网" title="淘宝网">
+</div>
+<div class="back_to_top">
+	<a href="#top" alt="回到顶部" title="回到顶部">
+</div>
+</body>
+</html>

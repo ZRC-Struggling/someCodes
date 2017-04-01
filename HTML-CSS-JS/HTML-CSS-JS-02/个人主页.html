@@ -1,0 +1,196 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>个人主页</title>
+</head>
+<style type="text/css">
+#image{
+	width:240px;
+	height:180px;
+	float: right;
+  margin:20px 100px 0 0;
+	}
+</style>
+<script type="text/javascript">
+// function fun1(){
+// 	var myName=document.getElementById('myName');
+// 	if(myName.value==""){
+// 		alert("姓名为必填项！");
+// 		myName.focus();
+// 		myName.style.border="1px solid red";
+// 		return false;}
+// 	else{
+// 		return true;}
+// 	}
+window.onload = function () {
+  // body...
+  var myForm = document.getElementsByTagName("form")[0];
+  var myName = document.getElementById("myName")
+  //此处是onsubmit ，而不是onSubmit。因为JS是区分大小写的。而在HTML中则不区分 
+  myForm.onsubmit = function () {
+    // body...
+    //ES5中，字符串有一个方法可以去除其空格，那就是trim();
+    if(myName.value.trim()!==""){
+      return true;
+    }else{
+      alert("姓名为必填项");
+      myName.focus();
+      myName.style.border = "1px solid red";
+      return false;
+    }
+
+  }
+}
+</script>
+<body>
+
+<form method="post" action="database.html">
+<div>
+
+    <div style="float:left">
+    <p>
+    <label for="myName">姓名：</label>
+    <input type="text" id="myName" size="10" maxlength="15"/><br />
+    </p>
+    <p>
+    <label>性别：</label>
+    <input type="radio" name="radiobutton" id="male" value="0" checked="checked"/>
+    <label for="male">男</label>
+    <input type="radio" name="radiobutton" id="female" value="00"/>
+    <label for="female">女</label><br />
+    </p>
+    <P>
+    <label>班级：</label>
+    <select name="select">
+      <option value="1" selected="selected" >13通信1班 </option>
+      <option value="2" >13通信2班 </option>
+      <option value="3">14通信1班 </option>
+      <option value="4">14通信2班 </option>
+    </select>
+    </P>
+    <p>
+    <label>爱好：</label>
+      <input type="checkbox" name="checkbox" id="checkbox" checked/>
+    跑步
+      <input type="checkbox" name="checkbox2" id="checkbox2" />
+    篮球
+      <input type="checkbox" name="checkbox3" id="checkbox3" />
+    音乐
+      <input type="checkbox" name="checkbox4" id="checkbox4" />
+    购物
+      <input type="checkbox" name="checkbox5" id="checkbox5" />
+    阅读
+    </p>
+      <input type="submit" name="submit" value="提交" />
+      &nbsp;&nbsp;&nbsp;&nbsp;  
+      <input type="reset" name="reset" value="重置" />
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    </div>
+    
+    <img src="images/1.jpg" id="image">
+    
+</div>
+
+</form>
+
+<div>
+<p>&nbsp;</p>
+<hr size="2" width="100%" style="clear:both"/><!-- 清除浮动 -->
+<table width="1000" border="1" cellspacing="1" cellpadding="1">
+  <caption>
+    课程表
+  </caption>
+  <tr>
+    <th height="29" scope="col">周一</th>
+    <th scope="col">周二</th>
+    <th scope="col">周三</th>
+    <th scope="col">周四</th>
+    <th scope="col">周五</th>
+  </tr>
+  <tr>
+    <td height="35"></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="43"></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="35"></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="38"></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="37"></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="37"></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="43"></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="37"></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="43"></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr> 
+</table>
+<hr size="2" style="clear:both"/><!-- 清除浮动 -->
+<ol>
+  <li>登陆页面的账号密码要判断是否为空，为空就提示重新输入，正确就跳转到个人信息页面 </li>
+  <li>勾选记住密码后弹出密码已保存的提示 </li>
+  <li>点击注册跳转到注册页面 </li>
+  <li>注册页面也要判断每项输入的值是否为空，如果不为空就提示注册成功 </li>
+  <li>这个只是模板，不要完全按照这个做，功能点不能少，有能力扩展的最好 </li>
+  <li>注意事项文本不可以放在&lt;textarea&gt;&lt;/textarea&gt;标签里面，要用html标签 </li>
+</ol>
+<p>&nbsp;</p>
+
+</div>
+</body>
+</html>
+<!--
+
+
+
+想出更好的方法解决图片的定位问题（如何将其更好地放置于右上方）
+解决方案：采用CSS的浮动属性。
+-->

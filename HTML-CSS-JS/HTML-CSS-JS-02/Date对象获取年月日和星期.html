@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>输出年月日和星期</title>
+</head>
+<style type="text/css">
+*{padding:0px;margin:0px;}
+#date{
+	position:absolute;top:80px;left:80px;color:green;}
+</style>
+<body>
+<script type="text/javascript">
+var myDate=new Date();
+var weekdays=["星期日","星期一","星期二","星期三","星期四","星期五","星期六"];//建立数组，保存星期
+var y_m_d=(myDate.getYear()+1900)+"年"+(myDate.getMonth()+1)+"月"+myDate.getDate()+"日";//将年月日字符串用变量y_m_d保存
+var weekday=weekdays[myDate.getDay()];//将星期几保存到weekday中
+document.write("<div id='date'>");//用HTML的标签来控制内容的输出位置，并使用css控制样式
+document.write(y_m_d+"&nbsp;&nbsp;"+weekday);
+document.write("</div>");
+</script>
+
+</body>
+</html>

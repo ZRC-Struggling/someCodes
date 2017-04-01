@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>左右固定，中间自适应</title>
+</head>
+<style type="text/css">
+body{
+	margin:0;
+	padding:0;
+	}
+div{
+	font-size:24px;
+	font-weight:bold;
+	color:yellow;
+	text-align:center;
+	}
+#main,#left,#center,#right{
+	height:600px;
+	margin:0 auto;}
+#main{
+	width:80%;
+	position:relative;}
+#left{
+	width:100px;
+	background-color:red;
+	position:absolute;
+	top:0;
+	left:0;}
+#center{
+	margin:0 220px 0 120px;
+	background-color:green;
+	}
+#right{
+	width:200px;
+	background-color:blue;
+	position:absolute;
+	top:0;
+	right:0;}
+</style>
+<body>
+<div id="main">
+	<div id="left">left</div>
+    <div id="center">center</div>
+    <div id="right">right</div>
+</div>
+
+</html>
+<!--三列布局的左右固定，中间自适应的要点：
+1.左右设置固定的宽度并设置绝对定位
+2.中间不设置宽度，并设置外边距。-->

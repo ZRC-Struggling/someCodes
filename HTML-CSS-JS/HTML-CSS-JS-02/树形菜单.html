@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>树形菜单</title>
+<style type="text/css">
+a{
+	text-decoration:none;
+	color:#0FF;}
+div[id="1"],div[id="2"]{
+	display:none;}
+ul li{
+	list-style-image:url(images/doc.gif);
+	}
+</style>
+</head>
+
+<script  type="text/javascript">
+function show(i){
+	var content=document.getElementById(i);
+	content.style.display=="block"?content.style.display="none":content.style.display="block";}
+</script>
+<body>
+	<div>
+    	<div id="wenxue"><img src="images/fclose.gif" alt="..." /><a href="javascript:onclick=show(1)">文学艺术</a></div>
+        <div id="1">
+        	<ul>
+            	<li>先锋写作</li>
+                <li>小说散文</li>
+                <li>诗风词韵</li>
+            </ul>
+        </div>
+    </div>  
+    <div>
+    	<div id="tietu"><img src="images/fclose.gif" alt="..." /><a href="javascript:onclick=show(2)">贴图专区</a></div>
+        <div id="2">
+        	<ul>
+            	<li>真我风采</li>
+                <li>视频贴图</li>
+                <li>行行摄摄</li>
+                <li>Flash贴图</li>
+            </ul>
+        </div>
+    </div>      
+</body>
+</html>

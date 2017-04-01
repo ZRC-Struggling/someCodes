@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>使用定位属性和margin属性实现水平垂直居中</title>
+	<style>
+		div{
+			width: 600px;
+			height: 200px;
+			position: absolute;
+			/*position:relative;*/	
+			top:50%;
+			left: 50%;
+			margin: -100px 0 0 -300px;
+			text-align:center;
+			line-height: 200px;
+			background-color: red;
+		}
+	</style>
+</head>
+<body>
+	<div>我是已经（水平和垂直）居中了的容器，我靠的是定位属性和margin属性</div>
+	<!-- attention:
+		1.思考一下，为什么用相对定位来做的时候，垂直居中无法实现
+			发现：在Chrome浏览器下观察到top:50%是无效的
+		猜想：在relative下，50%指的是它自身的50%。而在absolute下，则指的是其已经定位的祖辈元素的50%
+					
+		 -->
+</body>
+</html>

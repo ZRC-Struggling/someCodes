@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>回到顶部</title>
+<style type="text/css">
+.box {
+    width:1190px; 
+    margin:0 auto; 
+    }
+#btn {
+    width:40px;
+    height:40px;
+    position:fixed;
+    left:50%; 
+    display:none;
+    margin-left:610px;
+    bottom:30px; 
+    background:url(images/top_bg.png) no-repeat left top;
+    }
+#btn:hover {
+    background:url(images/top_bg.png) no-repeat right bottom;
+    }
+
+</style>
+<script type="text/javascript">
+window.onload = function(){
+    var obtn = document.getElementById('btn');
+    //获取页面可视区的高度
+    var clientHeight=document.documentElement.clientHeight;
+    var timer = null;
+	var isTop = true;
+	
+    window.onscroll=function(){
+      var osTop=document.documentElement.scrollTop||document.body.scrollTop;
+    if (osTop >= clientHeight){
+        obtn.style.display="block"; //显示按钮
+	}else {
+		obtn.style.display="none"; //隐藏按钮
+	}
+	if (!isTop){
+		clearInterval(timer);
+	}
+		isTop = false;  
+    };
+	
+	obtn.onclick = function(){
+	//设置定时器
+	timer = setInterval(function(){
+        var osTop=document.documentElement.scrollTop||document.body.scrollTop;
+        var ispeed = Math.floor(-osTop / 6);
+    //获取滚动条距离顶部的高度
+    document.documentElement.scrollTop=document.body.scrollTop=osTop+ispeed;
+    isTop = true;
+    if(osTop == 0){
+        clearInterval(timer);
+        }
+    },30);
+    }
+	
+}
+
+</script>
+</head>
+
+<body>
+	<div class="box">
+		<img src="images/taobaowang.jpg" />
+	</div>
+	<a href="javascript:;" id="btn" title="回到顶部"></a>
+</body>
+</html>
+<!--
+任务1：获取页面可视区的高度代码编写
+
+任务2：获取滚动条距离顶部的高度
+
+注意在chrom和IE等浏览器的兼容性
+
+任务3：使用脚本控制“回到顶部”按钮的显示与隐藏
+
+attentions:
+        1.为什么将var osTop=document.documentElement.scrollTop||document.body.scrollTop;提到外面就不行了。
+	    2.为什么将document.documentElement.scrollTop=document.body.scrollTop=osTop+ispeed;修改为osTop+=ispeed;就不行了
+        3.快速点击按钮多次会出现，滚动条回到顶部之后，你想往下拉，却一直又往上跑的情况，解释下原因？
+    -->

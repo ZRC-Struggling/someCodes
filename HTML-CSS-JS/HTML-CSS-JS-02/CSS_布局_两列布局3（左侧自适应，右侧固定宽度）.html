@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>左侧自适应，右侧固定宽度</title>
+<style type="text/css">
+section{
+	background:red;
+	margin-right:210px;
+	}
+aside{
+	width:200px;
+	float:right;
+	background:green;}
+</style>
+</head>
+
+<body>
+
+<header>
+</header>
+<article>
+
+<aside>右侧</aside>
+<section>左侧</section>
+<!--
+如果把aside标签和section标签调换位置，则无法实现想要的布局。
+浮动元素会影响紧随其后的元素，而不会影响其前的元素。
+所以当块级元素sectioon先加载并独占一行后，aside只能在下一行显示。
+而如果是浮动的元素aside先加载，那么section会当aside不存在，因而会跑到第一行。
+-->
+</article>
+<footer>
+</footer>
+</body>
+</html>
