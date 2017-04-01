@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style type="text/css">
+*{
+	margin:0;
+	padding:0;
+	font-family:Verdana, Geneva, sans-serif;
+	font-size:18px;}
+body{
+	padding:0  60px;
+	}
+ul{
+	list-style:none;}
+.level1{
+	background:#e8e8e8;
+	width:500px;
+	height:280px;
+	margin:30px auto;
+	}
+.level1 li{
+	margin:10px;
+	padding:0 60px;
+	text-align:center;
+}
+</style>
+</head>
+
+<body>
+<div>
+	<ul class="level1">
+    	<li>a</li>
+        <li class="b">b</li>
+        <li>c</li>
+        <li>
+        	<ul>
+            	<li>d1</li>
+                <li>d2</li>
+                <li>d3</li>
+                <li>d4</li>
+            </ul>	
+        </li>
+    </ul>
+
+选择一个选择器并观察,边框效果
+<select id="test">
+	<option>.level1 li</option>
+    <option>.level1>li</option>
+    <option>.b+li</option>
+    <option>.b~li</option>
+</select>
+<br><br>
+<pre>
+
+                        $( "parent > child" ) 
+            子选择器：选择所有指定“parent”元素中指定的"child"的直接后代元素，即子元素。
+            
+                        $("ancestor descendant")	
+            后代选择器：选择给定的祖先元素的所有后代元素, 一个元素的后代可能是该元素的一个孩子，孙子，曾孙等
+            
+                        $("prev + next"),可以用next()代替它
+            相邻兄弟选择器：选择所有紧接在“prev”元素后的“next”元素
+            三个条件：
+                1.它们必须是兄弟，即他们的父元素为同一个
+                2.next必须在prev后面
+                3.它们必须相邻
+            
+                        $("prev ~ siblings")，可以用nextAll()代替它
+            一般兄弟选择器：匹配“prev”元素之后的所有 兄弟元素。具有相同的父元素，并匹配过滤“siblings”选择器
+            两个条件：
+                1.它们必须是兄弟，即他们的父元素为同一个
+                2.siblings必须在prev后面
+  Attentions:
+  	siblings()可以跟同辈的元素匹配，无论位置的先后。
+    next()只能和紧随其后的一个同辈元素匹配
+    nextAll()只能和它后面的同辈元素匹配
+      
+  
+    
+</pre>
+
+<script type="text/javascript" src="jquery/jquery-2.2.3.js"></script>
+<script type="text/javascript">
+$(function(){
+	$($("#test").val()).css("border","1px solid blue");
+	$("#test").change(function(){
+			$("*").css("border","");
+			$($(this).val()).css("border","1px solid blue");
+		});
+	});
+
+</script>
+</body>
+</html>

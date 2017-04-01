@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style type="text/css">
+body{
+	font-size:13px;
+	}
+div{
+	margin:5px;
+	padding:10px;
+	border:1px solid #666;
+	background:#eee;
+	width:300px;
+	}
+</style>
+</head>
+
+<body>
+<p>
+jQuery 从 1.9 版开始，移除了 $.browser 和 $.browser.version ， 取而代之的是 $.support 。 在更新的 2.0 版本中，将不再支持 IE 6/7/8。 以后，如果用户需要支持 IE 6/7/8，只能使用 jQuery 1.9或者jQuery 1.10.1等。 如果要全面支持 IE，并混合使用 jQuery 1.9 和 2.0
+
+</p>
+<div id="divTip">
+
+
+</div>
+</body>
+<script src="jquery/jquery-1.8.3.js"></script>
+<script type="text/javascript">
+$(function(){
+	var $str = "您的浏览器的名称是：";
+	if($.browser.mise){//IE浏览器
+		$str+="IE";}
+	if($.browser.mozilla){//Firefox相关浏览器
+		$str+="Mozilla FireFox<br>"}
+	$str+=" 版本号是："+$.browser.version;//获取版本号
+	$("#divTip").html($str);
+	});
+</script>
+</html>

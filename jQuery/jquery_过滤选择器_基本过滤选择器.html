@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+	.left {
+        width: auto;
+        height: 120px;
+    }
+    
+    .left div {
+        width: 70px;
+        height: 70px;
+        padding: 5px;
+        margin: 5px;
+        float: left;
+        background: #bbffaa;
+        border: 1px solid #ccc;
+    }
+    
+    .bottom {
+        width: 800px;
+    }
+    
+    .bottom div,
+    .bottom span {
+        display: block;
+        width: 80px;
+        height: 80px;
+        margin: 5px;
+        background: #bbffaa;
+        float: left;
+        font-size: 14px;
+    }
+    
+    .bottom .small {
+        width: 60px;
+        height: 25px;
+        font-size: 12px;
+        background: #fab;
+    }
+	</style>
+</head>
+
+<body>
+    <h2>基本筛选器</h2>
+    <h3>:first/:last/:even/:odd</h3>
+    <div class="left">
+        <div class="div">
+            <p>div:first</p>
+            <p>:even</p>
+        </div>
+        <div class="div">
+            <p>:odd</p>
+        </div>
+        <div class="div">
+            <p>:even</p>
+        </div>
+        <div class="div">
+            <p>:odd</p>
+        </div>
+        <div class="div">
+            <p>:even</p>
+        </div>
+        <div class="div">
+            <p>div:last</p>
+            <p>:odd</p>
+        </div>
+    </div>
+
+    
+    <h3>:eq/:gt/:lt</h3>
+    <div class="left">
+        <div class="aaron">
+            <p>:lt(3)</p>
+        </div>
+        <div class="aaron">
+            <p>:lt(3)</p>
+        </div>
+        <div class="aaron">
+            <p>:eq(2)</p>
+        </div>
+        <div class="aaron">
+        </div>
+        <div class="aaron">
+            <p>:gt(3)</p>
+        </div>
+        <div class="aaron">
+            <p>:gt(3)</p>
+        </div>
+    </div>
+
+    
+    <h3>:not</h3>
+    <div class="left">
+        <div>
+            <input type="checkbox" name="a" />
+            <p>Aaron</p>
+        </div>
+        <div>
+            <input type="checkbox" name="b" />
+            <p>慕课</p>
+        </div>
+        <div>
+            <input type="checkbox" name="c" checked="checked" />
+            <p>其他</p>
+        </div>
+    </div>
+    
+    选择一个选择器并观察,边框效果
+<select id="test">
+	<option>.div:first</option>
+    <option>.div:last</option>
+    <option>.div:even</option>
+    <option>.div:odd</option>
+    <option>.aaron:eq(2)</option>
+    <option>.aaron:gt(3)</option>
+    <option>.aaron:lt(2)</option>
+    <option>input:not(:checked) + p</option>
+</select>
+<pre>
+						总结
+        1.:first,:last,:eq()都只能选择一个元素
+        2.:even,:odd,:eq(),:gt(),:lt()都是靠索引来选择元素的，而且索引的起始值都为0，而:nth-child()的索引起始值为1。
+以下举几个例子：
+				（1）tr:even选择的是索引为偶数（0,2,4,6...）的行，即奇数行（第1,3,5,7...行）
+				（2）div:eq(2)选择的是索引为2的div元素，即第3个div
+                （3）span:lt(2)选择的是索引小于2的span元素，即索引为0,1的元素，也就是说，选择的是第1个和第2个span
+        3.eq(0)相当于:first,eq(-1)相当于:last
+</pre>
+<script type="text/javascript" src="jquery/jquery-2.2.3.js"></script>
+<script type="text/javascript">
+$(function(){
+	$($("#test").val()).css("border","1px solid blue");
+	$("#test").change(function(){
+			$("*").css("border","");
+			$($(this).val()).css("border","1px solid blue");
+		});
+	});
+
+</script>
+</body>
+
+</html>

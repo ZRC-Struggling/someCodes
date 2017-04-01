@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>stop()方法</title>
+<style type="text/css">
+.div1{
+	width:480px;
+	height:600px;
+	background:black;
+	position:relative;
+	font-size:20px;
+	color:white;}
+</style>
+<script src="jquery/jquery-1.9.0.js"></script>
+<script>
+$(function(){
+	var div1=$(".div1");
+	
+	$("input[value='开始']").click(function(){
+			
+			div1.animate({left:'100px'},6000);
+			div1.animate({fontSize:'40px'},5000);	
+		});
+	$("input[value='停止']").click(function(){
+			div1.stop();
+		});
+	$("input[value='停止所有']").click(function(){
+			div1.stop(true);
+		});
+	$("input[value='停止但要完成']").click(function(){
+			div1.stop(true,true);
+	});
+});
+</script>
+</head>
+
+<body>
+
+
+<input type="button" value="开始">
+<input type="button" value="停止">
+<input type="button" value="停止所有">
+<input type="button" value="停止但要完成">
+<div class="div1">
+提示：默认地，所有 HTML 元素都有一个静态位置，且无法移动。
+如需对位置进行操作，要记得首先把元素的 CSS position 属性设置为 relative、fixed 或 absolute！	
+</div>
+</body>
+</html>

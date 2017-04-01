@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+body{
+	width:50%;
+	height:50%;}
+div{
+	background:red;
+	margin:8px;
+	padding:2px;
+	border:1px solid red;}
+ul{
+	width:50%;
+	list-style:none;
+	text-align:center;}
+ul li{
+	width:50%;
+	padding:1px;
+	margin:1px;
+	background:lightblue;
+	}
+</style>
+</head>
+
+<body>
+你喜欢的编程语言
+<ul id="ul1">
+	<li>C</li>
+    <li>Java</li>
+    <li>Python</li>
+    <li>C++</li>
+</ul>
+<select>
+	<option>	</option>
+	<option>wrap</option>
+    <option>wrapAll</option>
+    <option>wrapAll(function)</option>
+    <option>wrapInner</option>
+</select>
+
+<script src="jquery/jquery-2.2.3.js"></script>
+<script>
+$(function(){
+	$("select").change(function(){
+		
+		$("#ul1").html("<ul id='ul1'><li>C</li><li>Java</li><li>Python</li><li>C++</li></ul>");
+		
+		if($("option:selected").val().indexOf("wrap")!==-1){
+			if($("option:selected").val().length>9){
+				$("ul").find("li").wrapAll(function(){return "<div>我喜欢</div>";});
+			}else{
+				$("ul").find("li")[$(this).val()]("<div>我喜欢</div>");}
+		}
+		});
+	});
+</script>
+<!--1.先看图：
+    
+    2.wrap()将所有匹配的元素进行单独的包裹,在原来的元素的外部实施包裹
+	  wrapAll()将匹配的元素集合当做一个整体来包裹，在元素的外部实施包裹
+	  wrapInner()经所有匹配的元素进行单独的包裹，在原来的元素额内部实施包裹
+   
+    
+    3.代码：
+    
+    4.attentions:
+    	1)在jquery3.0之前，wrapAll()通过回调函数可以实现和wrap()相同的功能,上面的代码已经给出了验证的方法。我一直觉得那应该是个bug。wrapAll的原意就是“包裹所有”，用它实现每个匹配元素的单独的包裹显得有点古怪了。最近翻阅了jQuery官方文档后，发现jQuery3.0以上的版本已经修正了这个bug.
+--></body>
+</html>
