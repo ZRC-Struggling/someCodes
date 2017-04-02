@@ -1,0 +1,134 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>无标题文档</title>
+<link rel="stylesheet" href="jquery.mobile-1.3.2/jquery.mobile-1.3.2.css">
+</head>
+
+<body>
+<div data-role="page" id="index" data-theme="d">
+    <div data-role="header" data-position="fixed">
+        <a href="#" data-role="button" data-icon="home" class="ui-btn-active">首页</a>
+        <h1>欢迎来到我的主页</h1>
+        <a href="#" data-role="button" data-icon="search">搜索</a>
+    </div>
+    <div data-role="content">
+        <form action="a.php" method="post" data-inset="true">
+            <div data-role="fieldcontain">
+                 
+                <label for="userName">姓名：</label>
+                <input type="text" name="userName" id="userName" placeholder="姓名..."><br>
+                
+                <label for="birthday">出生日期：</label>
+                <input type="date" name="birthday" id="birthday"><br>
+                
+                <label for="email">邮箱：</label>
+                <input type="email" name="email" id="email" placeholder="您的邮箱.."><br>
+                
+                <fieldset data-role="controlgroup">
+                <legend>性别：</legend>
+                <label for="boy">男</label>
+                <input type="radio" name="gender" id="boy" checked>
+                <label for="girl">女</label>
+                <input type="radio" name="gender" id="girl"><br>
+                </fieldset>
+               
+                <label for="class">班级：</label>
+                <select id="class" data-native-menu="false">
+                    <option value="1" selected>13通信一班</option>
+                    <option value="2">13通信二班</option>
+                    <option value="3">14通信一班</option>
+                    <option value="4">14通信二班</option>
+                </select><br>
+                
+                <fieldset data-role="controlgroup">
+                    <legend>爱好：</legend>
+                    <label for="singing">唱歌</label>
+                    <input type="checkbox" name="hobby" id="singing" checked>
+                    <label for="reading">读书</label>
+                    <input type="checkbox" name="hobby" id="reading">
+                    <label for="swimming">游泳</label>
+                    <input type="checkbox" name="hobby" id="swimming">
+                    <label for="dancing">跳舞</label>
+                    <input type="checkbox" name="hobby" id="dancing">
+                </fieldset>
+                
+                <label for="days">实习天数:</label>
+                <input type="range" name="days" id="days" value="50" min="0" max="100"><br>
+                
+                <label for="switch">党员:</label>
+                <select name="switch" id="switch" data-role="slider">
+                <option value="yes">是</option>
+                <option value="no" selected>否</option>
+                </select><br>
+        
+                <label for="plan">你的规划：</label>
+                <textarea name="plan" id="plan" placeholder="写下你的规划吧..."></textarea>
+         
+                <label for="search">搜索:</label>
+                <input type="search" name="search" id="search">
+                    <div class="ui-grid-a ui-btn">
+                        <div class="ui-block-a">
+                            <input type="submit" value="提交">
+                        </div>
+                        <div class="ui-block-b">
+                            <input type="reset" value="重置">
+                        </div>
+                     </div>  
+              </div>
+        </form>
+    </div>
+    <div data-role="footer" class="ui-btn" data-position="fixed">
+        <a href="#" data-role="button" data-icon="plus">转播到新浪微博</a>
+        <a href="#" data-role="button" data-icon="plus">转播到腾讯微博</a>
+        <a href="#" data-role="button" data-icon="plus">转播到QQ 空间</a>
+        <a href="#pagetwo" data-rel="dialog" data-icon="arrow-r" data-transition="slideup">转到页面二</a>
+    </div>
+</div>
+
+
+<div data-role="page" id="pagetwo">
+
+    <div data-role="header" data-position="fixed">
+        <a href="#index" data-role="button" data-transition="flip" data-icon="home">首页</a>
+        <h1>欢迎光临</h1>
+        <a href="#" data-role="button" data-rel="back" data-icon="arrow-l">返回</a>
+    </div>
+
+    <div data-role="content">
+        <div data-role="collapsible">
+            <h1>点击我 - 我可以折叠！</h1>
+            <p>我是被展开的内容。</p>
+            <div data-role="collapsible">
+                <h1>点击我 - 我是嵌套的可折叠块！</h1>
+                <p>我是嵌套的可折叠块中被展开的内容。</p>
+            </div>
+        </div>
+        <div data-role="collapsible-set">
+            <div data-role="collapsible">
+                <h1>点击我 - 我可以折叠！</h1>
+                <p>我是被展开的内容。</p>
+            </div>
+            <div data-role="collapsible">
+                <h1>点击我 - 我可以折叠！</h1>
+                <p>我是被展开的内容。</p>
+            </div>
+
+            
+        </div>
+    </div>
+    
+    <div data-role="footer" class="ui-btn" data-position="fixed">
+        <a href="#" data-role="button" data-icon="plus">转播到新浪微博</a>
+        <a href="#" data-role="button" data-icon="plus">转播到腾讯微博</a>
+        <a href="#" data-role="button" data-icon="plus">转播到QQ 空间</a>
+        <a href="#index" data-icon="arrow-l" data-transition="pop">转到页面一</a>
+    </div>
+</div>
+
+<script src="jquery/jquery-1.8.3.js"></script>
+<script src="jquery.mobile-1.3.2/jquery.mobile-1.3.2.js"></script>
+</body>
+</html>
