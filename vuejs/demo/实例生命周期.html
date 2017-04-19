@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>实例生命周期</title>
+</head>
+<body>
+
+
+	<script src = "../script/vue.js"></script>	
+	<script>
+	// create这个钩子在实例被创建之后被调用
+	var vm = new Vue({
+		data : {
+			a : 1
+		},
+		created : function () {
+			// `this`指向vm实例
+			console.log("a is:" + this.a);
+		}
+	});
+	// "a is:1"
+
+	</script>
+</body>
+</html>
+	

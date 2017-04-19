@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>条件渲染</title>
+</head>
+<body>
+	
+	<h1 v-if="ok">Yes</h1>
+	<h1 v-else>No</h1>
+	
+
+
+	<template v-if="ok">
+		<h1>标题一</h1>
+		<p>段落一</p>
+		<p>段落二</p>
+	</template>
+
+	<div v-if="Math.random() > 0.5">可见</div>
+	<div v-else>不可见</div>
+
+	<div v-if="type === 'A'">A</div>
+	<div v-else-if="type === 'B'">B</div>
+	<div v-else-if="type === 'C'">C</div>
+	<div v-else>Not A/B/C</div>
+	
+	<template v-if="loginType === 'username'">
+		<label for="">Username</label>
+		<input type="text" placeholder="Enter your username" key="username-input">
+	</template>
+	<template v-else>
+		<label for="">Email</label>
+		<input type="text" placeholder="Enter your email address" key="email-input">
+	</template>
+
+	<h1 v-show="ok">Heloo!</h1>
+	<script src="../script/vue.js"></script>
+	<script>
+		
+	</script>
+	<!-- note:
+		1. 一般来说，v-if有更高的切换开销，而v-show 有更高的初始化渲染开销。因此，如果需要非常频繁地切换，则使用v-show较好;如果在运行时条件不太可能改变，则使用v-if较好。
+		2. 当v-if与v-for一起使用时，v-for具有更高的优先级。
+	 -->
+</body>
+</html>

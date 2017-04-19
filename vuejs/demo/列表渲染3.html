@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+
+	<div v-for="(value, key) in object">
+		{{ key }} : {{ value }}
+	</div>
+	<div v-for="(value, key, index) in object">
+		{{ index }} : {{ key }} : {{ value }} 
+	</div>
+	<script src="../script/vue.js"></script>
+	<script>
+		var vm1 = new Vue({
+			el: "div:nth-of-type(1)",
+			data: {
+				object: {
+					nakeName: "ZRC-Struggling",
+					website: "https://github.com/ZRC-Struggling"
+				}
+			}
+		})
+		var vm2 = new Vue({
+			el: "div:nth-of-type(1)",
+			data: {
+				object: {
+					nakeName: "ZRC-Struggling",
+					website: "https://github.com/ZRC-Struggling"
+				}
+			}
+		})
+	</script>
+
+	<!-- note: 
+		1. Cannot use v-for on stateful component root element because it renders multiple elements.
+		
+	-->
+</body>
+</html>

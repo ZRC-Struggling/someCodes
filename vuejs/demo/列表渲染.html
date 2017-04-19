@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<ul id="example-1" >
+		<li v-for="item in items">
+			{{ item.message }}
+		</li>
+	</ul>
+
+	<ul id="example-2">
+		<li v-for="(item, index) in items">
+			{{parentMessage}} - {{index}} - {{item.message}}
+		</li>
+	</ul>
+
+	<ul id="example-3">
+		<li v-for="(item, index) of items">
+			{{ item.message }} "index为" {{ index }}
+		</li>
+	</ul>
+	<script src="../script/vue.js"></script>
+	<script>
+		var example = new Vue({
+			el: "#example-1",
+			data: {
+				items: [
+					{message: "Foo"},
+					{message: "Bar"}
+				]
+			}
+		});
+
+		var example2 = new Vue({
+			el: "#example-2",
+			data: {
+				parentMessage: "Parent",
+				items: [
+					{ message: "Foo" },
+					{ message: "Bar" }
+				]
+			}
+		});
+
+		var example3 = new Vue({
+			el: "#example-3",
+			data: {
+				items: [
+					{ message: "第一"},
+					{ message: "第二"},
+					{ message: "第三"}
+				]
+			}
+		});
+	</script>
+</body>
+</html>

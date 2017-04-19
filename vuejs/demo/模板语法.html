@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>模板语法</title>
+</head>
+<body>
+	
+
+	<span>模板语法:{{msg}}</span>
+	<br>
+	<span v-once>这个永远不改变:{{msg}}</span>
+	<br>
+	<span v-html="rawHtml">这是真正的HTML:{{msg}}</span>
+	<br>
+	<div v-bind:id="dynamicId"></div>
+	<button v-bind:disabled="someDynamicCondition">Button</button>
+	<br>
+	<!-- 
+	1. 对于所有的数据绑定，Vue.js都提供了完全的JavaScript表达式支持。 
+	2. 这些表达式会在所属的Vue实例的数据作用域下作为JavaScript被解析。有个限制就是，每个绑定都只能包含单个表达式。
+	eg : {{var a = 1}}   {{if(ok){return message}}}
+	3. 模板表达式都被放在沙盒中，只能访问全局变量的一个白名单，如Math和Date。不应该在模板表达式中试图访问用户定义的全局变量。 
+	-->
+	<span>{{"good" + " job!"}}</span>
+	<br>
+	<span>{{(1 === 1) ? "YES" : "NO"}}</span>
+	<br>
+	<p v-if="seen">Now you can see me</p>
+	<br>
+	<a v-bind:href="url"></a>
+	<br>
+	<a v-on:click="doSomething"></a>
+	<br>
+	<!-- 修饰符是以半角句号`.`指明的特殊后缀，永远指出一个指令应该以特殊方式绑定。例如，.prevent修饰符告诉v-on指令对于触发的事件调用event.preventDefault() -->
+	<form v-on:submit.prevent="onSubmit"></form>
+	<br>
+
+	<!-- v-前缀在模板中是作为用一个标识Vue特殊属性的明显标志。当你使用Vue.js为现有的所有的标记添加动态行为是，它会很有用，但对于一些经常使用的指令来说有点繁琐。同时，当搭建Vue.js关联使用模板的SPA时，v-前缀也变得没有那么重要了。因此，Vue.js为两个最为常用的指令提供了特别的缩写。 -->
+	<!-- 完整语法 -->
+	<a v-bind:href="url"></a>
+	<!-- 缩写 -->
+	<a :href="url"></a>
+	<br>
+	<!-- 完整语法 -->
+	<a v-on:click="doSomething"></a>
+	<!-- 缩写 -->
+	<a @click="doSomething"></a>
+	<br>
+
+
+	<script src = "../script/vue.js"></script>
+	<script>
+		var vm1 = new Vue({
+			el: "span:nth-of-type(1)",
+			data: {
+				msg: "nothing"
+			}			
+		});
+		// 通过`v-once`指令，可以是实现一次性地插值，当数据改变是，插值处的内容不会更新。
+		// 注意：这会影响该节点上所有的数据的绑定
+		var vm2 = new Vue({
+			el: "span:nth-of-type(2)",
+			data: {
+				msg: "nobody can change me"
+			}
+		});
+
+
+		// 被插入的内容都会被当做HTML--数据绑定会被忽略。
+		// 注意：不能使用v-html来复合局部模板，因为Vue不是
+		// 不是基于字符串的模板引擎。组件更适合担任UI重用与复合的基本单元。
+		// 在站点上动态渲染HTML是比较危险的，因为它很容易
+		// XSS攻击。
+		// 建议：只对可信内容使用HTML插值，绝不要对用户提供
+		// 的内容插值。
+		var vm3 = new Vue({
+			el: "span:nth-of-type(3)",
+			data: {
+				msg: "<a>html</a>"
+			}
+		});
+
+		var vm4 = new Vue({
+			el: "span:nth-of-type(4)"
+		});
+
+		var vm5 = new Vue({
+			el: "span:nth-of-type(5)"
+		});
+	</script>
+
+
+
+<!-- 	
+notes :
+	1. vue.js:569 [Vue warn]: Property or method "rawHtml" is not defined on the instance but referenced during render. Make sure to declare reactive data properties in the data option. 
+(found in <Root>) 
+	2.过滤器这个知识点有点疑惑
+
+-->
+</body>
+</html>

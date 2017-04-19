@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<!-- 在自定义组件中，可以像任何普通元素一样使用v-for，但是他不能自动传递数据到组件里，因为组件有自己独立的作用域。为了传递迭代数据到组件里，我们要用props
+		不自动注入item到组件里的原因是，因为这使得组件会紧密耦合到v-for如何运作。在一些情况下，明确数据的来源可以使组件可以重用。
+	 -->
+	
+	<div id="todo-list-example">
+		<input v-model="newTodoText" v-on:keyup.enter="addNewTodo" placeholder="Add a todo" type="text">
+		<ul>
+			<li is="todo-item" v-for="(todo, index) in todos" v-bind:title="todo" v-on:remove="todos.splice(index,1)"></li>
+		</ul>
+	</div>
+
+	<script src="../script/vue.js"></script>
+	<script>
+		Vue.component("todo-item", {
+			template: "<li>{{ title }}<button v-on:click='$.emit(\"remove\")'>×</button></li>",
+			props: ["title"]
+		});
+
+		var vm1 = new Vue({
+			el: "#todo-list-example",
+			data: {
+				newTodoText: "",
+				todos:[
+					"Do the dishes",
+					"Take out the trash",
+					"Mow the lawn"
+				]
+			},
+			methods: {
+				addNewTodo: function  () {
+					this.todos.push(this.newTodoText);
+					this.newTodoText = "";
+				}
+			}
+		})
+	</script>
+
+	<!-- note: 
+		1. 暂时还不是很熟悉
+	-->
+</body>
+</html>

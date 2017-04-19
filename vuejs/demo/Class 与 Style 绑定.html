@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Class与Style绑定</title>
+</head>
+<body>
+	<!-- class`active`的更新取决于数据属性`isActive`是否为真值 -->
+	<div v-bind:class="{active: isActive}">div1</div>
+
+	<!-- 我们也可以在对象中传入更多属性用来动态切换多个class。此外，v-bind:class指令可以与普通的class属性共存。 -->
+	<div class="static" v-bind:class="{active: isActive, 'text-danger': hasError}">div2</div>
+
+	<div v-bind:class="classObject">div3</div>
+	
+	<div v-bind:class="[activeClass, errorClass]">div4</div>
+
+	<div v-bind:class="[isActive ? activeClass : '', errorClass]">div5</div>
+
+	<div v-bind:class="[{ active: isActive}, errorClass]">div6</div>
+
+	<my-component class="baz boo"></my-component>
+	<my-component v-bind:class="{ active: isActive}"></my-component>
+
+	<div v-bind:style="{ color: activeColor, fontSize: fontSize + 'px'}">div7</div>
+	<div v-bind:style="styleObject">div8</div>
+	<div v-bind:style="[baseStyles, overridingStyles]"></div>
+
+	<script src="../script/vue.js"></script>
+	<script>
+		var vm1 = new Vue({
+			el: "div:nth-of-type(1)",
+			data: {
+				isActive: true
+			}
+		});
+
+		var vm2 = new Vue({
+			el: "div:nth-of-type(2)",
+			data: {
+				isActive: true,
+				hasError: false
+			}
+		});
+
+		var vm3 = new Vue({
+			el: "div:nth-of-type(3)",
+			data: {
+				isActive: true,
+				error: null
+			},
+			computed: {
+				classObject: function () {
+					return {
+						active: this.isActive && !this.error,
+						'text-danger': this.error && this.error.type === "fatal"
+					}
+				}
+			}
+		});
+
+		var vm4 = new Vue({
+			el: "div:nth-of-type(4)",
+			data: {
+				activeClass: "active",
+				errorClass: "text-danger"
+			}
+		});
+
+		var vm5 = new Vue({
+			el: "div:nth-of-type(5)",
+			data: {
+				isActive : "true",
+				activeClass: "active",
+				errorClass: "text-danger"
+			}
+		});
+
+		var vm6 = new Vue({
+			el: "div:nth-of-type(6)",
+			data: {
+				isActive : "active",
+				errorClass: "text-danger"
+			}
+		})
+
+		Vue.component("my-component", {
+			template: "<p class='foo bar'>Hi</p>"
+		})
+
+		var vm7 = new Vue({
+			el: "div:nth-of-type(7)",
+			data: {
+				activeColor: "red",
+				fontSize: 30
+			}
+		});
+
+		var vm8 = new Vue({
+			el: "div:nth-of-type(8)",
+			data: {
+				styleObject: {
+					color: "red",
+					fontSize: "13px"
+				}
+			}
+		})
+	</script>
+
+	<!-- note: 
+
+		1. vue.js:569 [Vue warn]: Property or method "activeClass" is not defined on the instance but referenced during render. Make sure to declare reactive data properties in the data option. 
+		原因：
+		<div v-bind:class="[isActive ? activeClass : '', errorClass]">div5</div>
+		解决：将
+		var vm5 = new Vue({
+			el: "div:nth-of-type(5)",
+			data: {
+				isActive : "true",
+				errorClass: "text-danger"
+			}
+		});
+		修改为：
+		var vm5 = new Vue({
+			el: "div:nth-of-type(5)",
+			data: {
+				isActive : "true",
+				activeClass: "active",
+				errorClass: "text-danger"
+			}
+		});		
+
+(found in <Root>)
+	-->
+
+	
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>观察Watchers</title>
+</head>
+<body>
+	
+	<div id="watch-examle">
+		<p>
+			Ask a yes/no question:
+			<input type="text" v-model="question">
+		</p>
+		<p>{{answer}}</p>
+	</div>
+
+	<script src="https://unpkg.com/axios@0.12.0/dist/axios.min.js"></script>
+	<script src="https://unpkg.com/lodash@4.13.1/lodash.min.js"></script>
+	<script src="../script/vue.js"></script>
+	<script>
+		var watchExampleVM = new Vue({
+			el: "#watch-examle",
+			data: {
+				question: "",
+				answer: "I cannot give you an answer until you ask a quesiton!"
+			},
+			watch: {
+				// 如果quesiton发生改变，这个函数就会运行
+				question: function (newQuestion) {
+					this.answer = "Waiting for you to stop typing...";
+					this.getAnswer();
+				}
+			},
+			methods: {
+				// _.debounce是一个通过lodash限制操作频率的函数。
+				// 在这个例子中，我们希望限制访问yesno.wtf/api的频率
+				// ajax请求知道用户输入完毕才会发出
+				getAnswer: _.debounce(
+					function () {
+						var vm = this;
+						if(this.question.indexOf("?") === -1){
+							vm.answer = "Question usually contain a question mark. ;-)"
+							return
+						}
+						vm.answer = "Thinking..."
+						axios.get("https://yesno.wtf/api")
+							.then(function (response) {
+								vm.answer = _.capitalize(response.data.answer);
+							}).catch(function (error) {
+								vm.answer = "Error!Could not reach the API." + error;
+							})
+					},
+					// 这是我们为用户停止输入等待的毫秒数。
+					500
+					)
+			}
+		})
+	</script>
+	<!-- 在这个实例中，使用watch选项允许我们执行异步操作（访问一个API），限制我们执行该操作的频率，并在我们得到最终结果前，设置中间状态。这是计算属性无法做到的 。 -->
+	<!-- 这段代码还需要看多几遍 -->
+
+
+</body>
+</html>

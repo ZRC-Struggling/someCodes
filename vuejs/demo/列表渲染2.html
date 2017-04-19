@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<ul id="ul1">
+		<template v-for="item in items">
+			<li>{{ item.msg }}</li>
+			<li class="divider"></li>
+		</template>
+	</ul>
+
+	<ul id="repeat-object" class="demo">
+		<li v-for="value in object">
+			{{ value  }}
+		</li>
+	</ul>
+
+	<div id="ul3" v-for="(value, key) in object">
+		{{ key }} : {{ value }}
+	</div>
+	<script src="../script/vue.js"></script>
+	<script>
+		var vm1 = new Vue({
+			el: "#ul1",
+			data: {
+				items: [
+					{ msg: "msg1"},
+					{ msg: "msg2"},
+					{ msg: "msg3"}
+				]
+			}
+		});
+
+		var vm2 = new Vue({
+			el: "#repeat-object",''
+			data: {
+				object: {
+					FirstName: "John",
+					LastName: "Doe",
+					Age: 30
+				}
+			}
+		});
+
+		var vm3 = new Vue({
+			el: "#ul3",
+			data: {
+				obj: {
+					userName: "ZRC-Struggling",
+					website: "https://github.com/ZRC-Struggling"
+				}
+			}
+		})
+
+		// note:
+		1. Cannot use v-for on stateful component root element because it renders multiple elements.
+	</script> 	 	
+</body>
+</html>

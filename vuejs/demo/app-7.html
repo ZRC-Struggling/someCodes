@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>app-7</title>
+</head>
+<body>
+	<div id="app-7">
+		<ol>
+			<todo-item v-for="item in groceryList" v-bind:todo="item"></todo-item>
+		</ol>
+	</div>
+	<script src = "../script/vue.js"></script>
+	<script>
+	Vue.component("todo-item",{
+		props : ["todo"],
+		template : "<li>这是个待办项</li>"
+	});
+	var app7 = new Vue({
+		el : "#app-7",
+		data : {
+			groceryList :[
+				{text : "蔬菜"},
+				{text : "水果"},
+				{text : "其它的东西"}
+			]
+		}
+	});
+	</script>
+
+	<!-- “组件化”这个知识点还需要继续加强 -->
+</body>
+</html>
