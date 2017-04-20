@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>data必须是函数</title>
+</head>
+<body>
+	<!-- 通过Vue构造器传入的各种选项大多数都可以在组件里用。data是一个例外，它必须是一个函数。 -->
+	<div id="example">
+		<simple-counter></simple-counter>
+		<simple-counter></simple-counter>
+		<simple-counter></simple-counter>
+	</div>
+	
+	<div id="example2">
+		<simple-counter2></simple-counter2>
+		<simple-counter2></simple-counter2>
+		<simple-counter2></simple-counter2>
+	</div>
+
+
+	<script src="../script/vue.js"></script>
+	<script>
+		var data = { counter: 0 }
+		Vue.component("simple-counter", {
+			template: "<button v-on:click='counter += 1'>{{ counter }}</button>",
+			data: function () {
+				return data;
+			}
+		});
+
+		new Vue({
+			el: "#example"
+		})
+
+		Vue.component("simple-counter2", {
+			template: "<button v-on:click='counter += 1'>{{ counter }}</button>",
+			data: function () {
+				return {
+					counter: 0
+				}
+			}
+		});
+
+		new Vue({
+			el: "#example2"
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+	<parent>
+		<child message="hello!"></child>
+	</parent>
+
+
+	<script src="../script/vue.js"></script>
+	<script>
+		Vue.component("child", {
+			props: ["message"],
+			template: "<span>{{ message }}</span>"
+		})
+
+		new Vue({
+			el: "parent:nth-child(1)"
+		})
+	</script>
+	<!-- 组件意味协同工作，通常父子组件也是这样的关系：组件A在它的模板中使用了组件B。它们之间必然需要相互通信：父组件要给子组件传递数据，子组件需要将它内部发生的事情告知父组件。然而，在一个良好定义的接口中尽可能将父子组件解耦是很重要的。这保证了每个组件在相对隔离的环境中书写和理解，也大幅提高了组件的可维护性和可重用性。
+	在Vue.js中个，父子组件的关系可以总结为props down，events up。父组件通过props向下传递数据给子组件，子组件通过events给父组件发送消息。 -->
+
+	<!-- 组件实例的作用域是孤立的。这意味着不能（也不应该）在子组件的模板内直接引用父组件的数据。要让子组件使用父组件的数据，我们需要通过子组件的props选项。
+	子组件要显式地用props选项声明它期待获得的数据 -->
+</body>
+</html>

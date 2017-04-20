@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+		
+	<div>
+		<input type="text" v-model="message" placeholder="edit me">
+		<p>Message is: {{ message }}</p>
+	</div>
+
+	<span>多行文本：</span>
+	<p style="white-space: pre">
+		{{ message }}
+	</p>
+	<br>
+	
+	<textarea name="" placeholder="add multiple lines" id="" cols="30" rows="10">{{ message }}</textarea>
+
+
+	<script src="../script/vue.js"></script>
+	<script>
+		var example1 = new Vue({
+			el: "div:nth-of-type(1)",
+			data: {
+				message: ""
+			}
+		});
+
+		var example2 = new Vue({
+			el: "span:nth-of-type(1)+p",
+			data: {
+				message: "多行文本"
+			}
+		});
+
+		var example3 = new Vue({
+			el: "textarea:nth-of-type(1)",
+			data: {
+				message: "文本域"
+			}
+		})
+	</script>
+
+
+	<!-- note: 
+		1. 官网提到，在文本区域插值（<textarea></textarea）并不会生效，应用v-model来代替。但实际的结果却不是那样。
+	-->
+</body>
+</html>

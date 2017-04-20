@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<!-- 有时需要在内联语句处理器中访问原生DOM事件。可以用特殊变量$event把它传入方法。 -->
+	<button v-on:click="warn('Form cann not be submitted yet.', $event)">Submit</button>
+
+	<script src="../script/vue.js"></script>
+	<script>
+
+	var example4 = new Vue({
+		el: "button:nth-child(1)",
+		methods: {
+			warn: function (message, event) {
+				if (event) {
+					event.preventDefault();
+					alert(message);
+				}
+			}
+		}
+	});	
+	</script>
+</body>
+</html>

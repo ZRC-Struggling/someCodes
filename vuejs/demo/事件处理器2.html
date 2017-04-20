@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+
+	<div id="example-2">
+		<button v-on:click="greet">
+			Greet
+		</button>
+	</div>
+	<script src="../script/vue.js"></script>
+	<script>
+		var example2 = new Vue({
+			el: "#example-2",
+			data: {
+				name: "Vue.js"
+			},
+			methods: {
+				greet: function (event) {
+					alert("Hello " + this.name + "!"); //"Hello vue.js!"
+					alert(event.target.tagName); // "TUTTON"
+				}
+			}
+		})
+	</script>
+</body>
+</html>

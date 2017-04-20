@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="div1">
+		<input type="checkbox" id="jack" value="jack" v-model="checkedNames">
+		<label for="jack">jack</label>
+		<input type="checkbox" id="john" value="john" v-model="checkedNames">
+		<label for="john">john</label>
+		<input type="checkbox" id="mike" value="mike" v-model="checkedNames">
+		<label for="mike">mike</label>
+		<br>
+		<span>checked names: {{ checkedNames }}</span>
+	</div>
+	
+
+	<div id="div2">
+		<input type="radio" id="one" value="one" v-model="picked">
+		<label for="one">one</label>
+		<input type="radio" id="two" value="two" v-model="picked">
+		<label for="two">two</label>
+		<br>
+		<span>Picked: {{picked}}</span>
+	</div>
+
+	<div id="div3">
+		<select name="" id="" v-model="selected">
+			<option value="a">A</option>
+			<option value="b">B</option>
+			<option value="c">C</option>
+		</select>
+		<span>Selected: {{ selected }}</span>
+	</div>
+
+	<div id="div4">
+		<select name="" id="" v-model="selected" multiple style="width:50px">
+			<option value="a">A</option>
+			<option value="b">B</option>
+			<option value="c">C</option>
+		</select>
+		<br>
+		<span>Selected: {{ selected }}</span>
+	</div>
+
+	<div id="div5">
+		<select name="" id="" v-model="selected">
+			<option v-for="option in options" v-bind:value="option.value">
+				{{ option.text }}
+			</option>
+		</select>
+		<span>Selected: {{ selected }}</span>
+	</div>
+	<script src="../script/vue.js"></script>
+	<script>
+		var vm1 = new Vue({
+			el: "div:nth-child(1)",
+			data: {
+				checkedNames: []
+			}
+		});
+
+		var vm2 = new Vue({
+			el: "div:nth-child(2)",
+			data: {
+				picked: ""
+			}
+		});
+
+		var vm3 = new Vue({
+			el: "div:nth-child(3)",
+			data: {
+				selected: ""
+			}
+		});
+
+		var vm4 = new Vue({
+			el: "div:nth-child(4)",
+			data: {
+				selected: []
+			}
+		});
+
+		var vm5 = new Vue({
+			el: "div:nth-child(5)",
+			data: {
+				selected: "",
+				options: [
+					{ text: "One", value: "A"},
+					{ text: "Two", value: "B"},
+					{ text: "Three", value: "C"}
+				]
+			}
+		});
+
+		var vm6 = new Vue({
+			el: "div:nth-child(6)",
+			data: {
+
+			}
+		});
+
+
+	</script>
+</body>
+</html>
