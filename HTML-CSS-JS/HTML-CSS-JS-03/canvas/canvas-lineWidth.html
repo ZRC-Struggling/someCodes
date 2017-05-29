@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<canvas id="canvas"></canvas>
+	<script>
+		function draw() {
+		  var ctx = document.getElementById('canvas').getContext('2d');
+		  ctx.strokeStyle = "red";
+		  for (var i = 0; i < 10; i++){
+		  	ctx.lineWidth = i + 1;
+		  	ctx.beginPath();
+		  	ctx.moveTo(5 + 14 * i, 5 + 14 * i);
+		  	// ctx.moveTo(5 + 14 * i, 5)
+		  	ctx.lineTo(5 + 14 * i, 140);
+		  	ctx.stroke();
+		  }
+		}
+
+		draw();
+	</script>
+</body>
+</html>

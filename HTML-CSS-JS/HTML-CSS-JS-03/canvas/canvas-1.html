@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>canvas-demo1</title>
+	<style>
+		canvas{
+			border: 1px solid red;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="canvas" width="150" height="150"></canvas>
+	<script>
+		window.onload = function () {
+			var canvas = document.getElementById('canvas');
+			if (canvas.getContext) {
+				var ctx = canvas.getContext("2d");
+                ctx.fillStyle = 'rgb(200,0,0)';
+                ctx.fillRect(10,10,50,50);	//(x, y, width, height)
+
+                ctx.fillStyle = 'rgba(0,0,200,.5)';
+                ctx.fillRect(30,30,50,50);
+
+			}
+		}
+	</script>
+
+<!-- 	note:
+		1. canvas的默认宽度为300px，默认高度为150px 
+		2. fillRect(x, y, width, height) 绘制一个填充的矩形
+           strokeRect(x, y, width, height) 绘制一个矩形的边框
+           clearRect(x, y, width, height) 清除指定矩形区域，让清除部分完全透明。
+
+		-->
+
+</body>
+</html>

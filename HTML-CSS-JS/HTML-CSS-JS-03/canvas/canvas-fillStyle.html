@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<canvas id="canvas"></canvas>
+	<script>
+		window.onload = function () {
+			var num = 5; // 行数、列数
+			var times = 1; // 行数和列数的扩大倍数
+			function draw () {
+				var canvas = document.getElementById("canvas");
+				var ctx = canvas.getContext("2d");
+				// 根据扩大倍数来更改画布的大小
+				canvas.width = 300 * times;
+				canvas.height = 150 * times;
+				for (var i = 0; i < num * times; i++) {
+					for (var j = 0; j < num * times; j++) {
+						ctx.fillStyle = "rgb(" + Math.floor(i * 255 / num / times) + "," + Math.floor(j * 255 / num / times) + ",0)";
+						// 每个格子的大小不受扩大倍数的影响
+						ctx.fillRect(i * 150 / num, j * 150 / num, 150 / num, 150 / num);
+					}
+				}
+			}
+
+			draw();
+		}
+	</script>
+
+	<!-- note: 
+		1. Q:更改了变量的数值，按下f12键，在浏览器中的预览效果仍然不变，然而按下f5刷新了，效果才能展现。
+		   A: 过一段时间之后，做过测试，却发现不再出现这种现象了。
+
+		2. fillStyle/strokeStyle是属性，而不是方法，它们的值应该是一个字符串。
+
+	-->
+</body>
+</html>

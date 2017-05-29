@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>canvas-drawRectangle</title>
+</head>
+<body>
+	<canvas id="canvas"></canvas>
+	<script>
+		window.onload = function () {
+			var canvas = document.getElementById('canvas');
+			if (canvas.getContext) {
+				var ctx = canvas.getContext("2d");
+				ctx.fillRect(10, 10, 120, 120);
+				ctx.clearRect(30, 30, 80, 80); // 80 = 120-(30-10)*2
+				ctx.strokeRect(35, 35, 70, 70); // 70 = 80-(35-30)*2
+			}
+		}
+	</script>
+
+	<!-- 	note:
+		1. canvas的默认宽度为300px，默认高度为150px 
+		2. fillRect(x, y, width, height) 绘制一个填充的矩形，默认的填充颜色为黑色。
+           strokeRect(x, y, width, height) 绘制一个矩形的边框。
+           clearRect(x, y, width, height) 清除指定矩形区域，让清除部分完全透明。
+        说明：不同于路径函数(path function)，以上的三个函数绘制之后会马上显现在canvas上，即时生效。
+
+		-->
+
+</body>
+</html>

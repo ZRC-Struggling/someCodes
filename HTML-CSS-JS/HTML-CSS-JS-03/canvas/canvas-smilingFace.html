@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+
+	<canvas id="canvas"></canvas>
+
+	<script>
+		window.onload = function () {
+			function draw () {
+				var canvas = document.getElementById("canvas");
+				if (canvas.getContext) {
+					var ctx = canvas.getContext("2d");
+
+					ctx.beginPath();
+					ctx.arc(100, 100, 50, 0, Math.PI*2, true);
+					ctx.moveTo(75, 110);
+					ctx.arc(100, 110, 25, 0, Math.PI, false); // 口
+					ctx.moveTo(65, 85);
+					ctx.arc(75, 85, 5, 0, Math.PI*2, true); // 左眼
+					ctx.moveTo(125, 85);
+					ctx.arc(135, 85, 5, 0, Math.PI*2, true); // 右眼
+					ctx.stroke();
+				}
+			}
+
+			// function draw() {
+			//   var canvas = document.getElementById('canvas');
+			//   if (canvas.getContext){
+			//     var ctx = canvas.getContext('2d');
+
+			//     ctx.beginPath();
+			//     ctx.arc(75,75,50,0,Math.PI*2,true); // 绘制
+			//     ctx.moveTo(110,75);
+			//     ctx.arc(75,75,35,0,Math.PI,false);   // 口(顺时针)
+			//     ctx.moveTo(65,65);
+			//     ctx.arc(60,65,5,0,Math.PI*2,true);  // 左眼
+			//     ctx.moveTo(95,65);
+			//     ctx.arc(90,65,5,0,Math.PI*2,true);  // 右眼
+			//     ctx.stroke();
+			//   }
+			// }
+
+			draw();
+		}
+	</script>
+
+	<!-- note: 
+	    1. 未注释的函数和已经注释掉的函数存在一些无法理解的差异性。
+	    2. 圆弧或圆的绘制语法：
+	       arc(x, y, radius, startAngle, endAngle, anticlockwise)
+	       参数anticlockwise为一个布尔值。为true时，是逆时针方向，反之为顺时针。
+	     -->
+</body>
+</html>

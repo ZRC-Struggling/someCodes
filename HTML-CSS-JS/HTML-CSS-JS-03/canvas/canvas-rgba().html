@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<canvas id="canvas"></canvas>
+	<script>
+		function draw() {
+			var ctx = document.getElementById("canvas").getContext("2d");
+			ctx.fillStyle = "red";
+			ctx.fillRect(0, 0, 150, 50);
+			ctx.fillStyle = "green";
+			ctx.fillRect(0, 50, 150, 50);
+			ctx.fillStyle = "blue";
+			ctx.fillRect(0, 100, 150, 50);
+
+			for (var i = 0; i < 3; i++) {
+				for (var j = 0; j < 10; j++) {
+					ctx.fillStyle = "rgba(" + "255,255,255," + (j + 1)/ 10 + ")";
+					ctx.fillRect(5 + 140 / 10 * j, 5 + 150 / 3 * i, 140 / 10, (150 - 6 * 5) / 3);
+				}
+			}
+		}
+
+		draw();
+	</script>
+</body>
+</html>

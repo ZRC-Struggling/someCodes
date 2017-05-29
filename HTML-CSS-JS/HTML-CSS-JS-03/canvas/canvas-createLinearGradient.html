@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<canvas id="canvas"></canvas>
+	<script>
+		function draw() {
+		  var ctx = document.getElementById('canvas').getContext('2d');
+
+		  // Create gradients
+		  var lingrad = ctx.createLinearGradient(0,0,0,150);
+		  lingrad.addColorStop(0, '#00ABEB');
+		  lingrad.addColorStop(0.5, '#fff');
+
+		  var lingrad2 = ctx.createLinearGradient(0,50,0,95);
+		  lingrad2.addColorStop(0.5, '#000');
+		  lingrad2.addColorStop(1, 'rgba(0,0,0,0)');
+
+		  // assign gradients to fill and stroke styles
+		  ctx.fillStyle = lingrad;
+		  ctx.strokeStyle = lingrad2;
+		  
+		  // draw shapes
+		  ctx.fillRect(10,10,130,130);
+		  ctx.strokeRect(50,50,50,50);
+
+		}
+
+		draw();
+	</script>
+
+	<!-- note:
+	1. 效果有点儿奇怪
+	2. createLinearGradient(x1, y1, x2, y2)
+	3. createRadialGradient(x1, y1, r1, x2, y2, r2)
+	 -->
+</body>
+</html>

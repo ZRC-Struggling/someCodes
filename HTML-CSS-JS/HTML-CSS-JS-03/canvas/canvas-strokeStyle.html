@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<canvas id="canvas">您的浏览器不支持画布！</canvas>
+	<script>
+			var num = 5; // 行数、列数
+			var times = 5; // 行数和列数的扩大倍数
+			function draw () {
+				var canvas = document.getElementById("canvas");
+				var ctx = canvas.getContext("2d");
+				// 根据扩大倍数来更改画布的大小
+				canvas.width = 300 * times;
+				canvas.height = 150 * times;
+				for (var i = 0; i < num * times; i++) {
+					for (var j = 0; j < num * times; j++) {
+						ctx.strokeStyle = "rgb(" + Math.floor(i * 255 / num / times) + "," + Math.floor(j * 255 / num / times) + ",0)";
+						ctx.beginPath();
+						// 每个格子的大小不受扩大倍数的影响
+						ctx.arc(150 / num / 2 + i * (150 / num / 2 * 2), 150 / num / 2 + j * (150 / num / 2 * 2), 150 / num / 2, 0, Math.PI * 2, true);
+						ctx.stroke();
+					}
+				}
+			}
+
+			draw();
+	</script>
+	<!-- note: 
+		1. fillStyle/strokeStyle是属性，而不是方法，它们的值应该是一个字符串。
+
+	-->
+</body>
+</html>

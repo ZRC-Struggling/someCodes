@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+
+	<div>
+		<canvas id="canvas"></canvas>
+	</div>
+	<script>
+		window.onload = function () {
+			var canvas = document.getElementById("canvas");
+			if(canvas.getContext){
+				var ctx = canvas.getContext("2d");
+				ctx.beginPath();
+				ctx.moveTo(0, 30);
+				ctx.lineTo(32, 30);
+				ctx.lineTo(43, 0);
+				ctx.lineTo(53, 30);
+				ctx.lineTo(81, 30);
+				ctx.lineTo(59, 53);
+				ctx.lineTo(64, 80);
+				ctx.lineTo(43, 63);
+				ctx.lineTo(17, 80);
+				ctx.lineTo(26, 53);
+				ctx.closePath(); // 当调用fill()函数时，所有没有闭合的形状都会自动闭合，所以可以略去此句。但是调用stroke()时不会自动闭合，此句必不可少。
+				ctx.fill();
+			}
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<canvas id="myCanvas"></canvas>
+
+	<script>
+		var canvas = document.getElementsByTagName("canvas")[0];
+		if (canvas.getContext) {
+			var cxt = canvas.getContext("2d");
+			var img = new Image();
+			img.src = "../img/flower2.gif";
+			cxt.drawImage(img, 0, 0);
+		}
+	</script>
+
+
+
+<!-- 	note:
+	1. 显示结果不正常，将脚本从控制台输入两次，结果就正常了。 -->
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<canvas id="canvas">
+		您的浏览器不支持canvas!
+	</canvas>
+	<script>
+		function draw () {
+			var ctx = document.getElementById("canvas").getContext("2d");
+			// 制作田字方格，先给画笔着色，再开始填充矩形
+			ctx.fillStyle = "red";
+			ctx.fillRect(0, 0, 50, 50);
+			ctx.fillStyle = "green";
+			ctx.fillRect(50, 0, 50, 50);
+			ctx.fillStyle = "blue";
+			ctx.fillRect(0, 50, 50, 50);
+			ctx.fillStyle = "yellow";
+			ctx.fillRect(50, 50, 50, 50);
+			// 设置不透明度
+			ctx.globalAlpha = 0.2;
+			// 设置绘制圆形的画笔颜色
+			ctx.fillStyle = "white";
+
+			for (var i = 0; i < 8; i++) {
+				ctx.beginPath();
+				ctx.arc(50, 50, 5 + 8 * i, 0, Math.PI * 2, true);
+				ctx.fill();
+			}
+
+		}
+
+		draw();
+	</script>
+</body>
+</html>

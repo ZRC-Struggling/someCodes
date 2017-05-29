@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<canvas id="myCanvas"></canvas>
+
+	<script>
+		var canvas = document.getElementById("myCanvas");
+		var cxt = canvas.getContext("2d");
+		cxt.moveTo(0, 0);
+		cxt.lineTo(300, 0);
+		cxt.lineTo(300, 150);
+		cxt.lineTo(0, 0);
+		cxt.lineTo(0, 150);
+		cxt.lineTo(300, 0);
+		cxt.stroke();
+	</script>
+</body>
+</html>
