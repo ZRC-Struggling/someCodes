@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body{
+			margin:50px;
+			padding:0;
+		}
+		h3{
+			/*不仅可以使文本居中，也可以使得内联块级元素在所在的容器中居中*/
+			text-align: center; 
+		}
+		span.first-letter{
+			/*行内元素无法直接使用transform属性，可以通过display、float或者position(注意：position:relative对此是无效的)将其转化为block或者inline-block*/
+/*			display: block;
+			position: absolute;
+			position: fixed;
+			float: left;
+			float: right;*/
+			display: inline-block;
+			transform: scale(3) translate(-30%, 0) rotate(-20deg) ;
+			transition:all 0.2s;
+		}
+		h3:hover span.first-letter{
+			transform: scale(3) translate(-30%, 0) rotate(20deg); 
+		}
+	</style>
+</head>
+<body>
+	<h3>
+		<a href="" title="Canvas教程">
+			<span class="first-letter">Canvas</span>
+			教程
+		</a>
+	</h3>
+
+	<!-- note:
+		1. 关于css3的transform：rotate(value);
+		value为负表示逆时针旋转，反之则为顺时针旋转。
+
+	 -->
+</body>
+</html>

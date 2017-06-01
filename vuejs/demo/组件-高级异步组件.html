@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script src="../script/vue.js"></script>
+	<script>
+		const AsyncComp = () => ({
+			// 需要加载的组件，应当是一个Promise
+			component: import("./MyComp.vue"),
+			// 指定加载时进行渲染的组件
+			loading: LoadingComp,
+			// 指定出错时渲染的组件
+			error: ErrorComp,
+			// 渲染loading组件前的等待时间。默认的等待时间为200ms
+			delay: 200,
+			// 最长等待时间。超过此时间则渲染error组件。默认：Infinity
+			timeout: 3000
+		})
+	</script>
+</body>
+</html>

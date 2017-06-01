@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<div id="example">{{ msg }}</div>
+
+	<script src="../script/vue.js"></script>
+	<script>
+		var vm = new Vue({
+			el: "#example",
+			data: {
+				msg: "111"
+			}
+		});
+
+		vm.msg = "222";
+		console.log(vm.$el.textContent === "222"); // false
+		Vue.nextTick(function () {
+			console.log(vm.$el.textContent === "222"); // true
+		})
+
+		// $nextTick()是一个实例方法。它不需要全局Vue，并且回调函数中的this指向的是当前的Vue实例。
+		Vue.component("example", {
+			template: "<span>{{ msg }}</span>",
+			data: function () {
+				return {
+					msg: "not updated"
+				}
+			},
+			methods: {
+				updateMessage: function () {
+					this.msg = "updated";
+					console.log(this.$el.textContent); // 还未更新
+					this.$nextTick(function () {
+						console.log(this.$el.textContent);// 更新完成
+					})
+				}
+			}
+		})
+	</script>
+
+</body>
+</html>

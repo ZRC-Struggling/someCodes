@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<div id="my-component">
+		<hello-world></hello-world>
+	</div>
+
+	<script src="../script/vue.js"></script>
+	<script type="text/x-template" id="hello-world-template">
+		<p>Hello world!</p>
+	</script>
+	<script>
+		Vue.component("hello-world", {
+			template: "#hello-world-template"
+		});
+
+		var vm = new Vue({
+			el: "#my-component",
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<p>
+		<sapn>{{ folder.name }}</sapn>
+		<tree-folder-contents :children="folder.children"/>
+	</p>
+	<ul>
+		<li v-for="child in children">
+			<tree-folder v-if="child.children" :folder="child"></tree-folder>
+			<span v-else>{{ child.name }}</span>
+		</li>
+	</ul>
+	
+	<script src="../script/vue.js"></script>
+	<script>
+		
+	</script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<div id="notification"></div>
+	<script src="../script/vue.js"></script>
+	<script>
+		var vm = new Vue({
+			el: "#notification",
+			data: {
+				msg: ""
+			},
+			template: "<h1>{{ msg }}</h1>"
+		})
+
+	</script>
+</body>
+</html>
