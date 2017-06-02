@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<div id="example-5">
+		<transition>
+			<ul v-if="items.length > 0">
+				<li v-for="item in items">
+					{{ item }}
+				</li>
+			</ul>
+			<p v-else>
+			对不起，内容无法找到
+			</p>
+		</transition>
+	</div>
+	<script src="../script/vue.js"></script>
+	<script>
+		var vm = new Vue({
+			el: "#example-5",
+			data: {
+				items: ["早起", "早睡", "早到"]
+			}
+		})
+	</script>
+</body>
+</html>

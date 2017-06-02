@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link href="https://unpkg.com/animate.css@3.5.1/animate.min.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+	
+	<div id="example-3">
+		<button @click="flag = !flag">看看效果</button>
+		<transition name="custom-classes-transiton" enter-active-class="animated tada" leave-active-class="animated bounceOutRight">
+			<p v-if="show">没错！就是看我！我会隐身...哈哈哈</p>
+		</transition>
+	</div>
+	<script src="../script/vue.js"></script>
+	<script>
+		var vm = new Vue({
+			el: "#example-3",
+			data: {
+				flag: "true"
+			}
+		})
+	</script>
+</body>
+</html>

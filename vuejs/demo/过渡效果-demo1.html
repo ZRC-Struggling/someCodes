@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.fade-enter-active, .fade-leave-active{
+			transition: opacity 5s;
+		}
+		.fade-enter, .fade-leave{
+			opacity: 0;
+			/*opacity: 0.5;*/
+		}
+	</style>
+</head>
+<body>
+	
+
+	<div id="demo">
+		<button v-on:click="flag = !flag">你见，与不见，取决于我</button>
+		<transition name="fade">
+			<p v-if="flag">我身不由己</p>
+		</transition>
+	</div>
+	<script src="../script/vue.js"></script>
+	<script>
+		var vm = new Vue({
+			el: "#demo",
+			data: {
+				flag: "true",
+			}
+		});
+	</script>
+
+	<!-- note:
+		1. 思考样式的控制，尤其那几个类名的用途
+		2. Vue提供transition的过渡组件，在下面的情形中，可以给任何元素和组件添加entering/leaving过渡：
+		- 条件渲染（使用v-if）
+		- 条件展示（使用v-show）
+		- 动态组件
+		- 组件根节点
+		3. 
+	 -->
+</body>
+</html>

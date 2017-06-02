@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.v-enter-active{
+			transition: all 0.3s ease;
+		}
+		.v-leave-active{
+			transition: all 0.8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+		}
+/*		.v-enter, .v-leave{
+			transform: translateX(10px);
+			opacity: 0;
+		}*/
+		.v-enter, .v-leave-active{
+			transform: translateX(10px);
+			opacity: 0;
+		}
+	</style>
+</head>
+<body>
+	
+	<div id="example-1">
+		<button @click="flag = !flag">你见，与不见，全在于我</button>
+		<transition>
+			<p v-if="flag">身不由己</p>
+		</transition>
+	</div>
+
+	<script src="../script/vue.js"></script>
+	<script>
+		var vm = new Vue({
+			el: "#example-1",
+			data: {
+				flag: "true"
+			}
+		});
+	</script>
+
+	<!-- note: 
+		1. v-enter:定义进入过渡的开始状态。在元素被插入时生效，在下一帧移除
+		2. v-enter-active:定义进入过渡的结束状态。在元素被插入时生效，在transition/animation完成之后移除
+		3. v-leave:定义离开过渡的开始状态。在离开过渡被触发时生效，在下一帧移除
+		4. v-leave-active:定义离开过渡的结束状态。在离开过渡被触发时生效，在transition/animation完成之后移除。
+
+		5. 默认地，v-是enter/leave过渡中切换类名的前缀，使用<transition name="my-transition">可以重置前缀，比如v-enter替换为my-transition-enter
+	-->
+
+</body>
+</html>

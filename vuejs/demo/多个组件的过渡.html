@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.component-fade-enter-active, .component-fade-leave-active{
+			transition: opacity 0.3s ease;
+		}
+		.component-fade-enter, .component-fade-leave-active{
+			opacity:0;
+		}
+	</style>
+</head>
+<body>
+	
+	<div id="transition-components-demo">
+		<label for="A1" v-on:click="update">
+			<input type="radio" name="myComponent" id="A1" v-bind:checked="view === 'A1' ? true :false">
+			组件一
+		</label>
+		<label for="B1" v-on:click="update">
+			<input type="radio" name="myComponent" id="B1" v-bind:checked="view === 'A1' ? false :true">
+			组件二
+		</label>
+
+		<transition name="component-fade" mode="out-in">
+			<component v-bind:is="view">
+			</component>
+		</transition>
+	</div>
+	
+	<script src="../script/vue.js"></script>
+	<script>
+	var vm = new Vue({
+			el: "#transition-components-demo",
+			data: {
+				view: "A1"
+			},
+			methods: {
+				update: function (el) {
+					this.view = el.target.getAttribute("id");
+				}
+			},
+			components: {
+				"A1": {
+					template: "<div>这是第一个组件</div>"
+				},
+				"B1": {
+					template: "<div>这是第二个组件</div>"
+				}
+			}
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<transition appear>
+	</transition>
+	
+	<transition
+		appear
+		appear-class="custom-appear-class"
+		appear-active-class="custom-appear-active-class"
+	>
+	</transition>
+
+	<transition
+		appear
+		v-on:before-appear="customBeforeAppearHook"
+		v-on:appear="customAppearHook"
+		v-on:after-appear="customAfterAppearHook"
+	>
+	</transition>
+	<script src="../script/vue.js"></script>
+	<script>
+		
+	</script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<div id="example-6">
+		<transition>
+			<button v-if="docState === 'saved'" key="saved">
+				Edit
+			</button>
+			<button v-if="docState === 'edited'" key="edited">
+				Save
+			</button>
+			<button v-if="docState === 'editing'" key="editing">
+				Cancel
+			</button>
+		</transition>
+	</div>
+		
+	<hr>
+
+	<div id="example-7">
+		<transition>
+			<button v-bind:key="docState">
+				{{ buttonMessage }}
+			</button>
+		</transition>
+	</div>
+
+	<script src="../script/vue.js"></script>
+	<script>
+		var vm = new Vue({
+			el: "#example-6",
+			data: {
+				docState: "edited"
+			}
+		})
+
+		var vm2 = new Vue({
+			el: "#example-7",
+			data: {
+				docState: "saved"
+			},
+			computed: {
+				buttonMessage: function () {
+					switch(this.docState){
+						case "saved":
+						  return "Edit";
+						case "edited":
+						  return "Save";
+						case "saved":
+						  return "Cancel";
+					}
+				}
+			}
+		})
+	</script>
+</body>
+</html>

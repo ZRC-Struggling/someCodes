@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.list-item{
+			display: inline-block;
+			padding:0 5px;
+			margin: 0 2px;
+			background-color: blue;
+			color: white;
+		}
+		.list-enter-active, .list-leave-active{
+			transition: all 1s;
+		}
+		.list-enter, .list-leave-active{
+			opacity: 0;
+			transform: translateY(30px);
+		}
+	</style>
+</head>
+<body>
+	
+	<div id="list-demo" class="demo">
+		<button @click="add">添加</button>
+		<button @click="remove">移除</button>
+		<transition-group name="list" tag="p">
+			<span v-for="item in items" :key="item" class="list-item">
+				{{ item }}
+			</span>
+		</transition-group>
+	</div>
+
+	<script src="../script/vue.js"></script>
+	<script>
+		var vm = new Vue({
+			el: "#list-demo",
+			data:{
+				items: [1,2,3,4,6,7,8,9],
+				nextNum: 10
+			},
+			methods: {
+				randomIndex: function () {
+					return Math.floor(Math.random() * this.items.length);
+				},
+				add: function () {
+					this.items.splice(this.randomIndex(), 0, this.nextNum++);
+				},
+				remove: function () {
+					this.items.splice(this.randomIndex(), 1)
+				},
+			}
+		})
+	</script>
+</body>
+</html>
