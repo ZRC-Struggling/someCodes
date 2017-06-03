@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body{
+			background-color: black;
+		}
+		canvas{
+			background-color: #181818;
+			box-shadow:0 0 0 3px #282828;
+			/*水平垂直居中*/
+			position: absolute;
+			margin:auto;
+			top:0;
+			right:0;
+			bottom:0;
+			left:0;
+		}
+	</style>
+</head>
+<body>
+	
+	<canvas id="canvas"></canvas>
+
+	<script>
+		var canvas = document.getElementById("canvas"),
+			ctx = canvas.getContext("2d"),
+			width = 400,
+			height = 100,
+			loaded = 0,
+			loaderSpeed = 1,
+			loaderWidth = 310, /*进度条宽度*/
+			loaderHeight = 16, /*进度条高度*/
+			/*使进度条水平垂直居中*/
+			loaderX = (width - loaderWidth) / 2,  
+			loaderY = (height - loaderHeight) / 2,
+			particles = [],
+			particleLift = 280,
+			particleRate = 16, /*颗粒的比率*/
+			hueStart = 0,
+			hueEnd = 120,
+			hue = 0, /*色相*/
+			gravity = 0.12,
+			dpr = window.devicePixelRatio;
+
+		canvas.width = width;
+		canvas.height = height;
+		canvas.style.width = (width / dpr) + "px";
+		canvas.style.height = (height / dpr) + "px";
+		ctx.globalCompositeOperation = "lighter";
+
+		function rand (rMi, rMa) {
+			return ~~((Math.random()*(rMa-rMi+1))+rMi)
+		}
+
+		function updateLoader () {
+			if (loaded < 100) {
+				loaded += loaderSpeed;
+			}else {
+				loaded = 0;
+			}
+		}
+
+		function renderLoader () {
+			ctx.fillStyle = "#000000";
+			ctx.fillRect(loaderX, loaderY, loaderWidth, loaderHeight);
+
+			hue = hueStart + (loaded / 100) * (hueEnd - hueStart);
+
+			var newWidth = (loaded / 100) * loaderWidth;
+			ctx.fillStyle = "hsla(" + hue + ", 100%, 40%, 1";
+			ctx.fillRect(loaderX, loaderY, newWidth, loaderHeight);
+
+			ctx.fillStyle = "#444";
+			ctx.fillRect(loaderX, loaderY, newWidth, loaderHeight / 2);
+		}
+
+		function Particle () {
+			this.x = loaderX + ((loaded / 100) * loaderWidth) - rand(0,1);
+			this.y = height / 2 + rand(0, loaderHeight) - loaderHeight / 2;
+			this.vx = (rand(0,4) - 2) / 100;
+			this.vy = (rand(0, particleLift) - particleLift);
+			this.width = rand(1,4) / 2;
+			this.height = rand(1,4) / 2;
+			this.hue = hue;
+		}
+		
+		Particle.prototype.update = function (i) {
+			this.vx += (rand(0,6) - 3) / 100;
+			this.vy += gravity;
+			this.x += this.vx;
+			this.y += this.vy;
+
+			if (this.y > height) {
+				particles.splice(i, 1);
+			}
+		}
+
+		Particle.prototype.render = function () {
+			ctx.fillStyle = "hsla(" + this.hue + ", 100%, " + rand(50, 70) + "%, " + rand(20, 100) / 100 + ")";
+			ctx.fillRect(this.x, this.y, this.width, this.height);
+		};
+
+		// 生成颗粒
+		function createParticles () {
+			var i = particleRate;
+			while(i--){
+				this.particles.push(new Particle());
+			}
+		}		
+
+		function updateParticles () {
+			var i = particles.length;
+			while(i--){
+				var p = particles[i];
+				p.update(i);
+			};
+		}
+
+		function renderParticles () {
+			var i = particles.length;
+			while(i--){
+				var p = particles[i];
+				p.render();
+			}
+		}
+
+		function clearCanvas () {
+			ctx.clearRect(0, 0, width, height);
+		}
+
+		function loop () {
+			requestAnimationFrame(loop);
+			clearCanvas();
+			createParticles();
+			updateLoader();
+			updateParticles();
+			renderLoader();
+			renderParticles();
+		}
+
+		loop();
+	</script>
+</body>
+</html>
