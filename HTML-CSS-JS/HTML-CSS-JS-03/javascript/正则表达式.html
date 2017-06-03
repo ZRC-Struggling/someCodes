@@ -1,0 +1,123 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+
+<body>
+
+
+<script>
+一.创建正则表达的方式
+	1.字面量或称为直接量(不需要用任何的关键字说明它是正则表达式，而是用斜杠来表示正则表达式的开始和结束)
+    	eg:	var reg = /^\w/;
+    
+    2.对象
+    	eg: var reg = new RegExp("^\w");
+	
+	attentions:
+		1)因为简洁方便，字面量创建的方式用的居多。
+		2)ES5规定正则表达式直接量的每次运算都返回新对象。
+二、	正则对象的属性和方法
+	1.属性（5个）
+		ignoreCase：返回一个布尔值，表示是否设置了i修饰符，该属性只读。
+		global：返回一个布尔值，表示是否设置了g修饰符，该属性只读。
+		multiline：返回一个布尔值，表示是否设置了m修饰符，该属性只读。
+		lastIndex：返回下一次开始搜索的位置。该属性可读写，但是只在设置了g修饰符时有意义。
+		source：返回正则表达式的字符串形式（不包括斜杠），该属性只读。
+	eg:	
+			var reg = /Hello/ig;
+			console.log(reg.ignoreCase);	//true  
+			console.log(reg.global);		//true
+			console.log(reg.multiline);		//false	
+			console.log(reg.lastIndex);		//0
+			console.log(reg.source);		//Hello
+	2.方法（3个）
+		test():	检索字符串中的指定值。返回值是 true 或 false。
+		exec():	如果发现匹配，就返回一个数组，成员是每一个匹配成功的子字符串，否则返回null。
+		compile():	用于改变 RegExp
+	eg:
+	1)	var reg1 = /Hello/ig;					
+		console.log(reg1.test("Hello World!"));//true
+		console.log(reg1.lastIndex);			//5
+		console.log(reg1.test("HELLO World!"));	//false
+		//attention:	当正则表达式有g修饰时，每一次运算都会自动更新lastIndex,下次运算就从新的起点(lastIndex的值)开始寻求匹配，而不是把字符串按从左到右去检索。
+		reg1.lastIndex = 0;
+		console.log(reg1.test("HELLO World!"));	//true
+		
+	
+	2)	var reg1 = /Hello/ig;
+		var result = reg1.exec("Hello abc hello def");	
+		console.log(result);		//["Hello"]
+		console.log(result.input);	//Hello abc hello def
+		console.log(result.index); 	//0
+		onsole.log(reg1.exec("Hello abc hello def"));	//["hello"]
+		console.log("Hello abc hello def".match(reg1));	// ["Hello", "hello"]
+	attention:	
+				exec方法的返回数组还包含以下两个属性：
+					input：整个原字符串。
+					index：整个模式匹配成功的开始位置（从0开始计数）。
+		
+	3)	var patt1=new RegExp("e");
+		console.log(patt1.test("The best things in life are free")); //true
+		patt1.compile("d");
+		console.log(patt1.test("The best things in life are free"));	//false		
+三、语法
+	1.修饰符及其描述		
+		i	执行对大小写不敏感的匹配。
+		g	执行全局匹配（查找所有匹配而非在找到第一个匹配后停止）。
+		m	执行多行匹配。
+	2.元字符（Metacharacter）是拥有特殊含义的字符：
+		.	查找单个字符，匹配除回车（\r）、换行(\n) 、行分隔符（\u2028）和段分隔符（\u2029）以外的所有字符。
+		\cX 表示Ctrl-[X]，其中的X是A-Z之中任一个英文字母，用来匹配控制字符。
+		[\b] 匹配退格键(U+0008)，不要与\b混淆。
+		\n 匹配换行键。
+		\r 匹配回车键。
+		\t 匹配制表符tab（U+0009）。
+		\v 匹配垂直制表符（U+000B）。
+		\f 匹配换页符（U+000C）。
+		\0 匹配null字符（U+0000）。
+		\xhh 匹配一个以两位十六进制数（\x00-\xFF）表示的字符。
+		\uhhhh 匹配一个以四位十六进制数（\u0000-\uFFFF）表示的unicode字符。
+		\d 匹配0-9之间的任一数字，相当于[0-9]。
+		\D 匹配所有0-9以外的字符，相当于[^0-9]。
+		\w 匹配任意的字母、数字和下划线，相当于[A-Za-z0-9_]。
+		\W 除所有字母、数字和下划线以外的字符，相当于[^A-Za-z0-9_]。
+		\s 匹配空格（包括制表符、空格符、断行符等），相等于[\t\r\n\v\f]。
+		\S 匹配非空格的字符，相当于[^\t\r\n\v\f]。
+		\b 匹配词的边界。
+		\B 匹配非词边界，即在词的内部。	
+	3.位置字符
+		^ 表示字符串的开始位置
+		$ 表示字符串的结束位置
+	
+	attentions:
+		1)当正则表达式用m(即multiline)修饰时，则^可以匹配每一行的行首，$可以匹配每一行的行末
+		2)^用于中括号表示取非，简单地说，就是排除中括号中的所有元素。
+	4.选择字符
+		竖线符号（|）在正则表达式中表示“或关系”（OR）
+		方括号（[]）所有可供选择的字符都放在方括号内，比如[xyz] 表示x、y、z之中任选一个匹配。
+		连字符（-）表示字符的连续范围
+		
+		eg:
+			"a".match("a|b");		//["a"]
+			"b".match("a|b");		//["b"]
+			"ab".match("a|b");		//["a"]
+	5.转义符
+		正则模式中，需要用斜杠转义的，一共有12个字符：^、.、[、$、(、)、|、*、+、?、{和\\。需要特别注意的是，如果使用RegExp方法生成正则对象，转义需要使用两个斜杠，因为字符串内部会先转义一次。如果是字面量生成，两次转义反而会弄巧成拙。
+		eg:
+			(new RegExp('1\+1')).test('1+1')// false
+			(new RegExp('1\\+1')).test('1+1')// true
+			/1\\+1/.test('1+1')		//false
+			/1\+1/.test('1+1')		//true
+	6.重复类
+		?	软性量词	出现零次或一次
+		*	软性量词	出现零次或多次(任意次)
+		+	软性量词	出现一次或多次（至少一次）
+		{n}	硬性量词	对应零次或者n次
+		{n,m}	软性量词	至少出现n次但不超过m次
+		{n,}	软性量词	至少出现n次(+的升级版)
+</script>		
+</body>
+</html>

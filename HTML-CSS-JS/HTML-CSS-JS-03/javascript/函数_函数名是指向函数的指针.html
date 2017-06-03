@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+
+<body>
+由于函数名仅仅是指向函数的指针，因此函数名与包含对象指针的其他变量没有什么不同。换句话说，一个函数可能会有多名字。
+
+<script>
+function sum(num1,num2){
+	return num1+num2;}
+console.log(sum(10,10));//20
+
+var anotherSum = sum;
+console.log(anotherSum(10,10));//20
+
+sum = null;
+console.log(anotherSum(10,10));//20
+</script>
+</body>
+</html>

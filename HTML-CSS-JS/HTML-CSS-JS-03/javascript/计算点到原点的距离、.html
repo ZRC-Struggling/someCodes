@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+
+<body>
+<script>
+//定义一个构造函数以初始化一个新的Point对象
+function Point(x,y){	//按照惯例，构造函数均以大写字母开始
+	this.x = x;
+	this.y = y;
+	}	//不需要return
+//使用new关键字和构造函数来创建一个实例
+var p = new Point(1,1);
+//通过给构造函数的prototype对象赋值来给Point对象定义方法
+Point.prototype.r = function(){
+	return Math.sqrt(this.x*this.x+this.y*this.y);	//返回x^2+y^2的平方根
+	}
+//Point的实例对象p（以及所有的Point实例对象）继承了方法r()	
+console.log(p.r());	// 1.4142135623730951
+</script>
+
+<!--发现：可以把r()的定义搬到函数里面去，如下：
+this.r=function(){
+	return Math.sqrt(this.x*this.x+this.y*this.y);	//返回x^2+y^2的平方根
+--></body>
+</html>
