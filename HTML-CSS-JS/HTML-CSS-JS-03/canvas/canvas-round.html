@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#myCanvas{
+			border:1px solid red;
+		}
+		#myCanvas:hover{
+			transform: scale(1.5);
+		}
+	</style>
+</head>
+<body>
+	<canvas id="myCanvas"></canvas>
+
+	<script>
+		var canvas = document.getElementById("myCanvas");
+		if (canvas.getContext) {
+			var cxt = canvas.getContext("2d");
+			cxt.fillStyle = "green";
+			cxt.beginPath();
+			cxt.arc(150, 75, 30, 0, Math.PI*2, true);
+			cxt.closePath();
+			cxt.fill();
+		}
+	</script>
+</body>
+</html>
