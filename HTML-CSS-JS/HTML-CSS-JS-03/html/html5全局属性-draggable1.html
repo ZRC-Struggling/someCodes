@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>双向拖动</title>
+	<style>
+		*{
+			margin:0;
+			padding:0;
+			text-align: center;
+		}
+		div{
+			width: 400px;
+			height: 200px;
+			padding:100px;
+			display: inline-block;
+		}
+		div:nth-child(1){
+			border: 1px solid red;
+		}
+		div:nth-child(2){
+			border: 1px solid green;
+		}
+		img{	
+			width: 400px;
+			height: 200px;
+		}
+	</style>
+</head>
+<body>
+	
+	<div id="div1" ondragover="allowDrop(event)" ondrop="drop(event)">
+		<img src="../img/flower.jpg" alt="" id="img1" draggable="true" ondragstart="drag(event)">
+	</div>
+	<div id="div2" ondragover="allowDrop(event)" ondrop="drop(event)"></div>
+
+	<script>
+		function drag (e) {
+			e.dataTransfer.setData("text", e.target.id)
+		}
+
+		function allowDrop (e) {
+			e.preventDefault();
+		}
+
+		function drop (e) {
+			e.preventDefault();
+			var data = e.dataTransfer.getData("text");
+			e.target.appendChild(document.getElementById(data));
+		}
+	</script>
+
+	<!-- note:
+			1.给div加了padding之后，发生错位。
+			2.无论是否给img添加draggable属性，拖动的效果都实现。	
+
+
+
+			 -->
+</body>
+</html>

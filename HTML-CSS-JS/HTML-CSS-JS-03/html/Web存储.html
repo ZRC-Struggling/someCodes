@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Web存储</title>
+</head>
+<body>
+	<script>
+		if (window.localStorage.pageCount) {
+			window.localStorage.pageCount = Number(window.localStorage.pageCount)+1;
+		} else {
+			window.localStorage.pageCount = 1;
+		}
+		console.log("pageCount is "+window.localStorage.pageCount);
+
+
+
+		if (typeof(window.localStorage.myAge)!=="undefined") {
+			window.localStorage.myAge = Number(window.localStorage.myAge)+1;
+		} else {
+			window.localStorage.myAge = 21;
+			window.localStorage["myAge"] = 22;
+			window.localStorage.setItem("myAge",23);
+		}
+		console.log("myAge is "+window.localStorage.myAge);
+
+		if (window.sessionStorage.pageCount) {
+			window.sessionStorage.pageCount = Number(window.sessionStorage.pageCount)+1;
+		} else {
+			window.sessionStorage.pageCount = 1;
+		}
+		console.log("pageCount is "+window.sessionStorage.pageCount);
+
+
+
+		if (typeof(window.sessionStorage.myAge)!=="undefined") {
+			window.sessionStorage.myAge = Number(window.sessionStorage.myAge)+1;
+		} else {
+			window.sessionStorage.myAge = 21;
+			window.sessionStorage["myAge"] = 22;
+			window.sessionStorage.setItem("myAge",23);
+		}
+		console.log("myAge is "+window.sessionStorage.myAge);
+	</script>
+</body>
+</html>

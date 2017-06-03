@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<button>切换下面段落的隐藏与显示</button>
+	<p>隐藏与显示</p>
+
+	<script>
+		var button = document.getElementsByTagName("button")[0];
+		var p = document.getElementsByTagName("p")[0];
+		button.onclick = function () {
+			p.getAttribute("hidden") ? p.removeAttribute("hidden") : p.setAttribute("hidden", "hidden");
+		}
+	</script>
+</body>
+</html>

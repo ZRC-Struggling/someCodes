@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+
+	<script>
+		var formData = new FormData();
+
+		formData.append("username", "ZRC-Struggling");
+		formData.append("accountnum", 123456);
+
+		// HTML文件类型input
+		formData.append("userfile", fileInputElement.files[0]);
+
+		// JavaScript file-like对象
+		var content = '<a id="a"><b id="b">hey!</b></a>';
+		var blob = new Blob([content], {type: "text/xml"});
+
+		formData.append("webmasterfile", blob);
+
+		var request = new XMLHttpRequest();
+		request.open("POST", "http://foo.com/submitform.php");
+		request.send(formData);
+
+	</script>
+</body>
+</html>
