@@ -19,6 +19,12 @@
 
 	obDev.a = 30;
 	console.log(obDev); // Object {a: 30, b:30}
+
+	var b = 0;
+	const arr = [b, 2, 3];
+	console.log(arr);	// [0, 2, 3]
+	b = 10000;
+	console.log(arr); // [0, 2, 3]
 	</script>
 
 </body>

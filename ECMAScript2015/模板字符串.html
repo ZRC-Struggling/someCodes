@@ -17,20 +17,32 @@
 	const a = 10,
 		  b = 20,
 		  c = 30,
-          str1 = `${a} + ${b} + ${c}= ${a + b + c}`;
+          str1 = `${a} + ${b} + ${c} = ${a + b + c}`;
     console.log(str1);
+
     // es5
-    var a = 10,
-    	b = 20,
-    	c = 30,
-    	str2 = a + "+" + b + "+" + c + "=" + (a + b + c);
+
+    var a2 = 10,
+    	b2 = 20,
+    	c2 = 30,
+    	str2 = a2 + " + " + b2 + " + " + c2 + " = " + (a2 + b2 + c2);
     console.log(str2);
 
+    // 下面代码会引发"MultipleErrors"
+    // var a = 10,
+    // 	b = 20,
+    // 	c = 30,
+    // 	str2 = a + "+" + b + "+" + c + "=" + (a + b + c);
+    // console.log(str2);
 
-
-    // note :
-    // 1. MultipleErrors
 	</script>
 
+ <!--    note :
+    1.
+    	Q: MultipleErrors(相关错误如“...Duplicate declaration, a...”)
+    	A: 因为变量a，b，c重复声明了，前面已经用哦const进行了声明就，后面又用var进行了声明，所以就出错了。相关的代码已经修正。
+
+
+    	-->
 </body>
 </html>
