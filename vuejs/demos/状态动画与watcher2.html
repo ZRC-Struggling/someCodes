@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<div id="example-7">
+		<input type="text" v-model="colorQuery" v-on:keyup.enter="updateColor" placeholder="输入一个颜色">
+		<button v-on:click="updateColor">更新</button>
+		<p>预览</p>
+		<span
+			v-bind:style="{ backgroundColor: tweenedCSSColor }"
+			class="example-7-color-preview"
+		></span>
+		<p>
+			{{ tweenedCSSColor }}
+		</p>
+	</div>
+
+	<script src="https://unpkg.com/tween.js@16.3.4"></script>
+	<script src="https://unpkg.com/color-js@1.0.3/color.js"></script>
+	<script src="../script/vue.js"></script>
+	<script>
+		var color = net.brehaut.Color;
+
+		new Vue({
+			el: "#example-7",
+			data: {
+				colorQuery: "",
+				color: {
+					red: 0,
+					green: 0,
+					blue: 0,
+					alpha:1
+				},
+				tweenedColor: {}
+			},
+			created: function () {
+				this.tweenedColor = Object.assign({}, this.color)
+			},
+			watch: {
+				color: function () {
+					function animate (time) {
+						requestAnimationFrame(animate);
+						TWEEN.update(time)
+					}
+					new  TWEEN.Tween(this.tweenedColor)
+					  .to(this.color, 750)
+					  .start();
+					animate();
+				}
+			},
+			computed: {
+				tweenedCSSColor: function () {
+					return new Color({
+						red: this.tweenedCSSColor.red,
+						green: this.tweenedCSSColor.green,
+						blue: this.tweenedCSSColor.blue,
+						alpha: this.tweenedCSSColor.alpha,
+					}).toCSS()
+				}
+			},
+			methods: {
+				updateColor: function () {
+					this.color = new Color(this.colorQuery).toRGB();
+					this.colorQuery = "";
+				}
+			}
+		})
+	</script>
+	<!-- note:  
+		1. ReferenceError: Color is not defined
+	-->
+</body>
+</html>

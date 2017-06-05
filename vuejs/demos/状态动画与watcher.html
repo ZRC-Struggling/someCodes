@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+<div id="animated-number-demo">
+	<input type="number" v-model.number="number" step="20">
+	<p>
+		{{ animatedNumber }}
+	</p>
+</div>
+	
+<script src="https://unpkg.com/tween.js@16.3.4"></script>
+<script type="text/javascript" src="../script/vue.js"></script>	
+<script>
+	var vm = new Vue({
+		el: "#animated-number-demo",
+		data: {
+			number: 0,
+			animatedNumber: 0
+		},
+		watch: {
+			number: function (newVal, oldVal) {
+				var vm = this;
+				function animate (time) {
+					requestAnimationFrame(animate)
+					TWEEN.update(time)
+				}
+				new TWEEN.Tween({ tweeningNumber: oldVal })
+				  .easing(TWEEN.Easing.Quadratic.Out)
+				  .to({ tweeningNumber: newVal }, 500)
+				  .onUpdate(function () {
+				  	vm.animatedNumber = this.tweeningNumber.toFixed(0)
+				  })
+				  .start();
+				animate();
+			}
+		}
+	})
+</script>
+</body>
+</html>

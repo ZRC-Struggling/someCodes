@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<div v-greet="{ name: '小同学', msg: '你好'}"></div>
+	<script src="../script/vue.js"></script>
+	<script>
+		Vue.directive("greet", function (el, binding) {
+			console.log(binding.value.name);
+			console.log(binding.value.msg);
+		})
+	</script>
+<!-- 	note: 
+	1. 未达到预定的效果
+ -->
+
+
+</body>
+</html>

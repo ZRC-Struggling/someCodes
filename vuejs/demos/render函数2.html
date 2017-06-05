@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	
+	<div id="example-9">
+		<anchored-heading v-bind:level="3">
+		</anchored-heading>
+	</div>
+
+	<script src="../script/vue.js"></script>
+	<script>
+		Vue.component("anchored-heading", {
+			render: function (createElement) {
+				return createElement(
+						"h" + this.level,
+						this.$slots.default // 子组件中的阵列
+					)
+			},
+			props: {
+				level: {
+					type: Number,
+					required: "true"
+				}
+			}
+		})
+
+		var vm = new Vue({
+			el: "#example-9",
+		})
+	</script>
+</body>
+</html>
