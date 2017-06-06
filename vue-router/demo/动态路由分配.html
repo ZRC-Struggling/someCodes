@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#app{
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+
+	<div id="app">
+		<p>
+			<router-link to="/js/es">JS/ES</router-link>
+			<router-link to="/js/dom">JS/DOM</router-link>
+			<router-link to="/js/bom">JS/BOM</router-link>
+		</p>
+		<router-view></router-view>
+	</div>
+	
+	<script src="https://unpkg.com/vue/dist/vue.js"></script>
+	<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+	<script>
+	const JS = {
+		template: "<div>\
+					<p>$route.params.id为：{{ $route.params.id }}</p>\
+					<p>$route.query为：{{ $route.query }}</p>\
+					<p>$route.hash为：{{ $route.hash }}</p>\
+				   </div>"
+	}	
+
+	const router = new VueRouter({
+		routes: [
+			// 动态路径参数  以冒号开头
+			{
+				path: "/js/:id", component: JS
+			}
+		]
+	})
+
+	const app = new Vue({ router }).$mount("#app");
+	</script>
+
+	<!-- note: 
+	1. 书写路径要注意“/”。（eg: 正确："/js/es" ；错误："js/es"）
+	-->
+
+</body>
+</html>

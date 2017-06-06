@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#app{
+			text-align: center;
+		}
+		a{
+			background-color: #333;
+			color: white;
+			border-radius: 5px;
+			padding: 5px;
+		}
+	</style>
+</head>
+<body>
+	
+
+	<div id="app">
+		<p>
+			<router-link :to="{ name: 'home' }">home</router-link>
+			<router-link :to="{ name: 'about' }">about</router-link>
+			<router-link :to="{ name: 'life' }">life</router-link>
+		</p>
+		<router-view></router-view>
+	</div>
+
+	<script src="https://unpkg.com/vue/dist/vue.js"></script>
+	<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>	
+	<script>
+	// import Vue from "vue"
+	// import VueRouter from "vue-router"
+
+	// Vue.use(VueRouter)
+
+	const Home  = { template: "<div>主页</div>" }
+	const About = { template: "<div>关于我</div>" }
+	const Life  = { template: "<div>关于生活</div>"}
+
+	const router = new VueRouter({
+		routes: [
+			{ path: "/", name: "home", component: Home },
+			{ path: "/about", name: "about", component: About },
+			{ path: "/life", name: "life", component: Life }
+		]
+	})
+
+	const app = new Vue({ router }).$mount("#app")
+	</script>
+
+	<!-- note: 
+		1. 使用import会出现错误（Uncaught SyntaxError: Unexpected token import）
+
+	-->
+</body>
+</html>

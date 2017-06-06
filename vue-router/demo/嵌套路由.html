@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#app{
+			text-align: center;
+		}
+		a{
+			padding: 10px;
+			background-color: #333;
+			color: white;
+			border-radius: 5px;
+		}
+	</style>
+</head>
+<body>
+	
+	<div id="app">
+		<p>
+			<router-link to="/js/es">/js/es</router-link>
+			<router-link to="/js/es/es5">/js/es/es5</router-link>
+			<router-link to="/js/es/es6">/js/es/es6</router-link>
+		</p>
+		<router-view></router-view>
+	</div>
+
+	<script src="https://unpkg.com/vue/dist/vue.js"></script>
+	<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+	<script>
+		const JS = {
+			template: "<div class='js'>\
+						<h3>$route.params.id的为：{{ $route.params.id }}</h3>\
+						<router-view></router-view>\
+					   </div>"
+		}
+
+		const JSHome = { template: "<div>JS Home</div>" }
+		const JSEs5  = { template: "<div>JS ES5</div>" }
+		const JSEs6  = { template: "<div>JS ES6</div>" }
+
+		const router = new VueRouter({
+			routes: [
+				{ path: "/js/es", component: JS,
+				  children: [
+				  	{ path: "", component: JSHome },
+				  	{ path: "es5", component: JSEs5 },
+				  	{ path: "es6", component: JSEs6 }
+				  ]
+				}
+			]
+		})
+
+		const app = new Vue({ router }).$mount("#app");
+	</script>
+
+	<!-- note：
+		1. 路由加不加"/"？
+	 -->
+</body>
+</html>

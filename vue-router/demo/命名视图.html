@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>命名视图</title>
+	<style>
+		#app{
+			text-align: center;
+		}
+		li{
+			display: inline-block;
+		}
+		a{
+			background-color: #333;
+			color: white;
+			padding:5px 8px;
+			margin: 2px;
+			border-radius: 5px;
+		}
+	</style>
+</head>
+<body>
+	
+	<div id="app">
+		<ul>
+			<li>
+				<router-link to="/">主页</router-link>
+			</li>
+			<li>
+				<router-link to="/other">other</router-link>
+			</li>
+		</ul>
+		<router-view class="view one"></router-view>
+		<router-view class="view two" name="author"></router-view>
+		<router-view class="view three" name="introduction"></router-view>
+	</div>
+
+	<script src="https://unpkg.com/vue/dist/vue.js"></script>
+	<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>	
+	<script>
+		const Home = { template: "<div>欢迎来到我的主页！</div>" }
+		const Me = { template: "<div>ZRC-Struggling</div>" }
+		const Intro = { template: "<div>前端开发工程师</div>" }
+		const OtherHome = { template: "<div>其它</div>" }
+
+		const router = new VueRouter({
+			routes: [
+				{ 
+					path: "/",
+					components: {
+						default: Home,
+						author: Me,
+						introduction: Intro
+					}
+				},
+				{
+					path: "/other",
+					components: {
+						default: OtherHome,
+						author: Me,
+						introduction: Intro
+					}
+				}
+			]
+		})
+
+		const app = new Vue({ 
+			router ,
+			el: "#app"
+		})	
+	</script>
+</body>
+</html>

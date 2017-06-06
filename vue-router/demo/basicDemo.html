@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#app{
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	
+
+	<div id="app">
+		<h1>Welcome!</h1>
+		<p>
+			<router-link to="/index">主页</router-link>
+			<router-link to="/html">HTML专栏</router-link>
+			<router-link to="/css">CSS专栏</router-link>
+			<router-link to="/js">JS专栏</router-link>
+			<router-link to="/http">HTTP专栏</router-link>
+		</p>
+
+	<!-- 路由匹配到的组件将被渲染在这里 -->
+	<router-view>
+	</router-view>
+	</div>
+
+	<script src="https://unpkg.com/vue/dist/vue.js"></script>
+	<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+	<script>
+		// 定义路由组件
+		const Index = { template: "<div>这是主页</div>" };
+		const HTML  = { template: "<div>这是HTML专栏</div>" };
+		const CSS   = { template: "<div>这是CSS专栏</div>" };
+		const JS    = { template: "<div>这是JS专栏</div>" };
+		const HTTP  = { template: "<div>这是HTTP专栏</div>" };
+
+		// 定义路由
+		const routes = [
+			{ path: "/index", component: Index },
+			{ path: "/html", component: HTML },
+			{ path: "/css", component: CSS },
+			{ path: "/js", component: JS },
+			{ path: "/http", component:HTTP }
+		];
+
+		// 创建router实例
+		const router = new VueRouter({
+			routes
+		});
+
+		// 创建和挂载根实例
+		const app = new Vue({
+			router
+		}).$mount("#app");
+	</script>
+</body>
+</html>
