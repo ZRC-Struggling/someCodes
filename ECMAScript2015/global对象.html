@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>global对象</title>
+</head>
+<body>
+	
+<script>	
+// 获取global对象的方法
+
+// method 1
+(typeof window !== "undefined"
+	? window
+	: (typeof process === "object" &&
+	   typeof require === "function" &&
+	   typeof global === "object")
+	  ? global
+	  : this);
+
+// method 2
+var getGlobal = function () {
+	if (typeof self !== "undefined") {
+		return self;
+	}
+	if (typeof window !== "undefined") {
+		return window;	
+	}
+	if (typeof global !== "undefined") {
+		return global;
+	}
+	throw new Error("unable to locate global object");
+}
+</script>
+<!-- note:
+	1. global对象：
+		* 浏览器： window
+		* Web Worker：self
+		* Node：global
+	
+ -->
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>解构赋值</title>
+</head>
+<body>
+	
+	<!-- 下面的第一个script标签用于加载Traceur的库文件，后两个用于将这个库文件用于浏览器环境。 -->
+	<script src="https://google.github.io/traceur-compiler/bin/traceur.js"></script>
+	<script src="https://google.github.io/traceur-compiler/bin/BrowserSystem.js"></script>
+	<script src="https://google.github.io/traceur-compiler/src/bootstrap.js"></script>
+	<!-- 注意，下面的script标签的type属性的值为module。Traceur编译器会自动将type为module的代码编译为ES5，然后再交给浏览器执行。 -->
+
+	<script type="module">
+		let {a, b=2, ...cdef} = {a:1,b:undefined,c:3,d:4,e:5,f:6}
+
+
+		console.log(a);	// 1
+		console.log(b); // 2
+		console.log(cdef); // Object{ "c":3, "d":4, "e":5, "f":6}
+
+		let {x=1} = {x:null}
+		console.log(x) // null
+		let {y=2} = {y:undefined}
+		console.log(y) // 2
+
+
+	</script>
+<!-- note: 
+	1. 解构赋值本质上是一种“模式匹配”
+	2. 可以采用部分解构的方式
+	3. 在解构表达式中，等号右边必须是可以遍历的结构，如数组、对象等。
+	4. 解构赋值允许指定默认值，并且只有在解构表达式右侧的相应成员的值为undefined时，默认值才能生效。（ES6内部使用严格相等运算符来判断一个位置是否有值）
+	-->
+</body>
+</html>
