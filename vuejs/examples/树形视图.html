@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>树形视图</title>
+	<style>
+		body{
+			background-color: #e8e8e8;
+			text-align: left;
+		}
+		ul{
+			padding-left: 1em;
+			line-height: 1.5em;
+			list-style: none;
+			border-width: 0 0 0 1px;
+			border-style: dotted;
+			border-color: #333;
+		}
+		.item{
+			cursor:pointer;
+		}
+		.bold{
+			font-weight:bold;
+		}
+	</style>
+</head>
+<body>
+	
+	<h3>双击某一项，可以将其转换为文件夹</h3>
+
+	<ul id="app">
+		<item class="item" v-bind:model="treeData"></item>
+	</ul>
+
+	<script src="../script/vue.js"></script>
+	<script type="text/x-template" id="item-template">
+		<li>
+			<div
+				v-bind:class="{bold: isFolder}"
+				@click="toggle"
+				@dblclick="changeType"
+			>
+				{{model.name}}
+				<span v-if="isFolder">[{{open ? "-" : "+"}}]</span>
+				
+			</div>
+			<ul v-show="open" v-if="isFolder">
+				<item 
+					class="item"
+					v-for="model in model.children" 
+					v-bind:model="model">
+				</item>
+				<li class="add" v-on:click="addChild">+</li>
+			</ul>
+		</li>
+	</script>
+	<script>
+
+		var data = {
+			name: "My Tree",
+			children: [
+				{ name: "HTML" },
+				{ name: "CSS" },
+				{
+					name: "JS",
+					children: [
+						{
+							name: "ES",
+							children: [
+								{ name: "ES5" },
+								{ name: "ES6" }
+							]
+						},
+						{ name: "BOM" },
+						{ name: "DOM" },
+					]
+				},
+				{
+					name: "HTTP",
+					children: [
+						{ name: "HTTP1.0" },
+						{ name: "HTTP1.1" },
+						{ name: 'HTTP2.0' }
+					]
+				}
+			]
+		}
+
+		Vue.component("item", {
+			template: "#item-template",
+			props: {
+				model: Object
+			},
+			data: function () {
+				return {
+					open: false
+				}
+			},
+			computed: {
+				isFolder: function () {
+					return this.model.children && this.model.children.length
+				}
+			},
+			methods: {
+				toggle: function () {
+					if (this.isFolder) {
+						this.open = !this.open
+					}
+				},
+				changeType: function () {
+					if (!this.isFolder) {
+						Vue.set(this.model, "children", [])
+						this.addChild()
+						this.open = true
+					}
+				},
+				addChild: function () {
+					this.model.children.push({
+						name: "new stuff"
+					})
+				}
+			}
+		})
+
+		var app = new Vue({
+			el: "#app",
+			data: {
+				treeData: data
+			}
+		})
+	</script>
+</body>
+</html>
