@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>导航钩子</title>
+</head>
+<body>
+	
+	<!-- note: 
+	1. vue-router提供的导航钩子的作用：通过拦截导航，实现跳转或取消。
+	在路由导航发生时执行钩子的多种方式：
+		* 全局的
+		* 单个路由独享的
+		* 组件级的
+
+	-->
+
+	<script>
+	// 全局钩子
+	const router = new VueRouter({ ... })
+
+	// beforeEach(to, from, next)参数解释:
+	// to: Route:即将进入的目标路由对象
+	// from: Route:当前导航正要离开的路由
+	// next: Function: 通过调用此方法来resolve这个钩子
+	// 确保要调用next方法，否则钩子就不会被resolved
+	router.beforeEach((to, from, next) => {
+		// ...
+	})
+
+	// 全局的after钩子:
+	// after钩子没有next方法，不能改变导航。	
+	router.afterEach(route = {
+		// ...
+	})
+		
+	// 某个路由独享的钩子
+	const router = new VueRouter({
+		routes: [
+			{
+				path: "/foo",
+				component: Foo,
+				beforeEach: (to, from, next) => {
+					// ...
+				}
+			}
+		]
+	})
+
+	// 组件内的钩子
+	const Foo = {
+		template: "...",
+		beforeRouteEnter(to, from, next){
+
+		},
+		beforeRouteUpdate(to, from, next){
+
+		},
+		beforeRouteLeave(to, from, next){
+			
+		}
+	}
+	</script>
+
+</body>
+</html>

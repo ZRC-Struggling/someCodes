@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>重定向</title>
+	<style>
+		#app{
+			text-align: center;
+		}
+		a{
+			background-color: #333;
+			color: white;
+			padding: 2px 5px;
+			margin: 5px;
+			border-radius: 5px;
+		}
+	</style>
+</head>
+<body>
+	
+	<div id="app">
+		<p>
+			<router-link to="/a/">我是/a，我的别名是/b</router-link>
+			<router-link to="/b/">我是/b，我的别名是/a</router-link>
+			<router-link to="/c/">我是/c，但我不存在</router-link>
+		</p>
+		<router-view></router-view>
+	</div>
+	
+	<script src="https://unpkg.com/vue/dist/vue.js"></script>
+	<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+	<script>
+		const a = { template: "<div>我是a组件</div>" }
+
+		const router = new VueRouter({
+			routes: [
+				{ path: "/a", alias: "/b", component: a }, 
+				{ path: "*", redirct: "/"}
+			]
+		})
+
+		const app = new Vue({
+			router
+		}).$mount("#app");
+	</script>
+</body>
+</html>

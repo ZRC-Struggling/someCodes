@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>重定向</title>
+	<style>
+		#app{
+			text-align: center;
+		}
+		a{
+			background-color: #333;
+			color: white;
+			padding: 2px 5px;
+			margin: 5px;
+			border-radius: 5px;
+		}
+	</style>
+</head>
+<body>
+	
+	<div id="app">
+		<p>
+			<router-link to="/a/">重定向至组件b</router-link>
+			<router-link to="/b/">组件b</router-link>
+			<router-link to="/c/">重定向至组件d</router-link>
+			<router-link to="/d/">组件d</router-link>
+			<router-link to="/e/">重定向至组件d</router-link>
+		</p>
+		<router-view></router-view>
+	</div>
+	
+	<script src="https://unpkg.com/vue/dist/vue.js"></script>
+	<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+	<script>
+		const a = { template: "<div>我是a组件</div>" }
+		const b = { template: "<div>我是b组件</div>" }
+		const c = { template: "<div>我是c组件</div>" }
+		const d = { template: "<div>我是d组件</div>" }
+		const e = { template: "<div>我是e组件</div>" }
+
+		const router = new VueRouter({
+			routes: [
+				{ path: "/a", redirect: "/b" }, // 重定向到普通路由
+				{ path: "/b", component: b },
+				{ path: "/c", redirect: { name: "d" } }, // 重定向到命名路由
+				{ path: "/d", name: "d", component: d },
+				{ path: "/e", redirect: function () { // 重定向到函数返回的路由
+					return "/d";
+				}}
+			]
+		})
+
+		const app = new Vue({
+			router
+		}).$mount("#app");
+	</script>
+</body>
+</html>
