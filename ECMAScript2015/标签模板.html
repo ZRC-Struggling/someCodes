@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>标签模板</title>
+</head>
+<body>
+	
+
+	<script>
+		var a = 5;
+		var b = 10;
+
+		function tag(s, v1, v2){
+		  console.log(s[0].trim()); // Hello
+		  console.log(s[1].trim()); // world
+		  console.log(s[2].trim()); // 15
+		  console.log(v1); // 50
+		  console.log(v2); // Ok
+		  
+		  return "OK";
+		}
+
+
+		console.log(tag`Hello ${ a + b } world ${ a * b }`);
+	</script>
+</body>
+</html>

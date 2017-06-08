@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>解构赋值</title>
+</head>
+<body>
+	
+
+
+	<script type="module">
+		// 利用解构赋值来交换变量的值
+		let x = 1 ;
+		let y = 2;
+		[y, x] = [x, y];
+
+		console.log(x); // 2
+		console.log(y); // 1
+
+		// 解构赋值，方便从对象、数组中提取值
+		function makeArr(){
+		  return [1,2,3]
+		}
+
+		let [a,b,c] = makeArr();
+		console.log(a); // 1
+		console.log(b); // 2
+		console.log(c); // 3
+	</script>
+</body>
+</html>

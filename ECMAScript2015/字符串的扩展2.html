@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>字符串的扩展</title>
+</head>
+<body>
+	
+
+	<script>
+		// repeat(n)方法返回一个字符串，表示将该字符串重复n次
+		var str1 = "xyz";
+		console.log(str1.repeat(3));
+		
+
+		// 1. 字符串补全方法：
+		// 	*  padStart(): 头部补全
+		//  *  padEnd(): 尾部补全
+		//  它们都可以接收两个参数，第一个参数用来指定字符串的最小长度，第二个参数指定用来补全的字符串
+
+		function getMinutes(){
+		  return 5;
+		}
+		
+		var minutes = getMinutes();
+		console.log(minutes.toString().padStart(2, "0"));
+	</script>
+</body>
+</html>

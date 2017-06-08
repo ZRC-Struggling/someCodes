@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>字符串的扩展</title>
+</head>
+<body>
+	
+	
+	<script>
+		// 在线的babel编译环境
+		console.log("abc".charAt(0)) //"a"
+		console.log("古".charAt(0)) // "古"
+
+		console.log("abc".charCodeAt(0)) // 97
+		console.log("古".charCodeAt(0)) // 21476
+
+		var s ="abcdefc"
+		console.log(s.indexOf("c")) // 2
+		console.log(s.lastIndexOf("c")) // 6
+		console.log(s.startsWith("a")) // true
+		console.log(s.endsWith("c"))  // true
+		console.log(s.includes("a")) // true
+	</script>
+
+	<!-- notes: 
+	1. 字符串的三个新的方法：
+		* includes():返回布尔值，表示是否找到参数字符串
+		* startsWith():返回布尔值，表示参数字符串是否在源字符串的头部
+		* endsWith(): 返回布尔值，表示参数字符串是否在源字符串的尾部
+
+	-->
+</body>
+</html>

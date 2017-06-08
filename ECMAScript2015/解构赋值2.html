@@ -13,7 +13,26 @@
 	<script src="https://google.github.io/traceur-compiler/src/bootstrap.js"></script>
 	<!-- 注意，下面的script标签的type属性的值为module。Traceur编译器会自动将type为module的代码编译为ES5，然后再交给浏览器执行。 -->
 	<script type="module">
-		
+		let { x:a } = { x: 12, y: 0 }
+		console.log(a); // 12
+
+		let obj = { x: 12, y: 0 }
+		let {x, y} = obj
+		console.log(x,y); // 12 0
+
+		let {b} = { x:12, y:0 }
+		console.log(b) // undefined
+
+		let {PI, sin, cos}=Math;
+		console.log(PI); // 3.141592653589793
+		console.log(sin.toString()); // "function sin() { [native code] }"
+		console.log(cos.toString()); // "function cos() { [native code] }"
 	</script>
+
+
+	<!-- note:
+	1. 对象解构赋值的内部机制，是先找到同名属性，然后再赋值给对应的变量。真正被赋值的是后者，而不是前者。
+	
+	 -->
 </body>
 </html>
