@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>路由源信息</title>
+</head>
+<body>
+	
+
+	<script>
+		const router = new VueRouter({
+			routes: [
+				{
+					path: "/foo",
+					component: Foo,
+					children: [
+						{
+							path: "bar",
+							component: Bar,
+							meta: {
+								requireAuth: true
+							}
+						}
+					]
+				}
+			]
+		})
+
+		// 一个路由匹配到的所有路由记录会暴露为$route对象（还有在导航钩子中的route对象）的$route.matched数组。因此，我们需要遍历$route.matched来检查路由记录中的meta字段。
+		
+		router.beforeEach((to, from, next) => {
+			if (to.matched.some(record => record.meta.requireAuth)) {
+
+				if (!auth.loggedIn()) {
+					next({
+						path: "login",
+						query: {
+							redirect: to.fullPath
+						}
+					})
+				}else{
+					next();
+				}
+			}else{
+				next();
+			}
+		})
+	</script>
+</body>
+</html>

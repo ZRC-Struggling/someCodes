@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>单个路由的过渡</title>
+</head>
+<body>
+	
+
+	<script>
+		const Foo = {
+			template: `
+				<transition name="slide">
+					<div class="foo">...</div>
+				</transition>
+				`
+		}
+
+		const Bar = {
+			template: `
+				<transition name="fade">
+					<div class="bar">...</div>
+				</transition>
+			`
+		}
+	</script>
+</body>
+</html>
