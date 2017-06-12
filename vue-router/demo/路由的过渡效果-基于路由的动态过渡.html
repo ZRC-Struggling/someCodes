@@ -5,7 +5,18 @@
 	<title>基于路由的动态过渡</title>
 </head>
 <body>
-	
+	<div id="app">
+		<h1>Transitions</h1>
+		<ul>
+			<li><router-link to="/">/</router-link></li>
+			<li><router-link to="/parent">/parent</router-link></li>
+			<li><router-link to="/parent/foo">/parent/foo</router-link></li>
+			<li><router-link to="/parent/bar">/parent/bar</router-link></li>
+		</ul>
+		<transition name="fade" mode="out-in">
+			<router-view class="view"></router-view>
+		</transition>
+	</div>
 	<script src="https://unpkg.com/vue/dist/vue.js"></script>
 	<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
 	<script>
@@ -52,7 +63,7 @@
 		const Bar = { template: "<div class='bar'>bar</div>"}
 
 		const router = new VueRouter({
-			mode: "history",
+			// mode: "history",
 			// base: __dirname,
 			routes: [
 				{ path: "", component: Home },
@@ -65,23 +76,35 @@
 			}
 			]
 		})
+
+		// new Vue({
+		// 	router,
+		// 	template: `
+		// 		<div id="app">
+		// 			<h1>Transitions</h1>
+		// 			<ul>
+		// 				<li><router-link to="/">/</router-link></li>
+		// 				<li><router-link to="/parent">/parent</router-link></li>
+		// 				<li><router-link to="/parent/foo">/parent/foo</router-link></li>
+		// 				<li><router-link to="/parent/bar">/parent/bar</router-link></li>
+		// 			</ul>
+		// 			<transition name="fade" mode="out-in">
+		// 				<router-view class="view"></router-view>
+		// 			</transition>
+		// 		</div>
+		// 	`
+		// }).$mount("#app");
+
 		new Vue({
 			router,
-			template: `
-				<div id="app">
-					<h1>Transitions</h1>
-					<ul>
-						<li><router-link to="/">/</router-link></li>
-						<li><router-link to="/parent">/parent</router-link></li>
-						<li><router-link to="/parent/foo">/parent/foo</router-link></li>
-						<li><router-link to="/parent/bar">/parent/bar</router-link></li>
-					</ul>
-					<transition name="fade" mode="out-in">
-						<router-view class="view"></router-view>
-					</transition>
-				</div>
-			`
-		}).$mount("#app");
+			el: "#app"
+		})
 	</script>
+
+	<!-- note: 
+	1. "#app"的节点在script标签中生成，会出现错误：
+			[Vue warn]: Cannot find element: #app
+	-->
+
 </body>
 </html>

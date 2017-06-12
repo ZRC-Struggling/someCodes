@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>滚动行为</title>
+</head>
+<body>
+
+
+	
+	<script src="https://unpkg.com/vue/dist/vue.js"></script>
+	<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+	<script>
+		// import Vue from 'vue'
+		// import VueRouter from 'vue-router'
+
+		// Vue.use(VueRouter)
+
+		const Home = { template: '<div>home</div>' }
+		const Foo = { template: '<div>foo</div>' }
+		const Bar = {
+		  template: `
+		    <div>
+		      bar
+		      <div style="height:500px"></div>
+		      <p id="anchor">Anchor</p>
+		    </div>
+		  `
+		}
+
+		const scrollBehavior = (to, from, savedPosition) => {
+			if (savedPosition) {
+				return savedPosition
+			} else {
+				const position = {}
+				if(to.hash){
+					position.selector = to.hash;
+				}
+
+				if (to.matched.some(m => m.meta.scrollToTop)) {
+					position.x = 0;
+					position.y = 0;
+				}
+
+				return position;
+			}
+		}
+
+		const router = new VueRouter({
+			mode: "history",
+			// base: __dirname,
+			scrollBehavior,
+			routes: [
+				{ path: "/", component: Home, meta: { scrollToTop: true } },
+				{ path: "/foo", component: Foo },
+				{ path: "/bar", component: Bar, meta: { scrollToTop: true } }
+			]
+		})
+
+		new Vue({
+			router,
+			template: `
+				<div id="app">
+					<h1>Scroll Behavior</h1>
+					<ul>
+						<li><router-link to="/">/</router-link></li>
+						<li><router-link to="/foo">/foo</router-link></li>
+						<li><router-link to="/bar">/bar</router-link></li>
+						<li><router-link to="/bar#anchor">/bar#anchor</router-link></li>
+					</ul>
+					<router-view class="view"></router-view>
+			`
+		}).$mount("#app")
+	</script>
+</body>
+</html>

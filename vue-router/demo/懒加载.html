@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>懒加载</title>
+</head>
+<body>
+	
+	<script src="https://unpkg.com/vue/dist/vue.js"></script>
+	<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+	<script>
+		// 代码分块方法1
+		const Foo = resolve => {
+			require.ensure(["./Foo.vue"], () => {
+				resolve(require("./Foo.vue"))
+			});
+		}
+
+		// 代码分块方法2
+		const Foo = resolve => require(["./Foo.vue"], resolve)
+
+		const router = new VueRouter({
+			routes: [
+				{ path: "/foo", component: Foo }
+			]
+		})
+
+
+		// 把组件按组分块
+		const Foo = r => require.ensure([], () => r(require("./Foo.vue")), "group-foo");
+		const Bar = r => require.ensure([], () => r(require("./Bar.vue")), "group-foo");
+		const Baz = r => require.ensure([], () => r(require("./Baz.vue")), "group-foo");
+	</script>
+
+	<!-- notes: 
+	1. the syntax of require.ensure();
+	require.ensure(dependencies: String[], callback: function(require), errorCallback: function(error), chunkName: String)
+	-->
+
+</body>
+</html>

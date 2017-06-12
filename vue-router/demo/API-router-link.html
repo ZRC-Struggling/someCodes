@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>router-link</title>
+	<style>
+		a.router-link-active {
+		  color: #f66;
+		}
+		li.router-link-active a {
+		  color: #f66;
+		}
+	</style>
+</head>
+<body>
+	
+
+	<div id="app">
+		<h1>Active Links</h1>
+		<ul>
+			<li>
+				<router-link to="/">/</router-link>
+			</li>
+			<li>
+				<router-link to="/" exact>/ (exact match)</router-link>
+			</li>
+			<li>
+				<router-link to="/users">/users</router-link>
+			</li>
+			<li>
+				<router-link to="/users" exact>/users (exact match)</router-link>
+			</li>
+			<li>
+				<router-link to="/users/evan">/users/evan</router-link>
+			</li>
+			<li>
+				<router-link to="/users/evan#foo">/users/evan#foo</router-link>
+			</li>
+			<li>
+				<router-link :to="{ path: '/users/evan', query: { foo: 'bar' }}">/users/evan?foo=bar</router-link>
+			</li>
+			<li>
+				<router-link :to="{ name: 'user', params: { username: 'evan' }, query: { foo: 'bar' } }">/users/evan?foo=bar(named view + exact match)</router-link>
+			</li>
+			<li>
+				<router-link :to="{ name: 'user', params: { username: 'evan' }, query: { foo: 'bar', baz: 'qux' }}">/users/evan?foo=bar&baz=qux</router-link>
+			</li>
+			<li>
+				<router-link to="/about">/about</router-link>
+			</li>
+
+			<router-link tag="li" to="/about">
+				<a>/about(active class on outer element)</a>
+			</router-link>
+		</ul>
+		<router-view class="view"></router-view>
+	</div>
+
+	<script src="https://unpkg.com/vue/dist/vue.js"></script>
+	<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+	<script>
+		const Home = { template: '<div><h2>Home</h2></div>' }
+		const About = { template: '<div><h2>About</h2></div>' }
+
+		const Users = {
+		  template: `
+		    <div>
+		      <h2>Users</h2>
+		      <router-view></router-view>
+		    </div>
+		  `
+		}
+
+		const User = { template: "<div>{{ $route.params.username </div>"}
+
+		const router = new VueRouter({
+			// mode: "history",
+			routes: [
+				{ path: "/", component: Home },
+				{ path: "/about", component: About },
+				{ path: "/users", component: Users,
+					children: [
+						{ path: "username", name: "user", component: User }
+					]
+				}
+			]
+		})
+
+		new Vue({
+			router,
+		}).$mount("#app")
+	</script>
+
+	<!-- notes: 
+	1. router-link组件会被默认渲染为a标签，那么为什么不直接使用a标签呢？
+		* 无论是 HTML5 history 模式还是 hash 模式，它的表现行为一致，所以，当你要切换路由模式，或者在 IE9 降级使用 hash 模式，无须作任何变动。
+
+		* 在 HTML5 history 模式下，router-link 会拦截点击事件，让浏览器不在重新加载页面。
+
+		* 当你在 HTML5 history 模式下使用 base 选项之后，所有的 to 属性都不需要写（基路径）了。
+	-->
+</body>
+</html>
