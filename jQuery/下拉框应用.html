@@ -8,12 +8,25 @@
 		width: 400px;
 		float: left;
 	}
+	select{
+		width: 100px;
+		height: 160px;
+	}
+	span{
+		background: lightblue;
+		padding: 2px 10px;
+		margin: 10px 0;
+		display: inline-block;
+	}
+	span:hover{
+		cursor: pointer;
+	}
 </style>
 </head>
 
 <body>
 <div class="content">
-	<select multiple id="select1" style="width:100px;height:160px;">
+	<select multiple id="select1">
     	<option>选项一</option>
         <option>选项二</option>
         <option>选项三</option>
@@ -25,51 +38,50 @@
     </select>
     <div>
     	<span id="add">选中添加到右边&gt;&gt;</span>
+    	</br>
         <span id="add_all">全部添加到右边&gt;&gt;</span>
     </div>
 </div>
 <div class="content">
-	<select multiple id="select2" style="width:100px;height:160px;">
+	<select multiple id="select2">
     </select>
     <div>
-    	<span id="remove">&lt;&lt;选中删除到左边</span>
-        <span id="remove_all">&lt;&lt;全部删除到左边</span>
+    	<span id="remove">&lt;&lt;选中转移到左边</span>
+    	</br>
+        <span id="remove_all">&lt;&lt;全部转移到左边</span>
     </div>
 </div>
 
 <script src="jquery/jquery-2.2.3.js"></script>
 <script>
 $(function(){
-	$("#add").click(function(){
-		var $options= $("#select1 option:selected");
+
+	$("#add").click(function () {
+		var $options = $("#select1").find("option:selected");
 		$options.appendTo("#select2");
-		});
-	
-	$("#add_all").click(function(){
-		var $options= $("#select1 option");
+	});
+	$("#add_all").click(function () {
+		var $options = $("#select1").find("option");
 		$options.appendTo("#select2");
-		});
-	
-	
-	$("#select1").dblclick(function(){
-		var $options= $("option:selected",this);
+	});
+	$("#select1").dblclick(function () {
+		var $options = $("option:selected", this);
 		$options.appendTo("#select2");
-		});
-	
-	$("#remove").click(function(){
-		var $options= $("#select2 option:selected");
+	});
+
+	$("#remove").click(function () {
+		var $options = $("#select2").find("option:selected");
 		$options.appendTo("#select1");
-		});
-	
-	$("#remove_all").click(function(){
-		var $options= $("#select2 option");
+	});
+	$("#remove_all").click(function () {
+		var $options = $("#select2").find("option");
 		$options.appendTo("#select1");
-		});
-	
-	$("#select2").dblclick(function(){
-		var $options= $("option:selected",this);
+	});
+	$("#select2").dblclick(function () {
+		var $options = $("option:selected", this);
 		$options.appendTo("#select1");
-		});
+	});
+	
 	});
 </script>
 </body>
