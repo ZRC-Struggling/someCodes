@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>元素的垂直居中</title>
+	<style>
+		div{
+			position: relative;
+		}
+		span:nth-child(1){
+			display: inline-block;
+			width: 1200px;
+		}
+		span:nth-child(2){
+			position: absolute;
+			top:50%;
+			right: 100px;
+			transform: translateY(-50%);
+		}
+	</style>
+</head>
+<body>
+	
+	<div>
+	<span>此处有若干行文本。。。此处有若干行文本。。。此处有若干行文本。。。此处有若干行文本。。。此处有若干行文本。。。此处有若干行文本。。。此处有若干行文本。。。此处有若干行文本。。。此处有若干行文本。。。此处有若干行文本。。。此处有若干行文本。。。此处有若干行文本。。。此处有若干行文本。。。此处有若干行文本。。。此处有若干行文本。。。此处有若干行文本。。。</span>
+	<span>&gt;</span>
+	</div>
+</body>
+</html>

@@ -45,6 +45,7 @@ ul li
     float: right;
 }
 </style>
+<!-- <script src="jquery/jquery-1.9.0.js"></script> -->
 <script src="jquery/jquery-1.8.3.js"></script>
 <body>
     <div id="divtest">
@@ -67,6 +68,9 @@ ul li
                 $("#divload").ajaxStop(function(){
                     $(this).html("数据请求完成！");
                 });
+                $(document).ajaxStart(function () {
+                    alert("从 jQuery 1.8 开始, .ajaxStart() 方法只能绑定到 document元素?");
+                });
                 $("#btnShow").bind("click", function () {
                     var $this = $(this);
                     $.ajax({
@@ -81,7 +85,10 @@ ul li
                 })
             });
         </script>
+
+        <!-- notes: 
+        1. 从 jQuery 1.8 开始, .ajaxStart() / .ajaxStop()方法只能绑定到 document元素?
+        2. 如果global选项设置为false，调用$.ajax() 或 .ajaxStart()/.ajaxStop()方法将不会被触发。
+        -->
 </body>
 </html>
-<!--注意：该方法在1.8.2下使用是正常的
--->

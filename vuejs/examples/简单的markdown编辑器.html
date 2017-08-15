@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+	<div id="editor">
+		<textarea name="" id="" cols="30" rows="10" v-bind:value="input" v-on:input="update"></textarea>
+		<div v-html="compiledMarkDown"></div>
+	</div>
+		
+	<script src="../script/vue.js"></script>
+	<!-- Lodash 是一个具有一致接口、模块化、高性能等特性的 JavaScript 工具库 -->
+	<script src="https://unpkg.com/lodash@4.16.0"></script>
+	<!-- A markdown parser and compiler. Built for speed. -->
+	<script src="https://unpkg.com/marked@0.3.6"></script> 
+	<script>
+		new Vue({
+			el: "#editor",
+			data: {
+				input: "# Welcome to china!"
+			},
+			computed: {
+				compiledMarkDown: function () {
+					return marked(this.input, { sanitize: true });
+				}
+			},
+			methods: {
+				update: _.debounce(function (e) {
+					this.input = e.target.value;
+				}, 300)
+			}
+		});
+	</script>
+
+	<!-- note:  
+	1. _.debounce(func, [wait=0], [options]):
+	Creates a debounced function that delays invoking func until after wait milliseconds have elapsed since the last time the debounced function was invoked. The debounced function comes with a cancel method to cancel delayed invocations. Provide an options object to indicate that func should be invoked on the leading and/or trailing edge of the wait timeout. Subsequent calls to the debounced function return the result of the last func invocation. 
+	2. sanitize:
+	Type: boolean Default: false
+	Sanitize the output. Ignore any HTML that has been input.
+	-->
+</body>
+</html>

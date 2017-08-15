@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+
+	<script src="jquery/jquery_3.2.0.js"></script>
+	<script>
+		$(function  () {
+			$.fn.extend({
+				showNodeName: function () {
+					// 此处的this指的是jQuery对象，必须将其转换为DOM对象，才能访问nodeName属性。
+					alert(this.get(0).nodeName);
+				}
+			});
+
+			$("body").showNodeName();
+
+			$.fn.showNodeType = function () {
+				console.log(this.get(0).nodeType);
+			};
+
+			$("body").showNodeType();
+		})
+	</script>
+
+
+	<!-- notes: 
+	1. jQuery.fn.extend( object ):
+	 一个对象的内容合并到jQuery的原型，以提供新的jQuery实例方法。
+	-->
+</body>
+</html>

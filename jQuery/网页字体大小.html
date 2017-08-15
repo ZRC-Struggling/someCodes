@@ -9,6 +9,9 @@ span{
 	margin:10px;
 	padding:5px;
 	background:#e8e8e8;}
+.bigger, .smaller:hover{
+	cursor: pointer;
+}
 </style>
 </head>
 
@@ -47,7 +50,7 @@ $(function(){
 			$("#para").css("font-size",parseInt($paraFontSize)-2+"px");}
 		});*/
 	//第二种方案：
-	$(".msg_caption").children("span").click(function(e){
+	$(".msg_caption").click(function(e){
 		var $paraFontSize = $("#para").css("font-size");
 		if($(e.target).is(".bigger")){
 			if(parseInt($paraFontSize) < 32){
@@ -60,7 +63,12 @@ $(function(){
 		});
 	});
 </script>
+
+
+
+<!-- 
 1、用css("font-size")获取的值是带单位的，可以用parseInt()去掉单位
 2、可以用slice()方法返回字符串中从指定的字符开始的一个子字符串，这里使用的度量单位px是两个字符，所有指定字符串应该从倒数第二个字符开始（slice(-2)）。在后面设置字体大小是，就可以直接把单位拼接上。
+ -->
 </body>
 </html>

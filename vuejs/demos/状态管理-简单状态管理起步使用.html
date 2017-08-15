@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<div id="app">
+		<div id="v1">
+			Date: {{ date }} </br>
+			Name: {{ info.name }}
+			Age: {{ info.age }}
+		</div>
+		<div id="v2">
+			Date: {{ date }} </br>
+			Name: {{ info.name }}
+			Age: {{ info.age }}
+		</div>
+	</div>
+
+	<script src="../script/vue.js"></script>
+	<script>
+		// const share = {
+		// 	name: "xiaoming",
+		// 	age: "23"
+		// }
+		// 这是共享的状态
+		var store = {
+			debug: true,
+			state: {
+				share: {
+					name: "xiaoming",
+					age: "23"
+				},
+				msg: "Just a message!"
+			},
+			setMsgAction(newVal){
+				if (this.debug) {
+					console.log("state change with the value: ", newVal);
+					this.state.msg = newVal;
+				}
+			},
+			clearMsgAction(){
+				if (this.debug) {
+					console.log("state has been cleared");
+					this.state.msg = "";
+				}
+			}
+		}
+		const vm1 = new Vue({
+			el: "#v1",
+			data: {
+				info: store.state.share,
+				date: "2017-1-1"
+			}
+		})
+		const vm2 = new Vue({
+			el: "#v2",
+			data: {
+				info: store.state.share,
+				date: "2017-7-7	"
+			}
+		})
+
+	</script>
+</body>
+</html>

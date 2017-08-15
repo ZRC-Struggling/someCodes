@@ -87,5 +87,11 @@ ul li
                 })
             });
         </script>
+
+        <!-- notes:
+        1. jQuery.ajaxSetup( options ):
+        此处指定的设置会影响所有 $.ajax或基于AJAX的衍生方法，如$.get()的调用。这可能会导致不良的行为因为其他调用（例如，插件）可能希望正常的默认设置。出于这个原因，我们强烈建议您不要使用此API。相反我们建议，在调用时明确设置选项或定义一个简单的插件。
+        2. 全局回调函数应使用他们各自的全局Ajax事件处理方法-.ajaxStart(),  .ajaxStop(), .ajaxComplete(), .ajaxError(), .ajaxSuccess(), .ajaxSend()-设置，而不是为 $.ajaxSetup() 设置 options 对象。
+         -->
 </body>
 </html>

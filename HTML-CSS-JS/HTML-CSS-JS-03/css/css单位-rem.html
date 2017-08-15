@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>css单位</title>
+	<style>
+		html{
+			font-size: 14px;
+		}
+		div.level1{
+			font-size: 1.5rem;
+		}
+		div.level2{
+			font-size: 1.5rem;
+		}
+		div.level3{
+			font-size: 1.5rem;
+		}
+	</style>
+</head>
+<body>
+	
+	<div class="level1">
+		第一层div 
+		<div class="level2">
+			第二层div
+			<div class="level3">第三层div</div>
+		</div>
+	</div>
+	<script>
+		window.onload = function () {
+			var divs = document.getElementsByTagName('div');
+			for(var i = 0;i < divs.length; i++){
+				divs[i].onclick = (function (i) {
+					return function (e) {
+						if (e && e.stopPropagation) {
+							e.stopPropagation()
+						}else{
+							window.event.cancelBubble = true
+						}
+						alert(i)
+					}
+				}(i))
+			}
+		}
+	</script>
+	<!-- note:
+	1. 立即执行函数的用法
+	2. 阻止冒泡行为
+	 -->
+</body>
+</html>

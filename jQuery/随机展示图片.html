@@ -2,36 +2,70 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>无标题文档</title>
+<title>随机展示图片</title>
 <style type="text/css">
-div{
-	width:80%;
-	background:#e8e8e8;
-	margin:0 auto;}
-img{
-	display:block;
-	margin:0 auto;
-	width:600px;
-	height:600px;
-	}
+	div{
+		width:80%;
+		background:#e8e8e8;
+		margin:0 auto;}
+	img{
+		display:block;
+		margin:0 auto;
+		width:600px;
+		height:600px;
+		}
 </style>
 </head>
 
 <body>
-<div>
-	<img src="images/1.jpg" alt="图片">
-</div>
-<script type="text/javascript" src="jquery/jquery-2.2.3.js"></script>
-<script type="text/javascript">
-$(function(){
-	function changeImg(){
-			var randomNum=Math.floor(Math.random()*3+1);//产生1到3随机整数。
-			$("img").attr("src","images/"+randomNum+".jpg")
-					.css({"border":"2px solid red","outline":"5px solid lightblue","outline-offset":"5px"});
-	}
-	setInterval(changeImg,3000);
+
+	<div>
+		<img src="images/1.jpg" alt="图片">
+	</div>
 	
+<script type="text/javascript" src="jquery/jquery-2.2.3.js"></script>
+
+<script type="text/javascript">
+	$(function(){
+		function changeImg(){
+				var randomNum=Math.floor(Math.random()*3+1);//产生1到3随机整数。
+				$("img").attr("src","images/"+randomNum+".jpg")
+						.css({"border":"2px solid red","outline":"5px solid lightblue","outline-offset":"5px"});
+		}
+		setInterval(changeImg,3000);
 	});
+
 </script>
+
+	<!-- note: 思考： 
+		1. img标签默认状态下是什么元素？（内联元素，还是块级元素）。
+	    	* 行内（内联）元素（用户代理样式：display:inline），同时也是替换元素
+			* 特点：
+					* 只设置宽度或高度会等比缩放
+					* 可以设置垂直方向上的内外上下边距（padding-top/padding-bottom/margin-top/margin-bottom）,而一般的内联元素只能设置水平方向上的内外上下边距（paddding-left/padding-right/margin-left/margin-right） // 尚需对原理进行进一步研究
+		2. 让（内联、块级）元素（水平、垂直）居中的几种常见方式？
+			* 固定宽度 + 左右为auto的外边距
+			*
+			*
+			*
+		3. DOM对象和jQuery对象的联系和区别？
+		4. Math对象有哪些常见的方法？
+			* Math.round(): 四舍五入
+			* Math.ceil()：向上取整
+			* Math.floor()：向下取整
+			* Math.abs()：取绝对值
+		5. 有几种定时器，它们的区别是什么？回调的参数是什么？
+            * 两种。
+            * setTimeout(handler: any, timeout?: long, arguments...: any)
+			* setInterval(handler: any, timeout?: long, arguments...: any)
+		6. from "贺师俊"：
+			block 或 inline 是 CSS 术语。元素本身并没有一定是  block 或 inline。如果想知道 img 元素默认的 display 值，可查 CSS spec 或直接在 dev tools 中 inspect 之。BTW，inline 应译为“行内”而不是“内联”，当 inline 译为“内联”时是指编译器优化手段或相关的编程语言特性。注意：在HTML4时代有text-level(inline)/block-level元素的分法，但是现在早已经不再用这样的分法了。
+
+			作者：贺师俊
+			链接：https://www.zhihu.com/question/25402556/answer/30669848
+			来源：知乎
+			著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+		7. 
+	-->
 </body>
 </html>

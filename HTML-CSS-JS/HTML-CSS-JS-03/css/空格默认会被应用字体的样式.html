@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body{
+		}
+		a{
+			font-size: 30px;
+			color: red;
+			text-decoration: underline;
+		}
+		span{
+			color: blue;
+			display: inline-block;
+			width: 100px;
+			height: 100px;
+		}
+	</style>
+</head>
+<body>
+	<a href="" class="a1">
+	<span>主要空格</span>
+	</a>
+
+	
+
+	<a href="" class="a2"><span>注意空格</span></a>
+
+
+	<!-- note:
+	1. 对比.a1和.a2，.a1之后多了一条红色的下划线，这是由空格引起的，因为空格也被应用了字体的样式。解决方案有两个：
+	* 将span标签左右的空格都去掉
+	* 将a标签的字体大小设置为0，再将span的标签的字体大小设置为预定的字体大小。
+
+	 -->
+</body>
+</html>

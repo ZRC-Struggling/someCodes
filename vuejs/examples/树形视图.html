@@ -28,11 +28,14 @@
 	
 	<h3>双击某一项，可以将其转换为文件夹</h3>
 
+	<!-- 定义根节点 -->
 	<ul id="app">
-		<item class="item" v-bind:model="treeData"></item>
+		<!-- 使用组件 -->
+		<item class="item" v-bind:model="treeData"></item> <!-- 双向数据绑定 -->
 	</ul>
 
 	<script src="../script/vue.js"></script>
+	<!-- 定义组件模板 -->
 	<script type="text/x-template" id="item-template">
 		<li>
 			<div
@@ -86,27 +89,37 @@
 			]
 		}
 
+		// 创建一个全局的组件
 		Vue.component("item", {
-			template: "#item-template",
+			template: "#item-template", // 使用模板
+			// 属性
 			props: {
-				model: Object
+				// 属性的数据类型
+				model: Object 
 			},
+			// data必须是一个函数
 			data: function () {
 				return {
+					// 默认情况下，文件夹是关闭的
 					open: false
 				}
 			},
+			// 计算属性
 			computed: {
+				// 该属性用于判断是否是文件夹
 				isFolder: function () {
 					return this.model.children && this.model.children.length
 				}
 			},
+			// 方法
 			methods: {
+				// 切换文件夹的显示或隐藏
 				toggle: function () {
 					if (this.isFolder) {
 						this.open = !this.open
 					}
 				},
+				// 将文件转换为文件夹
 				changeType: function () {
 					if (!this.isFolder) {
 						Vue.set(this.model, "children", [])
@@ -114,6 +127,7 @@
 						this.open = true
 					}
 				},
+				// 添加默认的子项
 				addChild: function () {
 					this.model.children.push({
 						name: "new stuff"
@@ -122,12 +136,21 @@
 			}
 		})
 
+		// 创建一个Vue实例
 		var app = new Vue({
-			el: "#app",
+			el: "#app", // 挂载节点
 			data: {
 				treeData: data
 			}
 		})
 	</script>
+
+
+	<!-- notes: 
+	* 基本的树形结构使用ul>li的无序列表嵌套结构
+	* 外观通过属性绑定（v-bind:）来进行动态改变
+	* 事件通过"v-on:"来实现
+	* 插值用"{{ }}"
+	-->
 </body>
 </html>

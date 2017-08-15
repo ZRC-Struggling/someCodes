@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>网格组件</title>
+	<style>
+		table{
+			border: 2px solid #333;
+		}
+	</style>
+</head>
+<body>
+
+<!-- 定义根节点 -->
+<div id="demo">
+	<form id="search">
+		<label for="query"> 搜索: </label><input name="query" id="query" v-model="searchQuery">
+	</form>
+	<demo-grid
+		:data="gridData"
+		:columns="gridColumns"
+		:filter-key="searchQuery"
+	>
+	</demo-grid>
+</div>
+
+<script src="../script/vue.js"></script>
+
+<script type="text/x-template" id="grid-template">	
+<table>
+	<thead>
+		<tr>
+			<th v-for="key in columns"
+				@click = "sortBy(key)"
+				:class = "{active: sortKey == key}">
+			{{ key | capitalize }}		
+			<span class="arrow" :class="sortOrders[key] > 0 ? 'asc' : 'dsc'"></span>
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr v-for="entry in filteredData">
+			<td v-for="key in columns">
+				{{ entry[key] }}
+			</td>
+		</tr>
+	</tbody>
+</table>
+</script>
+<script>
+	Vue.component("demo-grid", {
+		template: "#grid-template", // 组件模板
+		props: {
+			// 类型检测
+			columns: Array,
+			data: Array,
+			filterKey: String
+		},
+		data: function (argument) {
+			var sortOrders = {}
+			this.columns.forEach(function (key) {
+				sortOrders[key] = 1
+			})
+			return {
+				sortKey: "",
+				sortOrders: sortOrders
+			}
+		},
+		computed: {
+			// 筛选数据
+			filteredData: function () {
+				var sortKey = this.sortKey;
+
+				var filterKey = this.filterKey && this.filterKey.toLowerCase();
+				var order = this.sortOrders[sortKey] || 1;
+				var data = this.data;
+				if (filterKey) {
+					data = data.filter(function (row) {
+						return Object.keys(row).some(function (key) {
+							return String(row[key]).toLowerCase().indexOf(filterKey) > -1
+						})
+					})
+				}
+
+				if (sortKey) {
+					data = data.slice().sort(function (a, b) {
+						a = a[sortKey]
+						b = b[sortKey]
+
+						return ( a === b ? 0 : a > b ? 1 : -1) * order;
+					})
+				}
+				return data;
+			}
+		},
+		filters: {
+			capitalize: function (str) {
+				return str.charAt(0).toUpperCase() + str.slice(1)
+			}
+		},
+		methods: {
+			sortBy: function (key) {
+				this.sortKey = key;
+				this.sortOrders[key] = this.sortOrders[key] * -1
+			}
+		}
+	})
+
+	var demo = new Vue({
+		el: "#demo", // 实例挂载节点
+		data: {
+			searchQuery: "",
+			gridColumns: ["name", "height", "weight"],
+			gridData: [
+				{ name: "a", height: "170", weight: "52" },
+				{ name: "b", height: "171", weight: "50" },
+				{ name: "c", height: "172", weight: "53" },
+				{ name: "d", height: "173", weight: "72" },
+				{ name: "e", height: "174", weight: "63" },
+			]
+		}
+	})
+</script>
+</body>
+</html>

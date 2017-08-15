@@ -64,6 +64,7 @@ ul li
         <script type="text/javascript">
             $(function () {
                 $("#btnShow").bind("click", function () {
+                    // alert(this.id);
                     var $this = $(this);
                     $("ul")
                     .html("<img src='Images/Loading.gif' alt=''/>")
@@ -73,5 +74,11 @@ ul li
                 })
             });
         </script>
+
+
+        <!-- notes:
+        1. disabled属性属于布尔值属性，要设置其属性，attr()和prop()哪个方法合适？
+        2. 小心this
+         -->
     </body>
 </html>
