@@ -51,14 +51,13 @@ $(function(){
 		});*/
 	//第二种方案：
 	$(".msg_caption").click(function(e){
-		var $paraFontSize = $("#para").css("font-size");
-		if($(e.target).is(".bigger")){
-			if(parseInt($paraFontSize) < 32){
-				$("#para").css("font-size",parseInt($paraFontSize)+2+"px");}
-		}else{
-			if(parseInt($paraFontSize) > 14){
-				$("#para").css("font-size",parseInt($paraFontSize)-2+"px");}
-			}
+		var fs = parseInt($("#para").css("font-size"));
+
+		if($(e.target).is(".bigger") && fs < 32){
+			$("#para").css("font-size",fs + 2+"px");
+		}else if($(e.target).is(".smaller") && fs > 14){
+			$("#para").css("font-size",fs - 2+"px");
+		}
 		
 		});
 	});
@@ -67,8 +66,10 @@ $(function(){
 
 
 <!-- 
-1、用css("font-size")获取的值是带单位的，可以用parseInt()去掉单位
-2、可以用slice()方法返回字符串中从指定的字符开始的一个子字符串，这里使用的度量单位px是两个字符，所有指定字符串应该从倒数第二个字符开始（slice(-2)）。在后面设置字体大小是，就可以直接把单位拼接上。
+1、用css("font-size")获取的值是带单位的，可以用parseInt()去掉单位.
+同时，通过css()方法设置font-size也要传入单位
+2、"30px".slice(0, -2) // 20
+	parseInt("30px") // 30
  -->
 </body>
 </html>

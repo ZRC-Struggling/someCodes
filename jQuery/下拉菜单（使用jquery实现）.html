@@ -68,7 +68,7 @@ nav ul li ul a{
 <script type="text/javascript" src="jquery/jquery-2.2.3.js"></script>
 <script type="text/javascript">
 $(function(){
-	//此句获取的是一级导航，不能使用”$lis=$("nav").find("a");“来代替，因为它获取的是所有的li,不仅包含一级导航就，也包含二级导航。
+	//此句获取的是一级导航，不能使用”$lis=$("nav").find("a");“来代替，因为它获取的是所有的li,不仅包含一级导航，也包含二级导航。
 	$lis=$("nav>ul>li>a");//或使用$lis=$("nav").children().children().children("a");
 	// $lis.hover(function(){
 	// 		if(!$(this).is(":animated")){
@@ -89,9 +89,9 @@ $(function(){
 	});
 </script>
 <!--
-	一些问题
+	notes:
 	1. 高速移动下，出现动画累积，导致动作与动画不一致
-	solution: 先判断，再决定是否加动画。
+	解决方案: 先判断，再决定是否加动画。
 -->
 </body>
 </html>

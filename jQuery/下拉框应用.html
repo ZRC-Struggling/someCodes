@@ -59,6 +59,7 @@ $(function(){
 	$("#add").click(function () {
 		var $options = $("#select1").find("option:selected");
 		$options.appendTo("#select2");
+		// $("#select2").append($options);
 	});
 	$("#add_all").click(function () {
 		var $options = $("#select1").find("option");
@@ -84,5 +85,11 @@ $(function(){
 	
 	});
 </script>
+
+<!-- notes:
+	1. click    dblclick
+	2. appentTo    append
+	3. multiple-select
+ -->
 </body>
 </html>
