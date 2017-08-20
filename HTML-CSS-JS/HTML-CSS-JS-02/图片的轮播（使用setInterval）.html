@@ -1,0 +1,116 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style type="text/css">
+*{
+	margin: 0;
+	padding: 0;
+}
+.scroll_mid{
+	background-color:#f2f2f3;
+	border: 2px solid #d6d5d6;
+	width:678px;
+	margin: 10px auto;
+}
+#scroll_number{
+	position: relative;
+	top:-10px;
+}
+ul{
+	position: absolute;
+	top:-20px;
+	left:0px;
+	list-style:none;
+}
+#scroll_number li{
+	margin: 0;
+	padding: 0;
+	display: inline-block;
+	width: 30px;
+	height: 20px;
+	text-align: center;
+	border: 1px solid #333;
+}
+#scroll_number li:hover{
+    cursor: pointer;
+}
+.scroll_number_over{
+	background-color:#F96;
+	color:#FFF;
+}
+
+</style>
+</head>
+
+<body>
+	<div class="banner">
+        <div class="scroll_mid">
+        	<img src="images/40.jpg" alt="轮换显示的图片广告" id="dd_scroll"/>
+            <div id="scroll_number">
+                <ul>
+                    <li class="scroll_number_over">1</li>
+                    <li>2</li>
+                    <li>3</li>
+                    <li>4</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+    // 数组，存放所有图片的路径
+    var imgArr = ["images/40.jpg","images/41.jpg","images/42.jpg","images/43.jpg"];
+    var nowFrame = 2;  // 当前显示的图片
+    var maxFrame = 4;  // 图片的总数
+    var img = document.querySelector("#dd_scroll");
+    var lis = document.querySelectorAll("#scroll_number li");
+    
+    // 函数， 配合定时器可以实现图片轮播的功能
+    function loopShow(){
+        img.src = imgArr[nowFrame - 1];
+
+        lis.forEach(function (item, index) {
+            if(index == nowFrame - 1){
+                lis[index].classList.add("scroll_number_over");
+            }else{
+                lis[index].classList.remove("scroll_number_over");
+            }
+        });
+
+        if(nowFrame == maxFrame){   
+            nowFrame = 1;
+        }else{
+            nowFrame++;
+        }
+    }
+
+    // 定时器，每隔一段时间调用一次图片轮播函数
+    var timer=setInterval(loopShow, 4000);        
+    // var timer=setInterval("loopShow", 2000);        
+    // var timer=setInterval("loopShow()", 2000);   		
+
+    // 鼠标移入时，调用图片轮播函数
+    lis.forEach(function (item) {
+        item.onmouseover = function () {
+            // console.log("this.textContent: ", this.textContent);
+            // console.log("this.innerText: ", this.innerText);
+            clearInterval(timer);
+            nowFrame = Number(this.textContent || this.innerText);
+            loopShow();
+            timer = setInterval(function () {
+                loopShow();
+            }, 4000)
+        }
+    });
+    
+    </script>
+<!-- 
+    attentions:
+    	1.为什么图片底部会出现空白的空隙？换句话说，图片外层包裹的div的高度为何比图片大一点？
+        2.列表项之间为什么会有间距？
+        间距是列表项之间的空格造成的
+    	 -->
+</body>
+</html>

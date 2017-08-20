@@ -16,16 +16,16 @@
 
 </style>
 <body>
-                <div class="banner">
-                   <div class="pic"><img src="images/banner_1.jpg" alt="" title="" id="photos"></div>
-                </div>    	
+<div class="banner">
+   <div class="pic"><img src="images/banner_1.jpg" alt="" title="" id="photos"></div>
+</div>    	
 
 <script type="text/javascript">	
 	window.onload=fun;
 	var photosIndex=1;
-	photoslLen=5;
+	photosLen=5;
 	function fun(){
-	if(photosIndex>photoslLen){
+	if(photosIndex>photosLen){
 			photosIndex=1;
 		}else{
 		document.getElementById("photos").src="images/banner_"+photosIndex+".jpg";
@@ -36,5 +36,6 @@
 	//若要解决，可考虑把 else  和  它携带的一对尖括号去掉	
 	setInterval("fun()",2000);
 </script>
+<!-- 重新看了一下，这些代码确实写得很糟糕，不值得借鉴，仅留作回忆 -->
 </body>
 </html>

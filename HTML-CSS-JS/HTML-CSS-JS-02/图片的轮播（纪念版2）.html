@@ -7,6 +7,7 @@
 <script type="text/javascript">
 var i=4;
 var k=document.getElementById("photos");
+console.log(k);
 function fun(){
 	alert(i);	
 	//var k=document.getElementById("photos");为何此语句放到函数外就失效了。而“var i=4；”则不会?
@@ -23,6 +24,6 @@ function fun(){
 <body onLoad="fun()">
 <img src="images/1.jpg"  id="photos" alt="" width="528" height="473">
 
-
+<!-- 重新看了一下，这些代码确实写得很糟糕，不值得借鉴，仅留作回忆 -->
 </body>
 </html>

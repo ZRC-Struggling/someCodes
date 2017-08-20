@@ -35,6 +35,9 @@
 			line-height: 18px;
 			text-align: center;
 		}
+		.scrollNum li:hover{
+			cursor: pointer;
+		}
 		li.active{
 			background-color: #F96;
 			color:white;
@@ -66,6 +69,7 @@
 			var picArr = ["banner_1","banner_2","banner_3","banner_4","banner_5"];	//通过数组存储所有图片的名字
 			var picCurrentIndex = 0;	//设置当前图片的索引为0 ， 目的是在加载的时候先显示第一张图片
 			var timer = null;	//空对象指针，将用于存储定时器，以实现对定时器的存储和删除
+
 			// carousel函数的功能是实现图片的轮播的效果。
 			// 主要逻辑：
 			// 	1.判断是否到了最后一张图片，若是，那么把图片索引设置为第一张图片的索引,从头开始播放
@@ -88,6 +92,7 @@
 			}
 
 			carousel();
+
 			//通过循环结构为每一个图片序号添加鼠标悬浮事件，先将原有的定时器删除，再在事件处理函数中对当前图片索引做出修改，最后调用图片轮播函数以实现从当前的图片序号对应的图片开始轮播的效果。
 			for (var i = 0; i < scrollNumItems.length; i++) {
 				scrollNumItems[i].onmouseover = function(num){
@@ -104,6 +109,6 @@
 
 
 <!-- 	attentions:
-		1.在浏览器的调试器中，观察发现div.banner实际上比图片要高一点（435>420+2*5），为什么？ -->
+		1.在浏览器的调试器中，观察发现div.banner实际上比图片要高一点（434>420+2*5），为什么？ -->
 </body>
 </html>
