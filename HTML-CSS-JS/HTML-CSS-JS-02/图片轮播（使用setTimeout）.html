@@ -4,11 +4,7 @@
 	<meta charset="UTF-8">
 	<title>图片轮播</title>
 	<style>
-		*{
-			margin: 0;
-			padding: 0;
-		}
-		.banner{
+		.pic-container{
 			position:relative;
 			width:1030px;
 			margin:10px auto;
@@ -21,10 +17,11 @@
 		.scrollNum{
 			list-style:none;
 			position: absolute;
+			margin: 0;
+			padding: 0;
 			left: 8px;
 			bottom:12px;
 		}
-		
 		.scrollNum li{
 			display: inline-block;
 			width: 24px;
@@ -38,16 +35,42 @@
 		.scrollNum li:hover{
 			cursor: pointer;
 		}
-		li.active{
+		.scrollNum li.active{
 			background-color: #F96;
 			color:white;
+		}
+		.pic-arrow{
+			position: absolute;
+			width: 100%;
+			height: 100%;
+		}
+		.pic-arrow span{
+			position: absolute;
+			transform: translateY(-50%);
+			top: 50%;
+			color: white;
+			font-size: 48px;
+			font-weight: bold;
+		}
+		.pic-arrow span:hover{
+			cursor: pointer;
+		}
+		.pic-arrow-left{
+			left: 10px;
+		}
+		.pic-arrow-right{
+			right: 10px;
 		}
 	</style>
 </head>
 <body>
 	
 
-	<div class="banner">
+	<div class="pic-container">
+		<div class="pic-arrow">
+			<span class="pic-arrow-left">&lt;</span>
+			<span class="pic-arrow-right">&gt;</span>
+		</div>
 		<img id="pic" src="images/banner_1.jpg" alt="...">
 		<ul class="scrollNum">
 			<li class="active">1</li>
@@ -66,7 +89,7 @@
 		window.onload = function () {	
 			var pic = document.getElementById("pic");	//获取图片控件
 			var scrollNumItems = document.getElementsByTagName("li");	//获取所有的图片序号
-			var picArr = ["banner_1","banner_2","banner_3","banner_4","banner_5"];	//通过数组存储所有图片的名字
+			var picArr = ["images/banner_1.jpg","images/banner_2.jpg","images/banner_3.jpg","images/banner_4.jpg","images/banner_5.jpg"];	//通过数组存储所有图片的名字
 			var picCurrentIndex = 0;	//设置当前图片的索引为0 ， 目的是在加载的时候先显示第一张图片
 			var timer = null;	//空对象指针，将用于存储定时器，以实现对定时器的存储和删除
 
@@ -78,15 +101,16 @@
 			// 	4.图片索引递增1
 			// 	5.设置定时器，每个2秒调用一次函数。
 			function carousel() {
-				if(picCurrentIndex > picArr.length-1){
-					picCurrentIndex = 0;
-				}
 				
-				pic.src = "images/"+picArr[picCurrentIndex]+".jpg";
+				pic.src = picArr[picCurrentIndex];
 				for (var i = 0; i < scrollNumItems.length; i++) {
 					scrollNumItems[i].className = (i === picCurrentIndex)?"active":"";
 				}
-				picCurrentIndex++;//此句不能和前面的代码调换位置
+				if (picCurrentIndex == picArr.length - 1) {
+					picCurrentIndex = 0;
+				}else{
+					picCurrentIndex++;
+				}
 				
 				timer = setTimeout(carousel,2000);
 			}
@@ -95,7 +119,7 @@
 
 			//通过循环结构为每一个图片序号添加鼠标悬浮事件，先将原有的定时器删除，再在事件处理函数中对当前图片索引做出修改，最后调用图片轮播函数以实现从当前的图片序号对应的图片开始轮播的效果。
 			for (var i = 0; i < scrollNumItems.length; i++) {
-				scrollNumItems[i].onmouseover = function(num){
+				scrollNumItems[i].onclick = function(num){
 					return function(){
 						clearTimeout(timer);	//清除定时器
 						picCurrentIndex = num;	//将当前图片索引改变为图片序号对应的索引值
@@ -103,12 +127,36 @@
 					}
 				}(i)
 			}
+
+			var prev = document.getElementsByClassName("pic-arrow-left")[0];
+			var next = document.getElementsByClassName("pic-arrow-right")[0];
+			prev.onclick = function () {
+				clearTimeout(timer);
+				if (picCurrentIndex == 1) {
+					picCurrentIndex = picArr.length - 1;
+				}else if(picCurrentIndex == 0){
+					picCurrentIndex = picArr.length - 2;
+				}else{
+					picCurrentIndex = picCurrentIndex - 2;
+				}
+				carousel();
+			}
+			next.onclick = function () {
+				clearTimeout(timer);
+				carousel();
+			}
 		}
 	</script>
 
 
 
 <!-- 	attentions:
-		1.在浏览器的调试器中，观察发现div.banner实际上比图片要高一点（434>420+2*5），为什么？ -->
+		1.在浏览器的调试器中，观察发现图片外层的div实际上比图片要高一点（434>420+2*5），为什么？ 
+		
+		
+		-->
 </body>
 </html>
+
+
+
