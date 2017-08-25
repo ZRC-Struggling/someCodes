@@ -2,31 +2,37 @@
 <html lang="zh-CN">
 <head>
 	<meta charset="UTF-8">
-	<title>Document</title>
+	<title>let存在变量提升，同时也受到暂时性死区的限制</title>
 </head>
 <body>
 	
 	<!-- Traceur允许ES6代码直接插入网页。首先，必须在网页头部加载Traceur库文件。 -->
 	<!-- 下面的第一个script标签用于加载Traceur的库文件，后两个用于将这个库文件用于浏览器环境。 -->
-	<script src="https://google.github.io/traceur-compiler/bin/traceur.js"></script>
+<!-- 	<script src="https://google.github.io/traceur-compiler/bin/traceur.js"></script>
 	<script src="https://google.github.io/traceur-compiler/bin/BrowserSystem.js"></script>
-	<script src="https://google.github.io/traceur-compiler/src/bootstrap.js"></script>
+	<script src="https://google.github.io/traceur-compiler/src/bootstrap.js"></script> -->
 
 	<!-- 注意，下面的script标签的type属性的值为module。Traceur编译器会自动将type为module的代码编译为ES5，然后再交给浏览器执行。 -->
-	<script type="module">
+	<!-- <script type="module"> -->
+	<script>
+		console.log(a); // undefined
+		var a = 1;
 
-		{
-			// "var"和"let"声明的变量都具有提升到其所在作用域顶部的现象
-			console.log("name:", name); // name: undefined
-			console.log("github:", github); // github: undefined
-			var name = "ZRC-Struggling";
-			let github = "https://www.github.com/ZRC-Struggling";
+		{	
+			// 若let没有变量声明提前的行为，那么输出结果应该是1
+			// 若let跟var的变量提升现象是一样的，且没有受到其它的限制，那么输出结果应该是undefined
+			// 而结果却是出人意料：Uncaught ReferenceError: a is not defined
+			// 个人认为，js中的变量提升行为是并不合理的，let企图通过暂时性死区的方式，抑制变量未定义先使用的编码行为，
+			// 随着时间的流逝，如果大部分的js程序员已经不依赖于变量提升的行为了，那么js中的变量提升可能会被从根本上去除
+			// 反之，let所谓的暂时性死区有可能会被去除。
+			console.log(a); // Uncaught ReferenceError: a is not defined
+			let a;
 		}
 
-		// "var"声明的变量没有块级作用域，而"let"声明的变量具有块级作用域
-		console.log("name:", name); // name: ZRC-Struggling	
-		console.log("github:", github); // ReferenceError: github is not defined
-
 	</script>
+
+	<!-- notes: 
+	1. chrome浏览器现在已经支持let语法。直接运行脚本和通过Traceur编译后运行的结果是不一样的。
+	-->
 </body>
 </html>

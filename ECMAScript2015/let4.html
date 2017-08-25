@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+
+	<!-- 下面的第一个script标签用于加载Traceur的库文件，后两个用于将这个库文件用于浏览器环境。 -->
+	<!-- <script src="https://google.github.io/traceur-compiler/bin/traceur.js"></script>
+	<script src="https://google.github.io/traceur-compiler/bin/BrowserSystem.js"></script>
+	<script src="https://google.github.io/traceur-compiler/src/bootstrap.js"></script> -->
+
+	<!-- 注意，下面的script标签的type属性的值为module。Traceur编译器会自动将type为module的代码编译为ES5，然后再交给浏览器执行。 -->
+	<!-- <script type="module"> -->
+	<script>
+	for (let i = 0;i < 4;i++){
+		let i = -1;
+		console.log(i);
+	}
+	// -1
+	// -1
+	// -1
+	// -1
+
+	console.log(typeof j); // undefined
+
+	{
+		console.log(typeof j); // Uncaught ReferenceError: j is not defined
+		let j;
+	}
+	</script>
+
+	<!-- note: 
+		1. for循环还有一个特别之处，就是设置循环变量的那部分是一个父作用域，而循环体内部是一个单独的子作用域。
+		(From: http://es6.ruanyifeng.com/#docs/let)
+		2.(From: http://es6.ruanyifeng.com/#docs/let) “暂时性死区”也意味着typeof不再是一个百分之百安全的操作。
+		在没有let之前，typeof运算符是百分之百安全的，永远不会报错。
+		现在这一点不成立了。这样的设计是为了让大家养成良好的编程习惯，变量一定要在声明之后使用，否则就报错。
+	-->
+</body>
+</html>

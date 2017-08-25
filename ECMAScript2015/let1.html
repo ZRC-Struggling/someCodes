@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>let不能重复声明变量</title>
+</head>
+<body>
+
+	<script> 
+
+	// 重复声明变量本身就是一种错误，js已经纵容这种错误太久了
+	// 可以预想，以后js的语法会变得越来越严格，从降低运行出错率的角度来看，大有裨益。
+
+	var a = 1;
+	var a = "1";
+
+	let b = 2;
+	let b = "2"; // Uncaught ReferenceError: b is not defined
+
+	
+
+	</script>
+
+	<!-- notes:
+	1. 
+		let和var的共同点：都会有变量声明提前的现象
+		let的个性：
+			- 具有块级作用域
+			- 不能重复声明变量
+
+	2. 关于let是否存在声明提前的现象，一直有争议
+		1）阮一峰（http://es6.ruanyifeng.com/#docs/let）认为：let存在变量提升的现象，但他也谈及暂时性死区。	
+
+		2）https://zhuanlan.zhihu.com/p/27558914?utm_source=itdadao&utm_medium=referral：	从emca标准来看应该这么理解：所有的声明都是被提升到块顶部，var顶部申明同时初始化为undefined，let在顶部申明直到遇到let才进行初始化，function顶部申明同时初始化和赋值(不像let可以留空初始化为undefined)，变量初始化之后才能进行其他操作，tdz就是这么来的
+
+		3）https://github.com/getify/You-Dont-Know-JS/issues/767
+	 -->
+
+</body>
+</html>

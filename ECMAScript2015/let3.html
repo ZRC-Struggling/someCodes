@@ -8,12 +8,13 @@
 	
 
 	<!-- 下面的第一个script标签用于加载Traceur的库文件，后两个用于将这个库文件用于浏览器环境。 -->
-	<script src="https://google.github.io/traceur-compiler/bin/traceur.js"></script>
+	<!-- <script src="https://google.github.io/traceur-compiler/bin/traceur.js"></script>
 	<script src="https://google.github.io/traceur-compiler/bin/BrowserSystem.js"></script>
-	<script src="https://google.github.io/traceur-compiler/src/bootstrap.js"></script>
+	<script src="https://google.github.io/traceur-compiler/src/bootstrap.js"></script> -->
 
 	<!-- 注意，下面的script标签的type属性的值为module。Traceur编译器会自动将type为module的代码编译为ES5，然后再交给浏览器执行。 -->
-	<script type="module">
+	<!-- <script type="module"> -->
+	<script>
 	var a = [];
 	for (var i = 0; i < 5; i++) {
 		a[i] = function () {
@@ -32,15 +33,11 @@
 	console.log("b[0]为：", b[0]); //  b[0]为： function () { return j;}
 	console.log("b[0]()为：", b[0]()); // b[0]()为： 0
 
-	console.log(c); // undefined
-	var c = "c"; 
 
-	console.log(d); // undefined
-	let d = "d"; 
 	</script>
 
 	<!-- note: 
-		1. let具有块级作用域，这一点与var不同，但是两者都具有变量声明提前的特性。
+
 	-->
 </body>
 </html>
