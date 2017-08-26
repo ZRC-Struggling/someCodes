@@ -21,18 +21,24 @@
 	<script>
 		
 	const a = 1;
-	docuemnt.write(a);
+	console.log(a); // 1
 
-	a = 2; // MultipleErrors(a is read-only)
+	a = 2; // Uncaught TypeError: Assignment to constant variable.
 
 
 	</script>
 
-	<!-- note:
-		1. const：
-				* 必须声明的时候赋值
-				* 声明之后不可再次赋值
-				* 具有块级作用域
-		 -->
+	<!-- notes:
+	1. const的特点：
+	- 声明的时候必须赋值，声明之后不能再次赋值
+	- 具有块级作用域(与let一致)
+	- 会有变量声明提前的现象，但是受到暂时性死区的限制,被提前的变量在暂时性死区中是无法进行引用的(与let一致)
+	- 不能重复声明（与let一致）
+	2. const的本质(From: es6.ruanyifeng.com#docs/let)
+		const实际上保证的，并不是变量的值不得改动，而是变量指向的那个内存地址不得改动。
+	对于简单类型的数据（数值、字符串、布尔值），值就保存在变量指向的那个内存地址，因此等同于常量。
+	但对于复合类型的数据（主要是对象和数组），变量指向的内存地址，保存的只是一个指针，
+	const只能保证这个指针是固定的，至于它指向的数据结构是不是可变的，就完全不能控制了。
+	 -->
 </body>
 </html>
