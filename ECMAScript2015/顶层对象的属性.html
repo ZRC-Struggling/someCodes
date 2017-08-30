@@ -8,16 +8,38 @@
 	
 
 	<!-- 下面的第一个script标签用于加载Traceur的库文件，后两个用于将这个库文件用于浏览器环境。 -->
-	<script src="https://google.github.io/traceur-compiler/bin/traceur.js"></script>
+<!-- 	<script src="https://google.github.io/traceur-compiler/bin/traceur.js"></script>
 	<script src="https://google.github.io/traceur-compiler/bin/BrowserSystem.js"></script>
 	<script src="https://google.github.io/traceur-compiler/src/bootstrap.js"></script>
-	<!-- 注意，下面的script标签的type属性的值为module。Traceur编译器会自动将type为module的代码编译为ES5，然后再交给浏览器执行。 -->
-	<script type="module">
+ -->	
+
+ 	<!-- 注意，下面的script标签的type属性的值为module。Traceur编译器会自动将type为module的代码编译为ES5，然后再交给浏览器执行。 -->
+	<!-- <script type="module"> -->
+	<script>
 	var a = 1;
-	console.log(window.a);	// undefined ???
+	console.log(window.a);	// 1
 
 	let b = 2;
-	console.log(window.b);	// undefined ???
+	console.log(window.b);	// undefined
+
+	const c = 3;
+	console.log(window.c); // undefined
+	
 	</script>
+
+
+	<!-- notes 
+	1. - ES5时代，全局变量会被自动设置成顶级对象的属性。
+	   - ES6时代，全局变量与顶级对象逐渐脱钩。
+	   	 - 为了向后兼容，使用var和function声明的变量，仍然会成为顶级对象的属性。
+	   	 - 而使用let、const、class声明的变量，则不再是顶级对象的属性了。
+	2. (From es6.ruanyifeng.com/#docs/let):
+	顶层对象的属性与全局变量挂钩，被认为是JavaScript语言最大的设计败笔之一。
+		- 这样的设计带来了几个很大的问题，首先是没法在编译时就报出变量未声明的错误，只有运行时才能知道
+		（因为全局变量可能是顶层对象的属性创造的，而属性的创造是动态的）；
+		- 其次，程序员很容易不知不觉地就创建了全局变量（比如打字出错）；
+		- 最后，顶层对象的属性是到处可以读写的，这非常不利于模块化编程。
+		- 另一方面，window对象有实体含义，指的是浏览器的窗口对象，顶层对象是一个有实体含义的对象，也是不合适的。
+	-->
 </body>
 </html>

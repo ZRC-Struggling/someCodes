@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		label{
+			vertical-align: top;
+		}
+	</style>
+</head>
+<body>
+<form method="GET" action="" id="form1">
+	<label for="img">照片: <input type="file" name="img" id="img"></label>
+	<br>
+	性别:
+	<label for="man">男</label>
+	<input type="radio" value="男" name="sex" id="man">
+	<label for="woman">女</label>
+	<input type="radio" value="女" name="sex" id="woman"></label>
+	<br>	
+	<div>
+		<label for="language">熟悉的编程语言:</label>
+		<select name="language" id="langauge" multiple="multiple">
+			<option value="">JavaScript</option>
+			<option value="Python">Python</option>
+			<option value="C++">C++</option>
+			<option value="PHP">PHP</option>
+		</select>
+	</div>
+	<br>
+	你喜欢看什么书籍？
+	<input type="checkbox" name="books" value="JavaScript权威指南" id="a"><label for="a">JavaScript权威指南</label>
+	<input type="checkbox" name="books" value="JavaScript高级程序设计" id="b"><label for="b">JavaScript高级程序设计</label>
+	<input type="checkbox" name="books" value="CSS权威指南" id="c"><label for="c">CSS权威指南</label>
+	<input type="checkbox" name="books" value="HTML5权威指南" id="d"><label for="d">HTML5权威指南</label>
+	<input type="checkbox" name="books" value="精通CSS 高级Web标准解决方案" id="e"><label for="e">高级Web标准解决方案</label>
+	<br>
+	<label for="des">你的成长历程: </label>
+	<textarea name="des" id="des" cols="30" rows="10"></textarea>
+	<br>	
+	<input type="submit" name="submit" value="提交">
+</form>
+	<script>
+		var btn = document.forms[0].elements["submit"];
+		function serialize (form) {
+			var parts = [],
+			    field = null,
+			    i,
+			    len,
+			    j,
+			    optLen,
+			    option,
+			    optValue;
+			for(i = 0, len = form.elements.length;i < len;i++){
+				field = form.elements[i];
+
+				switch(field.type){
+					case "select-one":
+					case "select-multiple":
+
+					if (field.name.length) {
+						for(j = 0, optLen = field.options.length;j < optLen;j++){
+							option = field.options[j];
+							if (option.selected) {
+								optValue = "";
+								if (option.hasAttribute) {
+									optValue = (option.hasAttribute("value") ? option.value : option.text);
+								}else{
+									optValue = (option.attributes["value"].specified ? option.value : option.text);
+								}
+								parts.push(encodeURIComponent(field.name) + "=" + encodeURIComponent(optValue));
+							}
+						}
+					}
+					break;
+
+					case undefined:  // 处理fieldset
+					case "file":
+					case "submit":
+					case "reset":
+					case "button":
+						break;
+
+					case "radio":
+					case "checkbox":
+						if (!field.checked) {
+							break;
+						}
+
+					default: 
+						if (field.name.length) {
+							parts.push(encodeURIComponent(field.name) + "=" + encodeURIComponent(field.value));
+						}
+				}
+			}
+			return parts.join("&");
+		}
+
+		btn.addEventListener("click", function (e) {
+			e.preventDefault();
+			console.log(serialize(document.forms[0]));	
+		}, false);
+		
+	</script>
+</body>
+</html>
