@@ -2,9 +2,56 @@
 <html lang="zh-CN">
 <head>
 	<meta charset="UTF-8">
-	<title>Document</title>
+	<title>数值的扩展</title>
 </head>
 <body>
-	
+	<script type="text/javascript">
+		011;  // 9 （此种写法在ES5严格模式下会报错:"Uncaught SyntaxError: Octal literals are not allowed in strict mode."）
+		0o11; // 9
+		0O11; // 9
+
+		0b11; // 3
+		0B11; // 3
+
+		// 将0b和0o前缀的字符串数值转为十进制，可以使用Number方法，也可以使用"+"运算符
+		// 而使用parseInt()则会得到错误的结果
+		+"0o11"; // 9
+		Number("0b11"); // 3
+
+
+		// Number.isFinite()和Number.isNaN()与传统的全局方法isFinite()和isNaN()的区别在于
+		// 传统方法先调用Number()将非数值的值转为数值，再进行判断，而这两个新方法只对数值有效.
+		// Number.isFinite()对于非数值一律返回false.
+		// Number.isNaN()只有对于NaN才返回true，非NaN一律返回false。
+		Number.isFinite(Math.pow(2, 1023)); // true
+		Number.isFinite(Math.pow(2, 1024)); // false
+		isFinite("100"); // true
+		Number.isFinite("100"); // false
+		Number.isNaN("NaN"); // false
+		isNaN("NaN"); // true
+
+		Number.isInteger(100); // true
+		Number.isInteger(Infinity); // false
+		Number.isInteger(100.1); // false
+
+		// Number.EPSILON是一个极小的常量，方便为浮点运算设置误差范围
+		Number.EPSILON // 2.220446049250313e-16
+
+		// JavaScript能够准确表示的整数范围在-2^53到2^53之间（不含两个端点），超过这个范围，无法精确表示这个值。
+		Number.isSafeInteger(Math.pow(2, 53)); // false
+		Number.isSafeInteger(Math.pow(2, 52)); // true
+
+		// Math.sign方法用来判断一个数到底是正数、负数、还是零。对于非数值，会先将其转换为数值。
+		Math.sign(2) // 1
+		Math.sign(-2) // -1
+		Math.sign(-0) // -0
+		Math.sign(0) // 0
+		Math.sign(NaN) // NaN
+
+		// 指数运算原本是通过Math对象pow()来实现的，ES6引入了指数运算符
+		Math.pow(2, 3); // 8
+		2 ** 3; // 8
+
+	</script>
 </body>
 </html>
