@@ -52,21 +52,45 @@
 
 <script type="text/javascript" src="jquery/jquery-2.2.3.js"></script>
 <script>
-$(function(){
-	$tabTitles=$(".tab_title").children("li");
-	$tabContents=$(".tab_content").children("div");
-	
-	$tabTitles.each(function(index) {
-        $(this).click(function(){
-			
-			$(this).addClass("active")
-				   .siblings().removeClass("active");
-	     		
-			$tabContents.filter(":eq("+index+")").show()
-						.siblings().hide();
-		});
-    });
+$(function () {
+    $.fn.tabs = function (options) {
+        var settings = $.extend({}, {
+            type: "hover"
+        }, options);
+        $titles = this.children("ul").children("li");
+        $contents = this.children("div").children("div");
+
+        $titles.each(function (index) {
+            $(this).bind(settings.type, function () {
+                $(this).addClass("active")
+                       .siblings().removeClass("active");
+                $contents.filter(":eq(" + index + ")").show()
+                         .siblings.hide();
+            })
+        });
+    }
 });
+</script>
+<script>
+// $(function(){
+// 	$tabTitles=$(".tab_title").children("li");
+// 	$tabContents=$(".tab_content").children("div");
+	
+// 	$tabTitles.each(function(index) {
+//         $(this).click(function(){
+			
+// 			$(this).addClass("active")
+// 				   .siblings().removeClass("active");
+	     		
+// 			$tabContents.filter(":eq("+index+")").show()
+// 						.siblings().hide();
+// 		});
+//     });
+// });
+
+$(function () {
+    $(".tab").tabs();
+})
 </script>
 </body>
 </html>
