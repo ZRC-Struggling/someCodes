@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<meta name="author" content="ZRC-Struggling">
+	<title>导航栏下拉菜单</title>
+	<style>
+		body{
+			margin: 0;
+			font-size: 16px;
+		}
+		nav{
+			width: 900px;
+			margin: 20px auto;
+		}
+		ul{
+			margin: 0;
+			padding: 0;
+		}
+		li{
+			list-style-type: none;
+		}
+		a{
+			text-decoration: none;
+		}
+		#nav-list{
+			background-color: black;
+			padding-left: 32px;
+			border-radius: 36px;
+			box-shadow: 0px 10px #333;
+		}
+		#nav-list>li{
+			display: inline-block;
+		}
+		#nav-list li a{
+			display: block;
+			background-color: black;
+			color: white;
+			padding: 15px;
+			font-size: 20px;
+		}
+		#nav-list li a.active, #nav-list li a:hover{
+			background-color: #666;
+		}
+		#nav-list ul{
+			position: absolute;
+			min-width: 110px;
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	
+
+	<nav>
+		<ul id="nav-list">
+			<li><a href="#" class="active">首页</a></li>
+			<li>
+				<a href="#">课程大厅</a>
+				<ul>
+					<li><a href="#">JavaScript</a></li>
+					<li><a href="#">PHP</a></li>
+				</ul>
+			</li>
+			<li>
+				<a href="#">学习中心</a>
+				<ul>
+					<li><a href="#">视频学习</a></li>
+					<li><a href="#">案例学习</a></li>
+					<li><a href="#">交流平台</a></li>
+				</ul>
+			</li>
+			<li><a href="#">经典案例</a></li>
+			<li><a href="#">关于我们</a></li>
+		</ul>
+	</nav>
+
+
+	<script src="jquery/jquery_3.2.0.js"></script>
+	<script>
+		$(function () {
+			var $lis = $("#nav-list").children("li");
+			$lis.hover(function () {
+				var $ul = $(this).find("ul");
+				if (!$ul.is(":animated")) {
+					$ul.slideDown(600);
+				}
+			}, function () {
+				var $ul = $(this).find("ul");
+				$ul.slideUp();
+			})
+		})
+	</script>
+
+
+	<!-- note:
+	1. 看看下面的几行代码实现了什么？
+			#nav-list ul{
+				position: absolute;
+				min-width: 136px;
+				display: none;
+			}
+	2. 下拉菜单项的宽度怎么设置更为合适？
+	（目前是设定最小宽度，不设最大宽度，自由扩展）
+	3. 使用动画要注意哪些问题？
+		1）防止动画累积，要在设置动画前判断其状态，再决定是否添加动画。
+		2）动画使用不当可能会造成性能方面的问题，有时候舍弃动画也是一种策略。
+
+	 -->
+</body>
+</html>

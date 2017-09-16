@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<meta name="author" content="ZRC-Struggling">
+	<title>jQuery-select下拉菜单的一个应用</title>
+	<style>
+		.wrap{
+			width: 800px;
+			margin: 0 auto;
+		}
+		.box{
+			width: 300px;
+			font-size: 18px;
+			text-align: center;
+		}
+		.box-left{
+			float: left;
+		}
+		.box-right{
+			float: right;
+		}
+		select{
+			width: 200px;
+			height: 200px;
+			font-size: 16px;
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	
+
+	
+	<div class="wrap">
+		<div class="box box-left">
+			<select name="select1" id="select1" multiple>
+				<option value="">选项1</option>
+				<option value="">选项2</option>
+				<option value="">选项3</option>
+				<option value="">选项4</option>
+				<option value="">选项5</option>
+				<option value="">选项6</option>
+				<option value="">选项7</option>
+				<option value="">选项8</option>
+			</select>
+			<br>
+			<button id="btn1">选中添加到右边 &gt;&gt;</button>
+			<button id="btn2">全部添加到右边 &gt;&gt;</button>
+		</div>
+		<div class="box box-right">
+			<select name="select2" id="select2" multiple>
+			</select>
+			<br>
+			<button id="btn3">&lt;&lt; 选中添加到左边</button>
+			<button id="btn4">&lt;&lt; 全部添加到左边</button>
+		</div>
+	</div>
+
+	<script src="jquery/jquery_3.2.0.js"></script>
+	<script>
+		$(function () {
+			var $btn1 = $("#btn1"),
+				$btn2 = $("#btn2"),
+				$btn3 = $("#btn3"),
+				$btn4 = $("#btn4"),
+				$select1 = $("#select1"),
+				$select2 = $("#select2");
+
+			// 点击按钮，选中添加到右边
+			$btn1.click(function () {
+				$select1.find("option:selected").appendTo($select2);
+			});
+			// 单击按钮，全部添加到右边
+			$btn2.click(function () {
+				$select1.find("option").appendTo($select2);
+			});
+			// 双击某一项，添加到右边
+			$select1.dblclick(function (e) {
+				if ($(e.target).is("option")) {
+					$(e.target).appendTo($select2);
+				}
+			});
+			// 单击按钮， 选中该添加到左边
+			$btn3.click(function () {
+				$select2.find("option:selected").appendTo($select1);
+			});
+			// 单击按钮， 全部添加到左边
+			$btn4.click(function () {
+				$select2.find("option").appendTo($select1);
+			});
+			// 双击某一项，添加到左边
+			$select2.dblclick(function (e) {
+				if ($(e.target).is("option")) {
+					$(e.target).appendTo($select1);
+				}
+			});
+		})
+	</script>
+
+	<!-- notes: 
+	1. click dblclick
+	2. appendTo append
+	3. multiple-select
+	4. 特别注意：此处双击事件不能绑定在option上面，而要绑定在select上面。
+	-->
+	
+</body>
+</html>

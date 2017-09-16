@@ -2,7 +2,8 @@
 <html lang="zh-CN">
 <head>
 	<meta charset="UTF-8">
-	<title>Document</title>
+	<meta name="author" content="ZRC-Struggling">
+	<title>$.fn.extend()</title>
 </head>
 <body>
 	
@@ -17,13 +18,12 @@
 				}
 			});
 
-			$("body").showNodeName();
-
 			$.fn.showNodeType = function () {
 				console.log(this.get(0).nodeType);
 			};
 
-			$("body").showNodeType();
+			$("body").showNodeName(); // "BODY"
+			$("body").showNodeType(); // 1
 		})
 	</script>
 
@@ -31,6 +31,20 @@
 	<!-- notes: 
 	1. jQuery.fn.extend( object ):
 	 一个对象的内容合并到jQuery的原型，以提供新的jQuery实例方法。
+	2. 为原型扩展多个方法：
+			$.fn.extend({
+				methodName1: function(){
+					...
+				},
+				methodName2: function(){
+					...
+				},
+					...
+			});
+		为原型扩展一个方法：
+			$.fn[methodName] = funcition(){
+				...
+			}
 	-->
 </body>
 </html>

@@ -4,13 +4,42 @@
 <meta charset="utf-8">
 <title>jquery_选项卡切换</title>
 <style type="text/css">
-.tab_title li.active{
-	border:1px solid red;
-	}
-.tab_content>div{
-	display:none;}
-.tab_content>div.active{
-	display:block;}
+body{
+    background-color: #ccc;
+    width: 420px;
+    font-family: "楷体";
+    font-size:16px;
+    margin: 20px auto;
+}
+.tab{
+    width: 320px;
+}
+.tab>ul{
+    margin-top:0;
+    margin-bottom:0;
+    padding-left: 0;
+}
+.tab>ul>li{
+    list-style-type:none;
+    display: inline-block;
+    background-color: #666;
+    color: white;
+    cursor: pointer;
+    padding: 5px 20px;
+}
+.tab>ul>li.active, .tab>div{
+    background-color: #eee;
+    color: black;
+}
+.tab>div{
+    padding: 10px 15px;
+}
+.tab>div>div{
+    display: none;
+}
+.tab>div>div.active{
+    display: block;
+}
 </style>
 </head>
 
@@ -20,7 +49,6 @@
     	<li class="active">房产</li>
         <li>家居</li>
         <li>二手房</li>
-        <li>房产</li>
     </ul>
 	<div class="tab_content">
     	<div class="active">
@@ -41,12 +69,6 @@
          黄城根小学学区仅260万 121平70万抛!<br>
          独家别墅280万 苏州桥2居优惠价248万        
         </div>
-        <div>
-        275万购昌平邻铁三居 总价20万买一居<br>
-        200万内购五环三居 140万安家东三环<br>
-        北京首现零首付楼盘 53万购东5环50平<br>
-        京楼盘直降5000 中信府 公园楼王现房	                
-        </div>
     </div>
 </div>
 
@@ -57,7 +79,7 @@ $(function(){
 	$tabContents=$(".tab_content").children("div");
 	
 	$tabTitles.each(function(index) {
-        $(this).click(function(){
+        $(this).mouseover(function(){
 			
 			$(this).addClass("active")
 				   .siblings().removeClass("active");

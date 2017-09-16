@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<meta name="author" content="ZRC-Struggling">
+	<title>动画的应用</title>
+	<style>
+		body{
+			/*可以使得内联块级元素在父容器中水平居中*/
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	
+
+	
+		<div class="operations">
+			<button id="higher">higher</button>
+			<button id="lower">lower</button>
+		</div>
+		<br>
+		<!-- 除设置默认内容以外，textarea开始标签和结束标签之间都不能有任何的字符 -->
+		<textarea name="comment" id="comment" cols="30" rows="10" placeholder="max-height:300;min-height:100"></textarea>
+
+	<script src="jquery/jquery_3.2.0.js"></script>
+	<script>
+		$(function () {
+			var $higher = $("#higher"),
+				$lower  = $("#lower"),
+				$comment= $("#comment");
+
+			$higher.click(function () {
+				if ($comment.is(":not(':animated')") && $comment.height() < 300) {
+					$comment.animate({
+						height: "+=30" // 看清楚写法
+					}, 800)
+				}
+			});
+			$lower.click(function () {
+				if (!$comment.is(":animated") && $comment.height() > 100) {
+					$comment.animate({
+						height: "-=30" // 看清楚写法
+					})
+				}
+			})
+		})
+	</script>
+
+	<!-- notes:
+	1. input, textarea, select, button的默认display属性值是"inline-block"
+	2. textarea开始标签和结束标签之间的所有字符都会成为其内容，包括空格、回车等
+	3. $(selector).height()返回值不包含单位
+	-->
+</body>
+</html>

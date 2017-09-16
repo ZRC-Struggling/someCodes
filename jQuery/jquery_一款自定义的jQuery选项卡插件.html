@@ -3,49 +3,85 @@
 <head>
 <meta charset="utf-8">
 <title>jquery_选项卡切换</title>
+<style>
+    body{
+        background-color: #e8e8e8;
+        width: 600px;
+        margin: 20px auto;
+    }
+</style>
 <style type="text/css">
-.tab_title li.active{
-	border:1px solid red;
-	}
-.tab_content>div{
-	display:none;}
-.tab_content>div.active{
-	display:block;}
+    .simple-tab{
+        font-size: 14px;
+    }
+    .simple-tab>ul{
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+    .simple-tab>ul>li{
+        cursor: pointer;
+        display: inline-block;
+        background-color: #666;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 8px 8px 0 0;
+    }
+    .simple-tab>ul>li.active{
+        background-color: #fafafa;
+        color: black;
+    }
+    .simple-tab>div{
+        padding: 10px 20px;
+        background-color: #fafafa;
+        color: black;
+        border-radius: 0 8px 8px;
+    }
+    .simple-tab>div>div{
+        display: none;
+    }
+    .simple-tab>div>div.active{
+        display: block;
+    }
 </style>
 </head>
 
 <body>
-<div class="tab">
-	<ul class="tab_title">
-    	<li class="active">房产</li>
-        <li>家居</li>
-        <li>二手房</li>
-        <li>房产</li>
+<div class="simple-tab">
+	<ul>
+    	<li class="active">Bootstrap</li>
+        <li>jQuery</li>
+        <li>Vue.js</li>
+        <li>React</li>
+        <li>AngularJS</li>
     </ul>
-	<div class="tab_content">
+	<div>
     	<div class="active">
-        275万购昌平邻铁三居 总价20万买一居<br>
-        200万内购五环三居 140万安家东三环<br>
-        北京首现零首付楼盘 53万购东5环50平<br>
-        京楼盘直降5000 中信府 公园楼王现房	        
+            <p>
+                Bootstrap是一组用于网站和网络应用程序开发的开源前端框架，包括HTML、CSS及JavaScript的框架，提供字体排印、窗体、按钮、导航及其他各种组Javascript扩展，旨在使动态网页和Web应用的开发更加容易。Bootstrap是GitHub上面被标记为“Starred”次数排名第二最多的项目。Starred次数超过96,000，而分支次数超过了42,000次。
+            </p>        
         </div>
         <div>
-         40平出租屋大改造 美少女的混搭小窝<br>
-         经典清新简欧爱家 90平老房焕发新生<br>
-         新中式的酷色温情 66平撞色活泼家居<br>
-         瓷砖就像选好老婆 卫生间烟道的设计        
+            <p>
+                jQuery是一套跨浏览器的JavaScript库，简化HTML与JavaScript之间的操作。由约翰•雷西格（John Resig）在2006年1月的BarCamp NYC上发布第一个版本。目前是由Dave Methvin领导的开发团队进行开发。全球前10,000个访问最高的网站中，有65%使用了jQuery，是目前最受欢迎的JavaScript库
+            </p>               
         </div>
         <div>
-         通州豪华3居260万 二环稀缺2居250w甩<br>
-         西3环通透2居290万 130万2居限量抢购<br>
-         黄城根小学学区仅260万 121平70万抛!<br>
-         独家别墅280万 苏州桥2居优惠价248万        
+            <p>
+                Vue.js是一个构建数据驱动的 web 界面的渐进式框架。Vue.js 的目标是通过尽可能简单的 API 实现响应的数据绑定和组合的视图组件。Vue.js 自身不是一个全能框架——它只聚焦于视图层。因此它非常容易学习，非常容易与其它库或已有项目整合。另一方面，在与相关工具和支持库一起使用时，Vue.js 也能完美地驱动复杂的单页应用。
+            </p>   
         </div>
         <div>
-        275万购昌平邻铁三居 总价20万买一居<br>
-        200万内购五环三居 140万安家东三环<br>
-        北京首现零首付楼盘 53万购东5环50平<br>
-        京楼盘直降5000 中信府 公园楼王现房	                
+            <p>
+             React (有时叫 React.js 或 ReactJS) 是一个为数据提供渲染为 HTML 的视图的开源 JavaScript 库。React 视图通常采用包含以自定义 HTML 标记规定的其他组件的组件渲染。React 为程序员提供了一种子组件不能直接影响外层组件 ("data flows down") 的模型，数据改变时对 HTML 文档的有效更新，和现代单页应用中组件之间干净的分离。
+    它由 Facebook, Instagram 和一个由个人开发者和企业组成的社群维护。
+            </p>            
+        </div>
+        <div>
+            <p>
+            AngularJS是一款开源JavaScript库，由Google维护，用来协助单一页面应用程序运行的。它的目标是通过MVC模式（MVC）功能增强基于浏览器的应用，使开发和测试变得更加容易。
+库读取包含附加自定义（标签属性）的HTML，遵从这些自定义属性中的指令，并将页面中的输入或输出与由JavaScript变量表示的模型绑定起来。这些JavaScript变量的值可以手工设置，或者从静态或动态JSON资源中获取。
+            </p>            
         </div>
     </div>
 </div>
@@ -55,41 +91,51 @@
 $(function () {
     $.fn.tabs = function (options) {
         var settings = $.extend({}, {
-            type: "hover"
+            type: "mouseover",
+            speed: 0,
+            animation: "toogle"
         }, options);
+        var animationMethod = "";
+
+        switch (settings.animation) {
+            case "fade":
+                animationMethod = "fadeIn";
+                break;
+            case "slide":
+                animationMethod = "slideDown"
+                break;
+            case "toogle":
+                animationMethod = "show";
+                break;
+            default:
+                animationMethod = "show";
+                break;
+        }
+
         $titles = this.children("ul").children("li");
         $contents = this.children("div").children("div");
 
         $titles.each(function (index) {
             $(this).bind(settings.type, function () {
+                var $content = $contents.filter(":eq(" + index + ")");
                 $(this).addClass("active")
                        .siblings().removeClass("active");
-                $contents.filter(":eq(" + index + ")").show()
-                         .siblings.hide();
+                if (!$content.is(":animated")) {
+                    $content[animationMethod](settings.speed)
+                            .siblings().hide();
+                }
             })
         });
     }
 });
 </script>
 <script>
-// $(function(){
-// 	$tabTitles=$(".tab_title").children("li");
-// 	$tabContents=$(".tab_content").children("div");
-	
-// 	$tabTitles.each(function(index) {
-//         $(this).click(function(){
-			
-// 			$(this).addClass("active")
-// 				   .siblings().removeClass("active");
-	     		
-// 			$tabContents.filter(":eq("+index+")").show()
-// 						.siblings().hide();
-// 		});
-//     });
-// });
-
 $(function () {
-    $(".tab").tabs();
+    $(".simple-tab").tabs({
+        // type: "click",
+        // speed: 300,
+        // animation: "slide"
+    });
 })
 </script>
 </body>

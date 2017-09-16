@@ -1,0 +1,164 @@
+<!DOCTYPE append>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<meta name="author" content="ZRC-Struggling">
+	<title>$.extend()</title>
+	<style>
+		body{
+			line-height: 18px;
+			width: 800px;
+			margin: 10px auto;
+		}
+		td{
+			border:1px solid #ccc;
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	
+	<div id="msg">
+		<pre>
+			var target = {
+				name: "a",
+				age: 23,
+				details: {
+					height: "167cm",
+					weight: "67kg"
+				}
+			};
+			var option = {
+				name: "a",
+				age: 24,
+				details: {
+					height: "179cm",
+				}
+			};
+			$.extend({
+				getHello: function () {
+					return "Hello!";
+				}
+			});
+		</pre>
+		<table>
+			<tbody>
+				<tr>
+					<td>操作：</td>
+					<td>结果：</td>
+					<td>target: </td>
+				<tr>
+					<td>
+						JSON.stringify($.extend(target, option)):
+					</td>
+					<td id="msg1"></td>
+					<td id="t1"></td>
+				</tr>
+				<tr>
+					<td>
+						JSON.stringify($.extend({}, target, option)):
+					</td>
+					<td id="msg2"></td>
+					<td id="t2"></td>
+				</tr>
+				<tr>
+					<td>
+						JSON.stringify($.extend(true, {}, target, option)):
+					</td>
+					<td id="msg3"></td>
+					<td id="t3"></td>
+				</tr>
+				<tr>
+					<td>$.printHello():</td>
+					<td id="msg4"></td>
+				</tr>
+			</tbody>
+		</table>
+<!-- 		<div id="msg1">
+			JSON.stringify($.extend(target, option)):
+		</div>
+		<div id="msg2">
+			JSON.stringify($.extend({}, target, option)):
+		</div>
+		<div id="msg3">
+			JSON.stringify($.extend(true, {}, target, option)):
+		</div> -->
+	</div>
+	<script src="jquery/jquery_3.2.0.js"></script>
+	<script>
+		$(function  () {
+			var target = {
+				name: "a",
+				age: 23,
+				details: {
+					height: "167cm",
+					weight: "67kg"
+				}
+			};
+			var option = {
+				name: "a",
+				age: 24,
+				details: {
+					height: "179cm",
+				}
+			};
+			$("#msg1").append(JSON.stringify($.extend(target, option)));
+			$("#t1").append(JSON.stringify(target));
+			var target = {
+				name: "a",
+				age: 23,
+				details: {
+					height: "167cm",
+					weight: "67kg"
+				}
+			};
+			var option = {
+				name: "a",
+				age: 24,
+				details: {
+					height: "179cm",
+				}
+			};
+			$("#msg2").append(JSON.stringify($.extend({}, target, option)));
+			$("#t2").append(JSON.stringify(target));
+			var target = {
+				name: "a",
+				age: 23,
+				details: {
+					height: "167cm",
+					weight: "67kg"
+				}
+			};
+			var option = {
+				name: "a",
+				age: 24,
+				details: {
+					height: "179cm",
+				}
+			};
+			$("#msg3").append(JSON.stringify($.extend(true, {}, target, option)));
+			$("#t3").append(JSON.stringify(target));
+			$.extend({
+				getHello: function () {
+					return "Hello!";
+				}
+			});
+			$.getHello();
+
+			$("#msg4").append($.getHello());
+		});
+	</script>
+
+
+	<!-- notes: 
+	1. 基本语法：
+		* jQuery.extend( target [, object1 ] [, objectN ] )
+		* jQuery.extend( [deep ], target, object1 [, objectN ] )
+	2. 如果只有一个参数提供给$.extend()，这意味着目标参数被省略。在这种情况下，jQuery对象本身被默认为目标对象。这样，我们可以在jQuery的命名空间下添加新的功能。这对于插件开发者希望向 jQuery 中添加新函数时是很有用的。
+	3. table默认情况下是没有边框的
+	4. jQuery.extend()注意事项：
+	   - 操作是否改变原对象
+	   - 是否递归合并
+	-->
+</body>
+</html>
