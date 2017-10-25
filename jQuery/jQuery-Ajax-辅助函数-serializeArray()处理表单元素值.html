@@ -37,7 +37,7 @@
                 str = "";
             $div.appendTo($("body"))
             var formArr = $("form").serializeArray();
-            // console.log(formArr);
+            console.log(formArr);
             $.each(formArr, function (i, e) {
                 str += e.name + "=" + e.value + "&";
             })

@@ -3,15 +3,15 @@
 <head>
 <meta charset="utf-8">
 <title>无标题文档</title>
-<style type="text/css">
-.myFontSize{
-	font-size:50px;}
-</style>
 <script type="text/javascript" src="jquery/jquery-1.12.3.js"></script>
 <script type="text/javascript">
 $(function(){
-	//$("#div1").bind("changeFontSize",function(){$(this).addClass("myFontSize");}).trigger("changeFontSize");
-	$("#div1").on("changeFontSize",function(){$(this).attr("class","myFontSize");}).trigger("changeFontSize");
+	$("#div1").bind("changeFontSize",function(){
+		$(this).css("font-size","50px");
+	}).trigger("changeFontSize");
+	// $("#div1").on("changeFontSize",function(){
+	// 	$(this).css("font-size","50px");
+	// }).trigger("changeFontSize");
 });
 </script>
 </head>
@@ -21,5 +21,11 @@ $(function(){
 注意字体的大小
 </div>
 
+<!-- note 
+1. jQuery的处理函数可以通过"on"/"bind"/"one"等进行绑定，其也提供了常用事件的快捷方式
+2. 元素的类名修改可以通过.add()方法，也可以通过.css("class", className)。
+相比之下，前者更安全。
+
+-->
 </body>
 </html>

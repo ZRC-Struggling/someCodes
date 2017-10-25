@@ -3,29 +3,36 @@
 <head>
 <meta charset="utf-8">
 <title>无标题文档</title>
+<style>
+	body{
+		text-align: center;
+		font-size: 18px;
+	}
+	.tip{
+		font-size: 12px;
+	}
+</style>
 <script type="text/javascript" src="jquery/jquery-1.12.3.js"></script>
 <script type="text/javascript">
 $(function(){
 	$(":input").focus(function(){
-		if($.trim($(this).val()).length===0){
-			$("div").html("请输入你的姓名")}
-		})
-	.blur(function(){
-		if($.trim($(this).val()).length===0){
-			$("div").html("姓名不能为空");
-			}
-		else{
-			$("div").hide();}
-		});
+		if($.trim($(this).val()).length === 0){
+			$(".tip").html("请输入你的姓名").css("color", "inherit")
+		}
+	}).bind("blur, keyup", function(){
+		if($.trim($(this).val()).length === 0){
+			$(".tip").html("姓名不能为空").css("color","red");
+		}else{
+			$(".tip").html("");
+		}
+	});
+
 });
 </script>
 </head>
 
 <body>
 <input type="text" placeholder="姓名">
-<div>
-
-</div>
-
+<div class="tip"></div>
 </body>
 </html>

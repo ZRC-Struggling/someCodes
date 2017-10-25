@@ -70,7 +70,7 @@ $(function(){
 
 	// 第三种方案：
 	$(".msg_caption").click(function(e){
-		var fs = +$("#para").css("font-size").replace(/[^\d.]/g, "");
+		var fs = +$("#para").css("font-size").replace(/[^\d\.]/g, "");
 
 		if($(e.target).is(".bigger") && fs < 32){
 			$("#para").css("font-size",fs + 2 +"px");
@@ -89,9 +89,14 @@ $(function(){
 <!-- 
 1、用css("font-size")获取的值是带单位的，可以用parseInt()去掉单位.
 同时，通过css()方法设置font-size也要传入单位
-2、	parseInt("30px") // 30
-	+("30px".slice(0, -2)) // 30
-	+"30px" // NaN
+2、	parseInt("30.33px") // 30
+	parseFloat("30.33px"); // 30.33
+	+("30.33px".slice(0, -2)) // 30.33
+	+"30.33px".replace(/\D*$/, ""); // 30.33
+	+"30.33px".replace(/[^\d\.]*$/, ""); // 30.33
+	+"30.33px".replace(/^([\d\.]+)(\D*)+$/, "$1"); // 30.33
+	Number("30.33px"); // NaN
+	+"30.33px" // NaN
  -->
 </body>
 </html>

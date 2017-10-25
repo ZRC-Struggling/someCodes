@@ -27,8 +27,15 @@
 
 <script type="text/javascript">
 	$(function(){
+		// 生成某个范围内的随机数
+		function rand(min,max){
+		    return Math.floor(Math.random()*(max - min + 1) + min);
+		}
 		function changeImg(){
-				var randomNum=Math.floor(Math.random()*3+1);//产生1到3随机整数。
+				// 产生1到3随机整数。
+				// var randomNum=Math.floor(Math.random()*3+1);
+				var randomNum = rand(1, 3);
+				console.log(randomNum);
 				$("img").attr("src","images/"+randomNum+".jpg")
 						.css({"border":"2px solid red","outline":"5px solid lightblue","outline-offset":"5px"});
 		}
@@ -42,7 +49,7 @@
 	    	* 行内（内联）元素（用户代理样式：display:inline），同时也是替换元素
 			* 特点：
 					* 只设置宽度或高度会等比缩放
-					* 可以设置垂直方向上的内外上下边距（padding-top/padding-bottom/margin-top/margin-bottom）,而一般的内联元素只能设置水平方向上的内外左右边距（paddding-left/padding-right/margin-left/margin-right） // 尚需对原理进行进一步研究
+					* 可以设置垂直方向上的内/外边距（padding-top/padding-bottom/margin-top/margin-bottom）,而一般的内联元素只能设置水平方向上的内/外边距（paddding-left/padding-right/margin-left/margin-right） // 尚需对原理进行进一步研究
 		2. 让（内联、块级）元素（水平、垂直）居中的几种常见方式？
 			* 固定宽度 + 左右为auto的外边距
 			*
@@ -59,7 +66,7 @@
             * setTimeout(handler: any, timeout?: long, arguments...: any)
 			* setInterval(handler: any, timeout?: long, arguments...: any)
 		6. from "贺师俊"：
-			block 或 inline 是 CSS 术语。元素本身并没有一定是  block 或 inline。如果想知道 img 元素默认的 display 值，可查 CSS spec 或直接在 dev tools 中 inspect 之。BTW，inline 应译为“行内”而不是“内联”，当 inline 译为“内联”时是指编译器优化手段或相关的编程语言特性。注意：在HTML4时代有text-level(inline)/block-level元素的分法，但是现在早已经不再用这样的分法了。
+			block 或 inline 是 CSS 术语。元素本身并没有一定是  block 或 inline。如果想知道 img 元素默认的 display 值，可查 CSS spec 或直接在 dev tools 中 inspect 之。BTW(By The Way)，inline 应译为“行内”而不是“内联”，当 inline 译为“内联”时是指编译器优化手段或相关的编程语言特性。注意：在HTML4时代有text-level(inline)/block-level元素的分法，但是现在早已经不再用这样的分法了。
 
 			作者：贺师俊
 			链接：https://www.zhihu.com/question/25402556/answer/30669848

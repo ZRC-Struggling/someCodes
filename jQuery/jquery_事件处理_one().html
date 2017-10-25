@@ -7,11 +7,8 @@
 <script type="text/javascript">
 $(function(){
 	$("#div1").one("click",function(){
-		alert("Hello ,just one time");});
-	$(":input").click(function(){
-		$("#div1").unbind();
-		$(this).attr("disabled",true);
-		});
+		alert("Hello ,just one time");
+	});
 	
 });
 </script>
@@ -21,6 +18,6 @@ $(function(){
 <div id="div1" style="width:200px;height:200px;border:1px solid red;">
 只响应一次事件
 </div>
-<input type="button" value="解绑事件">
+
 </body>
 </html>
